@@ -1,145 +1,55 @@
-/* Importamos una tipografía elegante y una limpia */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Playfair+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Comfortaa:wght@300;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
 
 :root {
-    --bg-color: #faf7f2;      /* Crema suave */
-    --accent-color: #d4a373;  /* Tono tierra suave */
-    --text-color: #5b5b5b;    /* Gris cálido, no negro puro */
-    --card-bg: #ffffff;
-    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    --bg-main: #fcf1f2;       /* Un rosa muy muy pálido, más cálido */
+    --accent: #b5ced1;        /* Verde azulado de tus nubes */
+    --text: #4a4a4a;
+    --white: #ffffff;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Quicksand', sans-serif;
-    line-height: 1.6;
-    scroll-behavior: smooth;
+    background-color: var(--bg-main);
+    font-family: 'Comfortaa', cursive; /* Letra más redondita y cozy */
+    color: var(--text);
 }
 
-/* Navegación */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 10%;
-    position: sticky;
-    top: 0;
-    background-color: rgba(250, 247, 242, 0.9);
-    backdrop-filter: blur(5px);
-    z-index: 100;
-}
-
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin-left: 2rem;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-nav ul li a:hover {
-    color: var(--accent-color);
-}
-
-/* Hero Section */
+/* PORTADA (HERO) */
 .hero {
-    height: 60vh;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                url('assets/tu-mejor-obra.gif'); /* AQUÍ VA TU GIF */
+    background-size: cover;
+    background-position: center;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 0 10%;
+    color: white;
 }
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: 5rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+/* SECCIÓN DE PROYECTOS (CUENTOS Y JUEGOS) */
+.projects-section {
+    padding: 5rem 10%;
+    background-color: var(--white); /* Contraste para que resalte */
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #8e7d7d;
+}
+
+/* Ajuste del Logo */
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
     font-style: italic;
-}
-
-/* Galería Dinámica */
-.gallery {
-    padding: 5rem 10%;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.art-card {
-    background: var(--card-bg);
-    border-radius: 20px; /* Bordes muy redondeados para el toque cozy */
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.art-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: var(--transition);
-}
-
-.art-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-.art-card:hover img {
-    transform: scale(1.05);
-}
-
-/* Sección Marca */
-.brand-section {
-    background-color: #f1ede4;
-    padding: 8rem 10%;
-    text-align: center;
-}
-
-/* Footer */
-footer {
-    padding: 5rem 10%;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-.socials {
-    margin-top: 2rem;
-}
-
-.socials a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: var(--text-color);
-    border-bottom: 1px solid var(--accent-color);
+    color: #d4a373;
 }
