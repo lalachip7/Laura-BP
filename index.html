@@ -1,46 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Digital Artist</title>
+    <title>Laura Blázquez | Digital Artist</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <nav>
-        <div class="logo">MORALLAMA</div>
+    <nav class="transparent-nav">
+        <div class="logo">morallama</div>
         <ul>
-            <li><a href="#art">Artworks</a></li>
-            <li><a href="#brand">Morallama</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="artworks.html">Artworks</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="morallama.html">My Brand</a></li>
+            <li><a href="about.html">About me</a></li>
         </ul>
     </nav>
 
     <header class="hero">
-        <h1>Hi, I'm [Your Name]</h1>
-        <p>Illustrator & Designer creating cozy visual stories.</p>
+        <div class="hero-main-container">
+            <div class="hero-box">
+                <img src="assets/mantel.png" alt="Creative corner frame" class="box-bg animate-up">
+
+                <div class="hero-text-wrapper">
+                    <h1 class="hero-title-top">Welcome to my<br>creative corner</h1>
+                    <p class="hero-subtitle-bottom">I'm Laura, Illustrator, Graphic Designer & Artist...<br>and this is
+                        where my art lives</p>
+                </div>
+
+                <img src="assets/cereza.png" class="fruit f-top-left animate-up-delayed parallax-fruit"
+                    data-speed="0.06" style="animation-delay: 0.4s;">
+                <img src="assets/arandano.png" class="fruit f-top-right animate-up-delayed parallax-fruit"
+                    data-speed="0.03" style="animation-delay: 0.6s;">
+                <img src="assets/arandanos.png" class="fruit f-bottom-left animate-up-delayed parallax-fruit"
+                    data-speed="0.08" style="animation-delay: 0.8s;">
+                <img src="assets/cerezas.png" class="fruit f-bottom-right animate-up-delayed parallax-fruit"
+                    data-speed="0.05" style="animation-delay: 1s;">
+            </div>
+        </div>
     </header>
 
-    <section id="art" class="gallery">
-        <h2>Selected Artworks</h2>
-        <div class="grid">
-            <div class="art-card"><img src="assets/art1.jpg" alt="Art 1"></div>
-            <div class="art-card"><img src="assets/art2.jpg" alt="Art 2"></div>
+    <section id="about-intro" class="about-intro">
+        <div class="about-container">
+            <div class="about-text">
+                <img src="assets/estrella1.png" class="parallax-star star-1" data-speed="0.08" alt="Star decor">
+                <img src="assets/estrella2.png" class="parallax-star star-2" data-speed="0.04" alt="Star decor">
+
+                <h2>Hi, I'm Laura</h2>
+                <p>Welcome to my picnic blanket! I'm an illustrator and graphic designer who loves creating tiny, cozy,
+                    and colorful worlds. My art is heavily inspired by childhood memories, nature, and the magic hidden
+                    in everyday moments.</p>
+                <p>Grab a snack, get comfortable, and take a look around!</p>
+            </div>
+
+            <div class="about-image">
+                <div class="avatar-wrapper">
+                    <img src="assets/lirio.png" class="levitating-item" alt="Floating item">
+                    <img src="assets/avatar.png" alt="Laura - Digital Artist" class="avatar-img">
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="projects" class="projects-section">
-    <h2>Storybooks & Games</h2>
-    <div class="grid">
-        <div class="art-card">
-            <img src="assets/juego-preview.png" alt="Video game project">
-            <div class="project-info">
-                <h3>Project Title</h3>
-                <p>Character design and environment illustration.</p>
+    <section id="toolkit" class="toolkit-section">
+        <h2>My Creative Universe</h2>
+        <p class="toolkit-intro">A blend of artistic soul and technical mind.</p>
+
+        <div class="skills-cards-container">
+
+            <div class="skill-card card-left">
+                <div class="card-content">
+                    <img src="assets/icono_game.png" alt="Game Dev" class="menu-icon">
+                    <h3>Game Dev</h3>
+                    <hr class="menu-divider">
+                    <p>Formada en desarrollo técnico e integración en Unity.</p>
+                    <div class="menu-ingredients">
+                        <span>C++</span> • <span>C#</span> • <span>Java</span> • <span>Unity</span>
+                    </div>
+                    <a href="#" class="card-link">View GitHub</a>
+                </div>
             </div>
+
+            <div class="skill-card featured-card">
+                <div class="card-content">
+                    <img src="assets/icono_art.png" alt="2D Design" class="menu-icon">
+                    <h3>2D Design</h3>
+                    <hr class="menu-divider">
+                    <p>Mi especialidad y pasión. Creación de mundos y personajes.</p>
+                    <div class="menu-ingredients">
+                        <span>Procreate</span> • <span>Photoshop</span> • <span>Concept Art</span>
+                    </div>
+                    <a href="#" class="card-link btn-main">ArtStation</a>
+                </div>
+            </div>
+
+            <div class="skill-card card-right">
+                <div class="card-content">
+                    <img src="assets/icono_web.png" alt="Web & Motion" class="menu-icon">
+                    <h3>Web & Motion</h3>
+                    <hr class="menu-divider">
+                    <p>Diseño de interfaces y animaciones 2D con vida.</p>
+                    <div class="menu-ingredients">
+                        <span>HTML/CSS</span> • <span>UI Design</span> • <span>After Effects</span>
+                    </div>
+                    <a href="#" class="card-link">See Projects</a>
+                </div>
+            </div>
+
         </div>
+    </section>
+
+
+    <section id="featured-art" class="featured-art">
+        <h2>Selected Artworks</h2>
+
+        <div class="three-col-grid">
+            <div class="art-card"><img src="assets/art1.png" alt="Featured Art 1"></div>
+            <div class="art-card"><img src="assets/art2.png" alt="Featured Art 2"></div>
+            <div class="art-card"><img src="assets/art3.png" alt="Featured Art 3"></div>
+        </div>
+
+        <a href="artworks.html" class="btn-more">See all artworks</a>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2>Illustration projects & Games</h2>
+        <div class="grid">
+            <div class="art-card">
+                <img src="assets/juego-preview.png" alt="Video game project">
+                <div class="project-info">
+                    <h3>The Living Garden</h3>
+                    <p>Character design and environment illustration.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -52,10 +147,57 @@
     <footer id="contact">
         <p>Let's stay in touch!</p>
         <div class="socials">
-            <a href="#">Instagram</a>
-            <a href="#">Email</a>
+            <a href="#">Instagram: @morallama_</a>
+            <a href="#">Email: lblazpel@gmail.com</a>
         </div>
     </footer>
 
+    <script>
+        // 1. Menú Inteligente
+        const nav = document.querySelector('.transparent-nav');
+        let lastScrollTop = 0;
+        const delta = 5;
+
+        window.addEventListener('scroll', () => {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Fondo de cristal
+            if (st > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            // Ocultar/Mostrar
+            if (Math.abs(lastScrollTop - st) <= delta) return;
+            if (st > lastScrollTop && st > 100) {
+                nav.classList.add('nav-hidden');
+            } else {
+                if (st < lastScrollTop) {
+                    nav.classList.remove('nav-hidden');
+                }
+            }
+            lastScrollTop = st;
+        });
+
+        // 2. Efectos Parallax
+        window.addEventListener('scroll', function () {
+            const scrollValue = window.scrollY;
+
+            // Frutas y estrellas
+            const floatingItems = document.querySelectorAll('.parallax-fruit, .parallax-star');
+            floatingItems.forEach(item => {
+                const speed = item.getAttribute('data-speed');
+                item.style.marginTop = (scrollValue * speed) + 'px';
+            });
+
+            // Recuadro central
+            const heroContainer = document.querySelector('.hero-main-container');
+            if (heroContainer) {
+                heroContainer.style.marginTop = (scrollValue * 0.15) + 'px';
+            }
+        });
+    </script>
 </body>
+
 </html>
