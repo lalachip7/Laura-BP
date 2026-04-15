@@ -11,7 +11,7 @@
 <body>
 
     <nav class="transparent-nav">
-        <div class="logo">morallama</div>
+        <a href="index.html" class="logo">morallama</a>
         <ul>
             <li><a href="artworks.html">Artworks</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -22,8 +22,8 @@
 
     <header class="hero">
         <div class="hero-main-container">
-            <div class="hero-box">
-                <img src="assets/mantel.png" alt="Creative corner frame" class="box-bg animate-up">
+            <div class="hero-box animate-up">
+                <img src="assets/mantel.png" alt="Creative corner frame" class="box-bg">
 
                 <div class="hero-text-wrapper">
                     <h1 class="hero-title-top">Welcome to my<br>creative corner</h1>
@@ -70,7 +70,6 @@
         <p class="toolkit-intro">A blend of artistic soul and technical mind.</p>
 
         <div class="skills-cards-container">
-
             <div class="skill-card card-left">
                 <div class="card-content">
                     <img src="assets/icono_game.png" alt="Game Dev" class="menu-icon">
@@ -80,7 +79,7 @@
                     <div class="menu-ingredients">
                         <span>C++</span> • <span>C#</span> • <span>Java</span> • <span>Unity</span>
                     </div>
-                    <a href="#" class="card-link">View GitHub</a>
+                    <a href="https://github.com/lalachip7" target="_blank" class="card-link">View GitHub</a>
                 </div>
             </div>
 
@@ -93,7 +92,7 @@
                     <div class="menu-ingredients">
                         <span>Procreate</span> • <span>Photoshop</span> • <span>Concept Art</span>
                     </div>
-                    <a href="#" class="card-link btn-main">ArtStation</a>
+                    <a href="https://lalachip.artstation.com" target="_blank" class="card-link btn-main">ArtStation</a>
                 </div>
             </div>
 
@@ -109,35 +108,113 @@
                     <a href="#" class="card-link">See Projects</a>
                 </div>
             </div>
-
         </div>
     </section>
 
+    <div class="featured-art-wrapper">
+        <section id="featured-art" class="featured-art">
+            <h2><img src="assets/hormiga.png" alt="" class="title-decor-inline"> Selected Artworks</h2>
+            <p class="artworks-intro">A small taste of my most cherished creations, esparcidos con cariño sobre mi mantel.</p>
 
-    <section id="featured-art" class="featured-art">
-        <h2>Selected Artworks</h2>
+            <div class="carousel-container">
+                <div class="polaroid-gallery" id="carousel-track">
+                    
+                    <div class="polaroid-card">
+                        <div class="polaroid-img-wrapper"><img src="assets/art1.png" alt=""></div>
+                        <div class="art-caption-sticky">A magical underwater concept scene.</div>
+                    </div>
+                    <div class="polaroid-card">
+                        <div class="polaroid-img-wrapper"><img src="assets/art5.png" alt=""></div>
+                        <div class="art-caption-sticky">Laia - Detailed character sheet.</div>
+                    </div>
+                    <div class="polaroid-card">
+                        <div class="polaroid-img-wrapper"><img src="assets/art3.png" alt=""></div>
+                        <div class="art-caption-sticky">Cozy treehouse digital painting.</div>
+                    </div>
+                    <div class="polaroid-card">
+                        <div class="polaroid-img-wrapper"><img src="assets/art2.png" alt=""></div>
+                        <div class="art-caption-sticky">Spirited creature concept art.</div>
+                    </div>
+                    <div class="polaroid-card">
+                        <div class="polaroid-img-wrapper"><img src="assets/art4.png" alt=""></div>
+                        <div class="art-caption-sticky">Dynamic character design study.</div>
+                    </div>
+                    <div class="polaroid-card">
+                        <div class="polaroid-img-wrapper"><img src="assets/art6.png" alt=""></div>
+                        <div class="art-caption-sticky">Warm colors and dreamy vibes.</div>
+                    </div>
+                    
+                </div>
+            </div>
 
-        <div class="three-col-grid">
-            <div class="art-card"><img src="assets/art1.png" alt="Featured Art 1"></div>
-            <div class="art-card"><img src="assets/art2.png" alt="Featured Art 2"></div>
-            <div class="art-card"><img src="assets/art3.png" alt="Featured Art 3"></div>
-        </div>
+            <div class="btn-container">
+                <a href="artworks.html" class="btn-more">See all artworks</a>
+            </div>
+        </section>
+    </div>
 
-        <a href="artworks.html" class="btn-more">See all artworks</a>
-    </section>
+    <div class="wave-divider top-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.78,193.36,99.34,239.54,84.18,280.44,64.06,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
 
     <section id="projects" class="projects-section">
-        <h2>Illustration projects & Games</h2>
-        <div class="grid">
-            <div class="art-card">
-                <img src="assets/juego-preview.png" alt="Video game project">
+        <div class="projects-header">
+            <h2>Featured Projects</h2>
+            <p class="projects-intro">A collection of indie games and projects I've helped bring to life.</p>
+        </div>
+
+        <div class="projects-container">
+            <div class="project-card">
+                <a href="https://ripple-games.itch.io/the-living-garden" target="_blank" class="project-img-wrapper">
+                    <img src="assets/art2.png" alt="The Living Garden">
+                </a>
                 <div class="project-info">
                     <h3>The Living Garden</h3>
-                    <p>Character design and environment illustration.</p>
+                    <p class="project-desc">Un simulador de estrategia ecológica y 'cozy' donde tu misión es gestionar un Santuario Botánico.</p>
+                    <div class="role-wrapper">
+                        <span class="role-label">My Role</span>
+                        <span class="role-tag">2D Artist & UI Designer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://lauriman.itch.io/white-noise" target="_blank" class="project-img-wrapper">
+                    <img src="assets/white_noise.png" alt="White Noise" onerror="this.src='assets/juego-preview.png'">
+                </a>
+                <div class="project-info">
+                    <h3>White Noise</h3>
+                    <p class="project-desc">Una experiencia narrativa y psicológica. Un proyecto personal desarrollado en una Game Jam que explora la memoria.</p>
+                    <div class="role-wrapper">
+                        <span class="role-label">My Role</span>
+                        <span class="role-tag">Lead Artist / Concept Art</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://ladeynn.itch.io/eclipsa" target="_blank" class="project-img-wrapper">
+                    <img src="assets/eclipsa.png" alt="Eclipsa" onerror="this.src='assets/juego-preview.png'">
+                </a>
+                <div class="project-info">
+                    <h3>Eclipsa</h3>
+                    <p class="project-desc">Un juego de aventura y misterio con una fuerte carga visual, basado en el contraste de luz y oscuridad.</p>
+                    <div class="role-wrapper">
+                        <span class="role-label">My Role</span>
+                        <span class="role-tag">Illustrator & Animator</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="wave-divider bottom-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.78,193.36,99.34,239.54,84.18,280.44,64.06,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
 
     <section id="brand" class="brand-section">
         <h2>Morallama Brand</h2>
@@ -147,57 +224,144 @@
     <footer id="contact">
         <p>Let's stay in touch!</p>
         <div class="socials">
-            <a href="#">Instagram: @morallama_</a>
-            <a href="#">Email: lblazpel@gmail.com</a>
+            <a href="https://www.instagram.com/morallama_" target="_blank">Instagram</a>
+            <a href="https://lalachip.artstation.com" target="_blank">ArtStation</a>
+            <a href="mailto:lblazpel@gmail.com">Email</a>
         </div>
     </footer>
 
     <script>
-        // 1. Menú Inteligente
+        // Barra de navegación transparente
         const nav = document.querySelector('.transparent-nav');
         let lastScrollTop = 0;
         const delta = 5;
 
         window.addEventListener('scroll', () => {
             let st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
 
-            // Fondo de cristal
-            if (st > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-
-            // Ocultar/Mostrar
             if (Math.abs(lastScrollTop - st) <= delta) return;
-            if (st > lastScrollTop && st > 100) {
-                nav.classList.add('nav-hidden');
-            } else {
-                if (st < lastScrollTop) {
-                    nav.classList.remove('nav-hidden');
-                }
-            }
+            if (st > lastScrollTop && st > 100) nav.classList.add('nav-hidden');
+            else if (st < lastScrollTop) nav.classList.remove('nav-hidden');
+
             lastScrollTop = st;
         });
 
-        // 2. Efectos Parallax
+        // Efectos Parallax
         window.addEventListener('scroll', function () {
             const scrollValue = window.scrollY;
-
-            // Frutas y estrellas
             const floatingItems = document.querySelectorAll('.parallax-fruit, .parallax-star');
             floatingItems.forEach(item => {
                 const speed = item.getAttribute('data-speed');
                 item.style.marginTop = (scrollValue * speed) + 'px';
             });
 
-            // Recuadro central
             const heroContainer = document.querySelector('.hero-main-container');
-            if (heroContainer) {
-                heroContainer.style.marginTop = (scrollValue * 0.15) + 'px';
-            }
+            if (heroContainer) heroContainer.style.marginTop = (scrollValue * 0.15) + 'px';
+        });
+
+        // NUEVO SCRIPT: Carrusel 3D Seguro y Fluido (Clicks + Autoplay)
+        let currentSlide = 0;
+        const track = document.getElementById('carousel-track');
+        const cards = Array.from(track.children);
+        const totalCards = cards.length;
+        let autoPlayInterval;
+        let isAnimating = false; // El guardián: evita que los clics y el autoplay se peleen
+
+        // --- LÓGICA DE ROTACIÓN 3D Y CLICS ---
+        function updateCarousel3D() {
+            // 1. Limpiamos estados y quitamos clics anteriores de todas las cartas
+            cards.forEach(card => {
+                card.classList.remove('carousel-item-left', 'carousel-item-center', 'carousel-item-right');
+                card.style.cursor = 'default'; 
+                card.onclick = null; 
+            });
+
+            const centerIndex = currentSlide;
+            const leftIndex = (currentSlide - 1 + totalCards) % totalCards;
+            const rightIndex = (currentSlide + 1) % totalCards;
+
+            // 2. Tarjeta Izquierda (Clicable)
+            cards[leftIndex].classList.add('carousel-item-left');
+            cards[leftIndex].style.cursor = 'pointer';
+            cards[leftIndex].onclick = () => moveCarousel(-1);
+
+            // 3. Tarjeta Central (Solo se disfruta)
+            cards[centerIndex].classList.add('carousel-item-center');
+
+            // 4. Tarjeta Derecha (Clicable)
+            cards[rightIndex].classList.add('carousel-item-right');
+            cards[rightIndex].style.cursor = 'pointer';
+            cards[rightIndex].onclick = () => moveCarousel(1);
+        }
+
+        function moveCarousel(direction) {
+            // Si ya se está moviendo, ignoramos la orden para evitar la locura
+            if (isAnimating) return; 
+            isAnimating = true;
+
+            currentSlide = (currentSlide + direction + totalCards) % totalCards;
+            updateCarousel3D();
+            resetAutoPlay(); // Reiniciamos el temporizador para que no mueva la carta justo después del clic
+
+            // Desbloqueamos el carrusel después del tiempo exacto que dura la animación (0.6s = 600ms en el CSS)
+            setTimeout(() => {
+                isAnimating = false;
+            }, 600); 
+        }
+
+        // --- LÓGICA DE AUTOPLAY (Seguro) ---
+        function startAutoPlay() {
+            // Aseguramos que no haya temporizadores previos corriendo
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => { 
+                // Solo movemos si el usuario no tiene el ratón encima Y no se está animando
+                if (!isAnimating) {
+                    moveCarousel(1); 
+                }
+            }, 4000); // 4 segundos entre cambios
+        }
+
+        function stopAutoPlay() { 
+            clearInterval(autoPlayInterval); 
+        }
+
+        function resetAutoPlay() { 
+            stopAutoPlay(); 
+            startAutoPlay(); 
+        }
+
+        // Parar el Autoplay si el usuario está mirando una foto
+        track.addEventListener('mouseenter', stopAutoPlay);
+        track.addEventListener('mouseleave', startAutoPlay);
+
+        // --- GESTO BÁSICO PARA MÓVILES (Flick) ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoPlay(); // Paramos autoplay al tocar
+        }, {passive: true});
+
+        track.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoPlay(); // Reactivamos autoplay al soltar
+        }, {passive: true});
+
+        function handleSwipe() {
+            const swipeThreshold = 50; 
+            if (touchEndX < touchStartX - swipeThreshold) moveCarousel(1); 
+            if (touchEndX > touchStartX + swipeThreshold) moveCarousel(-1); 
+        }
+
+        // Inicializar todo al cargar la página
+        document.addEventListener("DOMContentLoaded", () => {
+            updateCarousel3D();
+            startAutoPlay();
         });
     </script>
 </body>
-
 </html>

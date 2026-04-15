@@ -34,7 +34,7 @@ body {
 }
 
 section {
-    padding: 50px 10%;
+    padding: 60px 10%;
     text-align: center;
 }
 
@@ -50,14 +50,8 @@ h2 {
    3. ANIMACIONES BASE
    ========================================= */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes floating {
@@ -66,14 +60,8 @@ h2 {
     100% { transform: translateY(0px); }
 }
 
-.animate-up {
-    animation: fadeInUp 1.2s ease-out forwards;
-}
-
-.animate-up-delayed {
-    opacity: 0;
-    animation: fadeInUp 1.2s ease-out forwards;
-}
+.animate-up { animation: fadeInUp 1.2s ease-out forwards; }
+.animate-up-delayed { opacity: 0; animation: fadeInUp 1.2s ease-out forwards; }
 
 /* =========================================
    4. BARRA DE NAVEGACIÓN
@@ -92,9 +80,7 @@ h2 {
     transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease, top 0.3s ease;
 }
 
-.nav-hidden {
-    top: -100px;
-}
+.nav-hidden { top: -100px; }
 
 .transparent-nav.scrolled {
     background-color: rgba(250, 246, 240, 0.85);
@@ -109,6 +95,7 @@ h2 {
     font-size: 1.5rem;
     color: var(--color-marron-oscuro);
     text-transform: lowercase;
+    text-decoration: none;
 }
 
 .transparent-nav ul {
@@ -120,23 +107,25 @@ h2 {
 .transparent-nav ul li a {
     text-decoration: none;
     color: var(--color-marron-oscuro);
-    margin-left: 30px;
+    margin-left: 15px; 
+    padding: 8px 18px; 
+    border-radius: 20px; 
+    background-color: transparent; 
     font-weight: 700;
-    transition: 0.3s;
+    transition: all 0.3s ease; 
 }
 
 .transparent-nav ul li a:hover {
-    color: var(--color-rojo);
+    background-color: rgba(255, 255, 255, 0.4); 
 }
 
 .transparent-nav.scrolled .logo,
 .transparent-nav.scrolled ul li a {
     color: var(--color-marron-oscuro);
-    transition: color 0.3s ease;
 }
 
 .transparent-nav.scrolled ul li a:hover {
-    color: var(--color-oro);
+    background-color: rgba(200, 135, 66, 0.15); 
 }
 
 /* =========================================
@@ -190,7 +179,6 @@ h2 {
     color: var(--color-marron-oscuro);
     line-height: 1;
     margin: 0 0 50px 0;
-    animation: fadeInUp 1.2s ease-out forwards;
 }
 
 .hero-subtitle-bottom {
@@ -199,15 +187,9 @@ h2 {
     color: var(--color-marron-oscuro);
     font-weight: 700;
     margin: 0;
-    animation: fadeInUp 1.2s ease-out forwards;
 }
 
-.fruit {
-    position: absolute;
-    z-index: 10;
-    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.2));
-}
-
+.fruit { position: absolute; z-index: 10; filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.2)); }
 .f-top-left { top: 15%; left: -10%; width: 20%; }
 .f-top-right { top: 5%; right: 5%; width: 15%; }
 .f-bottom-left { bottom: -5%; left: -20%; width: 25%; }
@@ -224,109 +206,40 @@ h2 {
     z-index: 5;
 }
 
-.about-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    max-width: 900px;
-    margin: 0 auto;
-}
+.about-container { display: flex; align-items: center; justify-content: center; gap: 40px; max-width: 900px; margin: 0 auto; }
+.about-text { flex: 1; text-align: left; position: relative; }
+.about-text h2 { text-align: left; margin-bottom: 20px; }
+.about-text p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
+.about-image { flex: 1; text-align: right; position: relative; }
+.avatar-wrapper { position: relative; display: inline-block; max-width: 320px; width: 100%; }
 
-.about-text {
-    flex: 1;
-    text-align: left;
-    position: relative;
-}
+.avatar-img { width: 100%; display: block; filter: drop-shadow(8px 12px 15px rgba(0, 0, 0, 0.15)); transition: transform 0.5s ease, filter 0.5s ease; }
+.avatar-img:hover { transform: translateY(-8px); filter: drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.2)); }
 
-.about-text h2 {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.about-text p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.about-image {
-    flex: 1;
-    text-align: right;
-    position: relative;
-}
-
-.avatar-wrapper {
-    position: relative;
-    display: inline-block;
-    max-width: 320px;
-    width: 100%;
-}
-
-.avatar-img {
-    width: 100%;
-    display: block;
-    filter: drop-shadow(8px 12px 15px rgba(0, 0, 0, 0.15));
-    transition: transform 0.5s ease, filter 0.5s ease;
-}
-
-.avatar-img:hover {
-    transform: translateY(-8px);
-    filter: drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.2));
-}
-
-.levitating-item {
-    position: absolute;
-    top: 15%;
-    left: -15%;
-    width: 40%;
-    z-index: 10;
-    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.15));
-    animation: floating 4s ease-in-out infinite;
-}
-
-.parallax-star {
-    position: absolute;
-    z-index: -1;
-    opacity: 0.8;
-}
-
+.levitating-item { position: absolute; top: 15%; left: -15%; width: 40%; z-index: 10; filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.15)); animation: floating 4s ease-in-out infinite; }
+.parallax-star { position: absolute; z-index: -1; opacity: 0.8; }
 .star-1 { top: 5px; left: -15%; width: 40px; }
 .star-2 { top: 15px; left: 0%; width: 25px; }
 
 /* =========================================
-   7. SECCIÓN TOOLKIT - ESTILO MENÚ PICNIC
+   7. SECCIÓN TOOLKIT (MENÚ PICNIC)
    ========================================= */
 .toolkit-section {
-    padding: 60px 8% 100px 8%;
-    background-image: url('assets/divider.png');
+    padding: 60px 8% 80px 8%; 
+    background-image: url('assets/divider.png'); 
     background-size: cover;
     background-position: center;
     background-attachment: scroll; 
     text-align: center;
+    position: relative;
+    z-index: 10; 
 }
 
-.toolkit-section h2 {
-    color: var(--color-marron-oscuro);
-    text-shadow: 1px 1px 0px var(--white);
-    margin-bottom: 10px;
-}
+.toolkit-section h2 { color: var(--color-marron-oscuro); text-shadow: 1px 1px 0px var(--white); margin-bottom: 10px; }
+.toolkit-intro { margin-bottom: 50px; font-weight: 500; }
 
-.toolkit-intro {
-    margin-bottom: 50px;
-    font-weight: 500;
-}
+.skills-cards-container { display: flex; justify-content: center; align-items: stretch; gap: 30px; max-width: 1000px; margin: 40px auto 0 auto; }
 
-.skills-cards-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 30px;
-    max-width: 1000px;
-    margin: 40px auto 0 auto;
-}
-
-/* Tarjeta Base */
 .skill-card {
     flex: 1;
     background-color: var(--white);
@@ -341,174 +254,385 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    /* Borde base transparente para que no dé "saltos" de tamaño */
     border: 3px solid transparent; 
 }
 
-/* Tarjetas Laterales */
-.card-left {
-    transform: rotate(-1.5deg);
-    background-image: url('assets/bg-game.png');
+.card-left { transform: rotate(-1.5deg); background-image: url('assets/bg-game.png'); }
+.card-right { transform: rotate(1.5deg); background-image: url('assets/bg-game.png'); }
+.featured-card { transform: scale(1.05); background-image: url('assets/bg-game.png'); z-index: 2; border: 3px solid var(--color-rojo); }
+
+.card-left:hover, .card-right:hover { transform: translateY(-12px) rotate(0deg); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+.featured-card:hover { transform: scale(1.05) translateY(-12px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+
+.menu-icon { width: 80px; height: auto; margin: 0 auto 15px auto; display: block; }
+.menu-divider { border: none; border-top: 2px solid var(--color-rojo); width: 60%; margin: 15px auto 25px auto; opacity: 0.8; }
+.skill-card h3 { font-family: 'Darumadrop One', cursive; font-size: 2.2rem; color: var(--color-rojo); margin: 0; }
+.skill-card p { font-size: 1.05rem; line-height: 1.5; color: var(--color-marron-oscuro); margin-bottom: 20px; }
+.menu-ingredients { margin-bottom: 25px; font-family: 'Quicksand', sans-serif; font-weight: 700; color: var(--color-rojo); font-size: 0.95rem; line-height: 1.6; }
+.menu-ingredients span { display: inline-block; padding: 0 4px; }
+
+.card-link { text-decoration: none; color: var(--color-oro); font-weight: 700; font-size: 0.95rem; transition: color 0.3s ease, border-bottom 0.3s ease; border-bottom: 2px solid transparent; }
+.card-link:hover { color: var(--color-rojo); border-bottom: 2px solid var(--color-rojo); }
+
+.btn-main { background-color: var(--color-rojo); color: var(--white) !important; padding: 10px 25px; border-radius: 12px; border-bottom: none !important; }
+.btn-main:hover { background-color: var(--color-marron-oscuro); transform: translateY(-3px); }
+
+/* =========================================
+   8. OBRAS DESTACADAS (AJUSTE DE FONDO Y CARRUSEL 3D)
+   ========================================= */
+.featured-art-wrapper {
+    margin-top: -10px; /* Reducido al mínimo: no deja línea blanca, pero NUNCA esconde el mantel */
+    position: relative;
+    z-index: 1;
+    overflow: hidden; 
 }
 
-.card-right {
-    transform: rotate(1.5deg);
-    background-image: url('assets/bg-game.png');
-}
-
-/* --- LA TARJETA CENTRAL DESTACADA --- */
-.featured-card {
-    transform: scale(1.05); /* La hacemos un 5% más grande */
-    background-image: url('assets/bg-game.png');
-    z-index: 2; /* Para que quede por encima visualmente */
+.featured-art {
+    width: 100%;
+    /* Aumentamos el 80px final a 140px para darle espacio a las ondas de abajo */
+    padding: 140px 0 140px 0; 
+    position: relative;
+    background-image: url('assets/mantel2.png');
     
-    /* El borde externo. Si no te gusta punteado, cambia 'dashed' por 'solid' */
-    border: 3px solid var(--color-rojo); 
+    /* Mantiene la proporción perfecta siempre sin deformarse */
+    background-size: cover; 
+    
+    /* Alineamos priorizando la parte superior (5%) para salvar el borde de arriba */
+    background-position: center 5%; 
+    background-repeat: no-repeat;
 }
 
-/* --- HOVERS ADAPTADOS --- */
-.card-left:hover, .card-right:hover {
-    transform: translateY(-12px) rotate(0deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+.artworks-intro {
+    font-size: 1.15rem;
+    color: var(--color-marron-oscuro);
+    margin-bottom: 30px;
+    font-weight: 500;
 }
 
-.featured-card:hover {
-    /* Mantenemos el scale(1.05) para que no encoja al pasar el ratón */
-    transform: scale(1.05) translateY(-12px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+.title-decor-inline { width: 45px; vertical-align: middle; margin-right: 15px; transform: translateY(-8px); }
+.decor-art-1 { position: absolute; top: 8%; left: 10%; width: 40px; opacity: 0.6; }
+
+/* --- CONTENEDOR Y FLECHAS --- */
+.carousel-container {
+    max-width: 1400px; 
+    width: 95%;
+    margin: 0 auto;
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px; 
 }
 
-/* --- ESTILO DE ELEMENTOS INTERNOS --- */
-.menu-icon {
-    width: 80px; 
-    height: auto;
-    margin: 0 auto 15px auto;
-    display: block;
-}
-
-.menu-divider {
-    border: none;
-    border-top: 2px solid var(--color-rojo);
-    width: 60%;
-    margin: 15px auto 25px auto;
-    opacity: 0.8;
-}
-
-.skill-card h3 { 
-    font-family: 'Darumadrop One', cursive; 
-    font-size: 2.2rem; 
-    color: var(--color-rojo); 
-    margin: 0; 
-}
-
-.skill-card p { 
-    font-size: 1.05rem; 
-    line-height: 1.5; 
-    color: var(--color-marron-oscuro); 
-    margin-bottom: 20px; 
-}
-
-.menu-ingredients {
-    margin-bottom: 25px;
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    background: transparent;
+    color: var(--color-marron-oscuro);
     font-family: 'Quicksand', sans-serif;
+    font-size: 3.5rem; 
     font-weight: 700;
-    color: var(--color-rojo); 
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    padding: 15px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.prev-arrow { left: 0; }
+.next-arrow { right: 0; }
+
+.carousel-arrow:hover {
+    color: var(--white);
+    transform: translateY(-50%) scale(1.3); 
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); 
+}
+
+/* --- GALERÍA 3D --- */
+.polaroid-gallery {
+    position: relative;
+    width: 100%;
+    height: 450px; /* Aumentamos altura para dar cabida a las imágenes más grandes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px; /* Efecto 3D un poco más suave */
+}
+
+/* --- TARJETAS POLAROID --- */
+.polaroid-card {
+    width: auto; 
+    background-color: var(--white);
+    padding: 15px 15px 45px 15px; 
+    border-radius: 6px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    position: absolute; 
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(0) scale(0.5) rotateY(0deg);
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 0;
+}
+
+/* --- ESTADOS DEL CARRUSEL 3D (Espaciado Fijo en Píxeles) --- */
+.polaroid-card.carousel-item-left {
+    opacity: 0.8;
+    visibility: visible;
+    /* Usamos -380px fijos para que nunca se solapen sin importar el ancho de la foto */
+    transform: translateX(-380px) scale(0.85) rotateY(15deg) rotate(-3deg);
+    z-index: 10;
+}
+
+.polaroid-card.carousel-item-center {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1.1) rotateY(0deg) rotate(1deg); 
+    z-index: 20;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.polaroid-card.carousel-item-right {
+    opacity: 0.8;
+    visibility: visible;
+    transform: translateX(380px) scale(0.85) rotateY(-15deg) rotate(2deg);
+    z-index: 10;
+}
+
+.polaroid-card.carousel-item-center:hover { 
+    transform: translateX(0) scale(1.15) rotate(0deg) translateY(-10px) !important; 
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2); 
+    z-index: 30; 
+}
+
+/* CAJA DE LA IMAGEN: MUCHO MÁS GRANDES */
+.polaroid-img-wrapper { 
+    border-radius: 4px; 
+    overflow: hidden;
+}
+
+.polaroid-img-wrapper img { 
+    height: 300px; /* Tamaño grandote recuperado */
+    width: auto;   
+    display: block; 
+}
+
+/* --- NOTITAS ADHESIVAS --- */
+.art-caption-sticky {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 18px;
+    border-radius: 8px;
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.4;
+    color: var(--color-marron-oscuro);
+    border: 1px dashed var(--color-oro);
+    width: 200px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 50; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.menu-ingredients span {
-    display: inline-block;
-    padding: 0 4px;
-}
+.polaroid-card.carousel-item-center:hover .art-caption-sticky { opacity: 1; }
 
-/* Enlaces */
-.card-link {
-    text-decoration: none;
-    color: var(--color-oro);
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent;
-}
+.polaroid-card:nth-child(odd) .art-caption-sticky { top: -20px; right: -40px; transform: rotate(5deg); }
+.polaroid-card:nth-child(even) .art-caption-sticky { bottom: 20px; left: -40px; transform: rotate(-3deg); }
 
-.card-link:hover {
-    color: var(--color-rojo);
-    border-bottom: 2px solid var(--color-rojo);
-}
+/* --- BOTÓN --- */
+.btn-container { margin-top: 20px; }
+.btn-more { display: inline-block; background-color: var(--color-rojo); color: var(--white); font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.1rem; padding: 12px 30px; border-radius: 12px; text-decoration: none; transition: background-color 0.3s ease, transform 0.3s ease; box-shadow: 0 5px 15px rgba(159, 37, 39, 0.2); }
+.btn-more:hover { background-color: var(--color-marron-oscuro); transform: translateY(-3px); }
 
-/* Botón central */
-.btn-main {
-    background-color: var(--color-rojo);
-    color: var(--white) !important;
-    padding: 10px 25px;
-    border-radius: 12px;
-    border-bottom: none !important;
-}
-
-.btn-main:hover {
-    background-color: var(--color-marron-oscuro);
-    transform: translateY(-3px);
+/* Adaptación a móviles */
+@media (max-width: 850px) {
+    .carousel-container { max-width: 95%; }
+    .carousel-arrow { font-size: 2.5rem; padding: 5px; }
+    .polaroid-card.carousel-item-left, .polaroid-card.carousel-item-right { opacity: 0; visibility: hidden; }
+    .polaroid-img-wrapper img { height: 240px; }
 }
 
 /* =========================================
-   8. 3 OBRAS DESTACADAS Y PROYECTOS
+   9. PROYECTOS Y JUEGOS (MORADO, ONDAS Y NUEVO ORDEN)
    ========================================= */
-.featured-art {
-    padding: 60px 10%;
+.wave-divider {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+    background: transparent; /* Transparente para no pisar las secciones adyacentes */
+    z-index: 5;
 }
 
-.three-col-grid {
+.wave-divider svg {
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
+
+.wave-divider.top-wave { margin-bottom: -1px; } /* Evita la línea blanca entre el SVG y la sección */
+.wave-divider.bottom-wave { margin-top: -1px; transform: rotate(180deg); } /* Girado para cerrar la sección */
+
+.wave-divider .shape-fill { fill: var(--color-morado); }
+
+.projects-section { 
+    padding: 20px 8% 40px 8%; 
+    background-color: var(--color-morado);
+    position: relative;
+}
+
+.projects-header {
+    margin-bottom: 50px;
+}
+
+.projects-section h2, .projects-intro { color: var(--white); }
+
+.projects-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1100px;
-    margin: 40px auto 50px auto;
+    gap: 35px;
+    max-width: 1300px; 
+    margin: 0 auto;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: 18px;
+    padding: 20px; 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    border: none;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+}
+
+.project-img-wrapper {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.project-img-wrapper img {
+    width: 100%;
+    height: auto; 
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.project-img-wrapper:hover img {
+    transform: scale(1.05); /* Pequeño zoom al pasar el ratón */
+}
+
+.project-info {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Permite que el texto respire y empuja el rol hacia abajo */
+}
+
+.project-info h3 {
+    font-family: 'Darumadrop One', cursive;
+    font-size: 2rem;
+    color: var(--color-rojo);
+    margin: 0 0 10px 0;
+}
+
+.project-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-marron-oscuro);
+    margin: 0 0 20px 0; /* Margen para separar de la etiqueta de rol */
+}
+
+/* --- BLOQUE DE ROL --- */
+.role-wrapper {
+    margin-top: auto; /* Empuja siempre este bloque al final de la tarjeta */
+}
+
+.role-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-oro); /* Tu color oro para el titulillo */
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.role-tag {
+    display: inline-block;
+    background-color: var(--color-oro); /* Tu color oro para la etiqueta */
+    color: var(--white);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Responsivo */
+@media (max-width: 1000px) {
+    .projects-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .projects-container { grid-template-columns: 1fr; }
 }
 
 /* =========================================
-   9. MEDIA QUERIES (MÓVILES)
+   10. MARCA (BRAND SECTION)
+   ========================================= */
+.brand-section { 
+    padding: 80px 10%; 
+    background-color: var(--white); 
+}
+
+/* --- MEDIA QUERIES (MÓVILES) PARA PROYECTOS --- */
+@media (max-width: 900px) {
+    .project-card, .project-card.reverse {
+        flex-direction: column; /* Apila imagen arriba, texto abajo en móviles */
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .project-info { text-align: center; }
+    .project-tasks li { text-align: left; /* Mantiene la lista legible a la izquierda */ }
+}
+
+/* =========================================
+   10. FOOTER
+   ========================================= */
+footer { padding: 60px 10%; text-align: center; }
+.socials a { margin: 0 15px; text-decoration: none; color: var(--color-oro); font-weight: 700; transition: 0.3s; }
+.socials a:hover { color: var(--color-rojo); }
+
+/* =========================================
+   11. MEDIA QUERIES (MÓVILES)
    ========================================= */
 @media (max-width: 768px) {
-    /* Menú */
-    .transparent-nav {
-        flex-direction: column;
-        padding: 0.8rem;
-    }
+    .transparent-nav { flex-direction: column; padding: 0.8rem; }
+    .transparent-nav ul { margin-top: 10px; padding: 0; justify-content: center; flex-wrap: wrap; }
+    .transparent-nav ul li a { margin: 5px 10px; font-size: 0.95rem; }
 
-    .transparent-nav ul {
-        margin-top: 10px;
-        padding: 0;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .transparent-nav ul li a {
-        margin: 5px 10px;
-        font-size: 0.95rem;
-    }
-
-    /* Hero */
     .hero-main-container { top: 2vh; }
     .hero-text-wrapper { width: 90%; }
     .hero-title-top { font-size: 3rem; margin: 0 0 10px 0; }
     .hero-subtitle-bottom { font-size: 1.1rem; }
 
-    /* Sobre mí */
     .about-container { flex-direction: column; gap: 30px; }
     .about-text, .about-text h2 { text-align: center; }
-    .three-col-grid { grid-template-columns: 1fr; }
 
-    /* Toolkit */
-    .skills-cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .skill-card, .featured-card {
-        width: 100%;
-        /* En móvil quitamos las rotaciones y escalas para que no se salgan de la pantalla */
-        transform: rotate(0deg) scale(1) !important; 
-    }
+    .skills-cards-container { flex-direction: column; align-items: center; }
+    .skill-card, .featured-card { width: 100%; transform: rotate(0deg) scale(1) !important; }
+    
+    .carousel-arrow { font-size: 2rem; }
+    .polaroid-img-wrapper img { height: 200px; }
 }
