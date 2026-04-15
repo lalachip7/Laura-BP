@@ -455,164 +455,293 @@ h2 {
 }
 
 /* =========================================
-   9. PROYECTOS Y JUEGOS (MORADO, ONDAS Y NUEVO ORDEN)
+   9. PROYECTOS Y JUEGOS (ONDAS ASIMÉTRICAS Y TARJETAS LIMPIAS)
    ========================================= */
+.projects-section { 
+    /* EL TRUCO: 130px de margen superior separan esta sección físicamente del mantel */
+    margin-top: 130px; 
+    /* Reducimos el padding superior para que el título casi toque la onda */
+    padding: 10px 8% 60px 8%; 
+    background-color: var(--color-morado);
+    position: relative; 
+}
+
+/* --- NUEVAS ONDAS ANCLADAS --- */
 .wave-divider {
-    position: relative;
+    position: absolute; 
+    left: 0;
     width: 100%;
+    overflow: hidden;
     line-height: 0;
-    background: transparent; /* Transparente para no pisar las secciones adyacentes */
     z-index: 5;
 }
 
 .wave-divider svg {
     display: block;
     width: calc(100% + 1.3px);
-    height: 60px;
+    height: 90px; /* Altura perfecta para lucir las curvas asimétricas */
 }
-
-.wave-divider.top-wave { margin-bottom: -1px; } /* Evita la línea blanca entre el SVG y la sección */
-.wave-divider.bottom-wave { margin-top: -1px; transform: rotate(180deg); } /* Girado para cerrar la sección */
 
 .wave-divider .shape-fill { fill: var(--color-morado); }
 
-.projects-section { 
-    padding: 20px 8% 40px 8%; 
-    background-color: var(--color-morado);
-    position: relative;
+.wave-divider.top-wave { 
+    top: 0; 
+    /* Se proyecta hacia arriba ocupando parte de los 130px de margen, sin llegar a tocar el mantel */
+    transform: translateY(-99%); 
+} 
+
+.wave-divider.bottom-wave { 
+    bottom: 0; 
+    transform: translateY(99%) rotate(180deg); 
 }
 
+/* --- TEXTOS PRINCIPALES --- */
 .projects-header {
+    margin-top: 0px; /* Nos aseguramos de que no haya margen extra del contenedor */
     margin-bottom: 50px;
+    position: relative;
+    z-index: 10; 
 }
 
-.projects-section h2, .projects-intro { color: var(--white); }
+.projects-section h2 {
+    margin-top: 0; /* EL CULPABLE: Quitamos el margen invisible enorme que ponía el navegador */
+    color: var(--white);
+}
 
+.projects-intro { 
+    color: var(--white); 
+}
+
+/* --- CUADRÍCULA Y TARJETAS --- */
 .projects-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 35px;
+    gap: 40px;
     max-width: 1300px; 
     margin: 0 auto;
+    position: relative;
+    z-index: 10;
 }
 
 .project-card {
     display: flex;
     flex-direction: column;
     background-color: var(--white);
-    border-radius: 18px;
-    padding: 20px; 
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-    border: none;
+    border-radius: 24px;
+    padding: 0; 
+    overflow: hidden; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
 }
 
 .project-img-wrapper {
     display: block;
-    border-radius: 12px;
+    width: 100%;
+    height: 240px; 
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 .project-img-wrapper img {
     width: 100%;
-    height: auto; 
-    display: block;
+    height: 100%; 
+    object-fit: cover; 
     transition: transform 0.5s ease;
 }
 
 .project-img-wrapper:hover img {
-    transform: scale(1.05); /* Pequeño zoom al pasar el ratón */
+    transform: scale(1.08);
 }
 
 .project-info {
+    padding: 30px 25px; 
     text-align: center;
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Permite que el texto respire y empuja el rol hacia abajo */
+    flex-grow: 1; 
 }
 
 .project-info h3 {
     font-family: 'Darumadrop One', cursive;
-    font-size: 2rem;
-    color: var(--color-rojo);
-    margin: 0 0 10px 0;
+    font-size: 2.2rem;
+    color: var(--color-oro) !important; /* Forzamos a que sea naranja sí o sí */
+    margin: 0 0 15px 0;
+    line-height: 1;
 }
 
 .project-desc {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.5;
     color: var(--color-marron-oscuro);
-    margin: 0 0 20px 0; /* Margen para separar de la etiqueta de rol */
+    margin: 0 0 25px 0; 
 }
 
 /* --- BLOQUE DE ROL --- */
 .role-wrapper {
-    margin-top: auto; /* Empuja siempre este bloque al final de la tarjeta */
+    margin-top: auto; 
+    padding-top: 20px;
+    border-top: 2px dashed var(--bg-crema); 
 }
 
 .role-label {
     display: block;
-    font-size: 0.85rem;
-    color: var(--color-oro); /* Tu color oro para el titulillo */
+    font-size: 0.8rem;
+    color: var(--color-marron-oscuro);
+    opacity: 0.6;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 6px;
-    letter-spacing: 1px;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
 }
 
 .role-tag {
     display: inline-block;
-    background-color: var(--color-oro); /* Tu color oro para la etiqueta */
+    background-color: var(--color-oro); 
     color: var(--white);
-    padding: 5px 16px;
+    padding: 6px 18px;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     margin: 0;
 }
 
 /* Responsivo */
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .projects-container { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 700px) {
     .projects-container { grid-template-columns: 1fr; }
+    .project-img-wrapper { height: 200px; }
 }
 
 /* =========================================
-   10. MARCA (BRAND SECTION)
+   10. FOOTER MINIMALISTA (COMPACTO)
    ========================================= */
-.brand-section { 
-    padding: 80px 10%; 
-    background-color: var(--white); 
+.main-footer {
+    background-color: var(--color-lila);
+    padding: 40px 10% 25px 10%; /* Comprimido arriba y abajo */
+    text-align: center;
 }
 
-/* --- MEDIA QUERIES (MÓVILES) PARA PROYECTOS --- */
-@media (max-width: 900px) {
-    .project-card, .project-card.reverse {
-        flex-direction: column; /* Apila imagen arriba, texto abajo en móviles */
-        padding: 20px;
-        gap: 20px;
-    }
-    
-    .project-info { text-align: center; }
-    .project-tasks li { text-align: left; /* Mantiene la lista legible a la izquierda */ }
+.footer-minimalist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; /* Reducido drásticamente para juntar todo */
 }
 
-/* =========================================
-   10. FOOTER
-   ========================================= */
-footer { padding: 60px 10%; text-align: center; }
-.socials a { margin: 0 15px; text-decoration: none; color: var(--color-oro); font-weight: 700; transition: 0.3s; }
-.socials a:hover { color: var(--color-rojo); }
+.contact-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-marron-oscuro);
+    font-weight: 700;
+    opacity: 0.6;
+    margin: 0;
+}
+
+.footer-sep-line {
+    width: 25px;
+    height: 1.5px;
+    background-color: var(--color-oro);
+    margin-bottom: 2px; /* Mínimo espacio extra */
+}
+
+/* --- EMAIL CON HOVER --- */
+.email-wrapper {
+    position: relative;
+    cursor: pointer;
+    padding: 2px 0; /* Padding mínimo */
+}
+
+.footer-email {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.95rem; /* Letra un pelín más pequeña */
+    font-weight: 500;
+    color: var(--color-marron-oscuro);
+    transition: color 0.3s ease;
+}
+
+.copy-tooltip {
+    position: absolute;
+    bottom: -12px; /* Más cerca del email */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-oro);
+    opacity: 0;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.email-wrapper:hover .copy-tooltip {
+    opacity: 1;
+    bottom: -15px;
+}
+
+.email-wrapper:hover .footer-email {
+    color: var(--color-oro);
+}
+
+.footer-sep-dot {
+    font-size: 1rem;
+    color: var(--color-oro);
+    opacity: 0.5;
+    margin: 2px 0; /* Mínimo espacio extra */
+}
+
+/* --- REDES Y FREELANCE --- */
+.social-circles {
+    display: flex;
+    gap: 12px; /* Juntamos los circulitos */
+    margin-bottom: 2px; /* Mínimo espacio extra */
+}
+
+.icon-circle {
+    width: 38px; /* Un pelín más pequeños */
+    height: 38px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-oro);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+}
+
+.icon-circle svg { width: 17px; height: 17px; }
+
+.icon-circle:hover {
+    background-color: var(--color-oro);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.freelance-footer {
+    font-size: 0.7rem;
+    color: var(--color-marron-oscuro);
+    font-weight: 700;
+    opacity: 0.7;
+    margin: 2px 0 0 0; /* Sin espacio arriba */
+    letter-spacing: 0.5px;
+}
+
+.copyright-small {
+    font-size: 0.7rem;
+    color: var(--color-marron-oscuro);
+    opacity: 0.4;
+    margin-top: 5px; /* Comprimido contra freelance */
+}
 
 /* =========================================
    11. MEDIA QUERIES (MÓVILES)
