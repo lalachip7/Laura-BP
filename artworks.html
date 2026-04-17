@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artworks | Laura Blázquez</title>
+    <link rel="icon" type="image/png" href="assets/logo1.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="transparent-nav">
+        <a href="index.html" class="logo-wrapper">
+            <img src="assets/logo1.png" alt="Morallama Icon" class="nav-logo-icon">
+            <span class="logo">morallama</span>
+        </a>
+        <ul>
+            <li><a href="artworks.html">Artworks</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="morallama.html">My Brand</a></li>
+            <li><a href="contact.html" class="nav-btn-contact">Contact me</a></li>
+        </ul>
+    </nav>
+
+
+    <header class="artworks-page-header">
+        <h2>My Artworks</h2>
+        <p>Explore my collection of digital illustrations, concept art, and cozy sceneries.</p>
+    </header>
+
+    <section class="masonry-gallery">
+        
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/1.png" alt="Artwork 1">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/2.png" alt="Artwork 2">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/3.png" alt="Artwork 3">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/4.png" alt="Artwork 4">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/5.png" alt="Artwork 5">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/6.png" alt="Artwork 6">
+        </div>
+        
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/7.png" alt="Artwork 7">
+        </div>
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/8.png" alt="Artwork 8">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/9.png" alt="Artwork 2">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/10.png" alt="Artwork 3">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/11.png" alt="Artwork 4">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/12.png" alt="Artwork 5">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/13.png" alt="Artwork 6">
+        </div>
+        
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/14.png" alt="Artwork 7">
+        </div>
+        
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/15.png" alt="Artwork 7">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/16.png" alt="Artwork 7">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/17.png" alt="Artwork 4">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/18.jpg" alt="Artwork 5">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/19.png" alt="Artwork 6">
+        </div>
+        
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/20.PNG" alt="Artwork 7">
+        </div>
+        
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/21.png" alt="Artwork 7">
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="assets/artworks/22.png" alt="Artwork 7">
+        </div>
+
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged Artwork">
+    </div>
+
+    <section class="gallery-cta">
+        <h2>Did you like what you see?</h2>
+        <div class="cute-divider"></div>
+        <p>I'm always open to new projects, commissions, and magical ideas.</p>
+        <a href="contact.html" class="btn-delicate">Let's work together</a>
+    </section>
+
+    <footer id="contact" class="main-footer">
+        <div class="footer-columns">
+
+            <div class="footer-col brand-col">
+                <a href="index.html" class="footer-logo-wrapper">
+                    <img src="assets/logo1.png" alt="Morallama Icon" class="footer-logo-icon">
+                    <span class="footer-logo">morallama</span>
+                </a>
+                <p class="footer-subtitle">Digital Artist & Illustrator</p>
+
+                <div class="social-circles">
+                    <a href="https://www.instagram.com/morallama_" target="_blank" class="icon-circle" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://lalachip.artstation.com" target="_blank" class="icon-circle" aria-label="ArtStation">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="fill: currentColor; stroke: none;">
+                            <path d="M 2.2 364.1 L 54.8 455.2 H 157.3 L 104.7 364.1 H 2.2 Z M 256 56.4 L 153.9 233.2 L 201.3 315.4 L 352.2 56.4 H 256 Z M 186.2 342.3 L 140.8 420.9 H 482 L 512 368.8 L 497.4 342.3 H 186.2 Z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/laurablazquez" target="_blank" class="icon-circle" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col nav-col">
+                <h4 class="footer-heading">Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="artworks.html">Artwork Gallery</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="morallama.html">My Brand</a></li>
+                    <li><a href="contact.html">Contact me</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact-col">
+                <h4 class="footer-heading">Get in touch</h4>
+                <div class="email-wrapper" onclick="copyEmail(this)">
+                    <span class="footer-email">lblazpel@gmail.com</span>
+                    <span class="copy-tooltip">Click to copy</span>
+                </div>
+                <p class="freelance-footer">Available for freelance.</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>©2026 Morallama. All Rights Reserved.</p>
+            <p>Made with cozy vibes ✦</p>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.querySelector('.transparent-nav');
+        let lastScrollTop = 0;
+        const delta = 5;
+
+        window.addEventListener('scroll', () => {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+
+            if (Math.abs(lastScrollTop - st) <= delta) return;
+            if (st > lastScrollTop && st > 100) nav.classList.add('nav-hidden');
+            else if (st < lastScrollTop) nav.classList.remove('nav-hidden');
+
+            lastScrollTop = st;
+        });
+
+        function copyEmail(container) {
+            const email = "lblazpel@gmail.com";
+            const tooltip = container.querySelector('.copy-tooltip');
+            const tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            const originalText = tooltip.innerText;
+            tooltip.innerText = "Copied!";
+            tooltip.style.opacity = "1";
+            setTimeout(() => { tooltip.innerText = originalText; }, 2000);
+        }
+
+        // 2. NUEVO: Script para la Galería Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(element) {
+            // Busca la imagen dentro de la tarjeta que hemos clickado
+            const imgSrc = element.querySelector('img').src; 
+            lightboxImg.src = imgSrc; // Se la pasa al lightbox
+            lightbox.classList.add('active'); // Lo hace visible
+            document.body.style.overflow = 'hidden'; // Bloquea el scroll de la página de fondo
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Devuelve el scroll
+        }
+    </script>
+</body>
+</html>

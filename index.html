@@ -5,18 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura Blázquez | Digital Artist</title>
+    <link rel="icon" type="image/png" href="assets/logo1.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <nav class="transparent-nav">
-        <a href="index.html" class="logo">morallama</a>
+        <a href="index.html" class="logo-wrapper">
+            <img src="assets/logo1.png" alt="Morallama Icon" class="nav-logo-icon">
+            <span class="logo">morallama</span>
+        </a>
         <ul>
             <li><a href="artworks.html">Artworks</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="morallama.html">My Brand</a></li>
-            <li><a href="about.html">About me</a></li>
+            <li><a href="contact.html" class="nav-btn-contact">Contact me</a></li>
         </ul>
     </nav>
 
@@ -31,14 +35,10 @@
                         where my art lives</p>
                 </div>
 
-                <img src="assets/cereza.png" class="fruit f-top-left animate-up-delayed parallax-fruit"
-                    data-speed="0.06" style="animation-delay: 0.4s;">
-                <img src="assets/arandano.png" class="fruit f-top-right animate-up-delayed parallax-fruit"
-                    data-speed="0.03" style="animation-delay: 0.6s;">
-                <img src="assets/arandanos.png" class="fruit f-bottom-left animate-up-delayed parallax-fruit"
-                    data-speed="0.08" style="animation-delay: 0.8s;">
-                <img src="assets/cerezas.png" class="fruit f-bottom-right animate-up-delayed parallax-fruit"
-                    data-speed="0.05" style="animation-delay: 1s;">
+                <img src="assets/cereza.png" class="fruit f-top-left animate-up-delayed parallax-fruit" data-speed="0.06" style="animation-delay: 0.4s;">
+                <img src="assets/arandano.png" class="fruit f-top-right animate-up-delayed parallax-fruit" data-speed="0.03" style="animation-delay: 1.2s;">
+                <img src="assets/arandanos.png" class="fruit f-bottom-left animate-up-delayed parallax-fruit" data-speed="0.08" style="animation-delay: 0.8s;">
+                <img src="assets/cerezas.png" class="fruit f-bottom-right animate-up-delayed parallax-fruit" data-speed="0.05" style="animation-delay: 1.6s;">
             </div>
         </div>
     </header>
@@ -227,39 +227,124 @@
     </section>
 
     <section id="brand" class="brand-section">
-        <h2>Morallama Brand</h2>
-        <p>Explore my personal project and stationery products.</p>
+
+        <img src="assets/cereza.png" class="fruit brand-fruit f-1 parallax-fruit" data-speed="0.05" alt="">
+        <img src="assets/arandanos.png" class="fruit brand-fruit f-2 parallax-fruit" data-speed="0.03" alt="">
+        <img src="assets/arandano.png" class="fruit brand-fruit f-3 parallax-fruit" data-speed="0.07" alt="">
+        <img src="assets/cerezas.png" class="fruit brand-fruit f-4 parallax-fruit" data-speed="0.04" alt="">
+        <img src="assets/arandano.png" class="fruit brand-fruit f-5 parallax-fruit" data-speed="0.06" alt="">
+
+        <div class="brand-header">
+            <h2>Morallama Shop</h2>
+            <p class="brand-intro">Cute stationery, digital planners, Notion templates, and custom original
+                art.<br>Bring a little piece of my world into yours!</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card card-tilt-left">
+                <div class="product-img-wrapper">
+                    <img src="assets/cuadro.jpeg" alt="Custom Original Art">
+                </div>
+                <h3>Custom Art</h3>
+                <div class="cute-divider"></div>
+                <p>Oil on canvas, paper, or wood. Hand-painted portraits and personalized artworks tailored for you.</p>
+            </div>
+
+            <div class="product-card card-drop-center">
+                <div class="product-img-wrapper">
+                    <img src="assets/planificadores.png" alt="Digital Planners">
+                </div>
+                <h3>Cozy Planners</h3>
+                <div class="cute-divider"></div>
+                <p>Organize your daily life and tasks with my aesthetic and colorful digital planners.</p>
+            </div>
+
+            <div class="product-card card-tilt-right">
+                <div class="product-img-wrapper">
+                    <img src="assets/plantilla_notion.png" alt="Notion Templates">
+                </div>
+                <h3>Notion Templates</h3>
+                <div class="cute-divider"></div>
+                <p>Functional and beautiful templates to track your goals, habits, and personal journey.</p>
+            </div>
+        </div>
+
+        <div class="brand-cta">
+            <a href="https://www.etsy.com/shop/Morallama?ref=seller-platform-mcnav" target="_blank"
+                class="btn-etsy">Visit my Etsy Shop</a>
+            <a href="morallama.html" class="link-more-brand">Learn more about the brand ➔</a>
+        </div>
     </section>
 
     <footer id="contact" class="main-footer">
-        <div class="footer-minimalist">
-            
-            <p class="contact-label">contact me</p>
-            <div class="footer-sep-line"></div>
-            
-            <div class="email-wrapper" onclick="copyEmail(this)">
-                <span class="footer-email">lblazpel@gmail.com</span>
-                <span class="copy-tooltip">Click to copy</span>
-            </div>
-            
-            <div class="footer-sep-dot">✦</div>
-            
-            <div class="social-circles">
-                <a href="https://www.instagram.com/morallama_" target="_blank" class="icon-circle">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        <div class="footer-columns">
+
+            <div class="footer-col brand-col">
+                <a href="index.html" class="footer-logo-wrapper">
+                    <img src="assets/logo1.png" alt="Morallama Icon" class="footer-logo-icon">
+                    <span class="footer-logo">morallama</span>
                 </a>
-                <a href="https://lalachip.artstation.com" target="_blank" class="icon-circle" aria-label="ArtStation">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="fill: currentColor; stroke: none;">
-                        <path d="M 2.2 364.1 L 54.8 455.2 H 157.3 L 104.7 364.1 H 2.2 Z M 256 56.4 L 153.9 233.2 L 201.3 315.4 L 352.2 56.4 H 256 Z M 186.2 342.3 L 140.8 420.9 H 482 L 512 368.8 L 497.4 342.3 H 186.2 Z"></path>
-                    </svg>
-                </a>
-                <a href="www.linkedin.com/in/laura-blázquez-bb5aa330b" target="_blank" class="icon-circle">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
+                <p class="footer-subtitle">Digital Artist & Illustrator</p>
+
+                <div class="social-circles">
+                    <a href="https://www.instagram.com/morallama_" target="_blank" class="icon-circle"
+                        aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://lalachip.artstation.com" target="_blank" class="icon-circle"
+                        aria-label="ArtStation">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                            style="fill: currentColor; stroke: none;">
+                            <path
+                                d="M 2.2 364.1 L 54.8 455.2 H 157.3 L 104.7 364.1 H 2.2 Z M 256 56.4 L 153.9 233.2 L 201.3 315.4 L 352.2 56.4 H 256 Z M 186.2 342.3 L 140.8 420.9 H 482 L 512 368.8 L 497.4 342.3 H 186.2 Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/laurablazquez" target="_blank" class="icon-circle"
+                        aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
-            <p class="freelance-footer">Available for freelance</p>
-            <p class="copyright-small">©2026 Morallama. All Rights Reserved.</p>
+            <div class="footer-col nav-col">
+                <h4 class="footer-heading">Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="artworks.html">Artwork Gallery</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="morallama.html">My Brand</a></li>
+                    <li><a href="contact.html">Contact me</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact-col">
+                <h4 class="footer-heading">Get in touch</h4>
+
+                <div class="email-wrapper" onclick="copyEmail(this)">
+                    <span class="footer-email">lblazpel@gmail.com</span>
+                    <span class="copy-tooltip">Click to copy</span>
+                </div>
+
+                <p class="freelance-footer">Available for freelance.</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>©2026 Morallama. All Rights Reserved.</p>
+            <p>Made with cozy vibes ✦</p>
         </div>
     </footer>
 

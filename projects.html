@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artworks | Laura Blázquez</title>
+    <link rel="icon" type="image/png" href="assets/logo1.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="transparent-nav">
+        <a href="index.html" class="logo-wrapper">
+            <img src="assets/logo1.png" alt="Morallama Icon" class="nav-logo-icon">
+            <span class="logo">morallama</span>
+        </a>
+        <ul>
+            <li><a href="artworks.html">Artworks</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="morallama.html">My Brand</a></li>
+            <li><a href="contact.html" class="nav-btn-contact">Contact me</a></li>
+        </ul>
+    </nav>
+
+    <header class="projects-hero">
+        <img src="assets/divider.png" alt="Divider Background" class="projects-full-width-bg">
+
+        <div class="banner-text-group">
+            <h2>My Projects</h2>
+            <div class="project-tabs">
+                <button class="tab-btn active" onclick="showCategory('games')">Indie Games</button>
+                <button class="tab-btn" onclick="showCategory('other')">Illustration & Branding</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="category-games" class="games-centered-section">
+
+        <aside class="game-side-nav">
+            <div class="nav-sticky">
+                <span class="nav-label">Select Project</span>
+                <ul>
+                    <li><a href="#game-living-garden">The Living Garden</a></li>
+                    <li><a href="#game-white-noise">White Noise</a></li>
+                    <li><a href="#game-eclipsa">Eclipsa</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="games-content-area">
+
+            <article id="game-living-garden" class="game-full-block theme-garden">
+                <div class="game-large-cover-wrapper">
+                    <img src="assets/proyects/the_living_garden/portada.png" alt="The Living Garden Cover"
+                        class="game-large-cover">
+                </div>
+
+                <div class="game-content-text">
+                    <h3>The Living Garden</h3>
+                    <p class="game-description">Un simulador de estrategia ecológica 'cozy' donde tu misión es gestionar
+                        recursos para hacer florecer un Santuario Botánico. El reto visual fue crear una interfaz que se
+                        sintiera parte de la naturaleza y un entorno relajante. <strong>Además, también me encargué de
+                            la edición del tráiler oficial y del vídeo de making-of.</strong></p>
+
+                    <div class="role-box-framed">
+                        <h4>My Role & Contribution</h4>
+                        <div class="cute-divider-small"></div>
+                        <ul>
+                            <li><strong>2D Lead Artist:</strong> Definición del estilo visual y paleta de colores.</li>
+                            <li><strong>UI/UX Design:</strong> Diseño de menús orgánicos e iconos de herramientas.</li>
+                            <li><strong>Asset Creation:</strong> Diseño de más de 30 especies de plantas y decoraciones.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="game-actions">
+                        <a href="https://ripple-games.itch.io/the-living-garden" target="_blank"
+                            class="btn-itch garden-btn">Play on itch.io</a>
+                    </div>
+
+                    <div class="project-assets-gallery">
+                        <h5>Assets, Characters & Environments</h5>
+                        <div class="assets-grid">
+                            <img src="assets/proyects/the_living_garden/gifPrincipal.gif" alt="Living Garden Asset 1"
+                                class="gif-featured" onclick="openLightbox(this)">
+
+                            <div class="asset-item" data-title="Escenario" onclick="openLightbox(this)">
+                                <img src="assets/proyects/the_living_garden/escenario.png" alt="Living Garden Asset 2">
+                            </div>
+                            <div class="asset-item" data-title="Logo" onclick="openLightbox(this)">
+                                <img src="assets/proyects/the_living_garden/logo2.png" alt="Living Garden Asset 3">
+                            </div>
+                            <div class="asset-item" data-title="Diario" onclick="openLightbox(this)">
+                                <img src="assets/proyects/the_living_garden/diario.png" alt="Living Garden Asset 6">
+                            </div>
+                            <div class="asset-item" data-title="Flor" onclick="openLightbox(this)">
+                                <img src="assets/proyects/the_living_garden/flor.png" alt="Living Garden Asset 7">
+                            </div>
+                        </div>
+
+                        <div class="video-buttons-container">
+                            <a href="https://www.youtube.com/watch?v=fLFejuovmxA" target="_blank" class="btn-video">Watch Trailer</a>
+                            <a href="https://www.youtube.com/watch?v=QLRh1gaWO1k" target="_blank" class="btn-video">Watch Making-of</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <div class="game-line-separator">✦</div>
+
+
+            <div class="full-width-purple">
+                <article id="game-white-noise" class="game-full-block theme-noise">
+
+                    <div class="game-large-cover-wrapper">
+                        <img src="assets/proyects/white_noise/portada.png" alt="White Noise Cover"
+                            class="game-large-cover">
+                    </div>
+
+                    <div class="game-content-text">
+                        <h3>White Noise</h3>
+                        <p class="game-description">Una experiencia narrativa y psicológica que explora la memoria y la
+                            pérdida a través de una atmósfera surrealista y onírica desarrollada en una Game Jam.</p>
+
+                        <div class="role-box-framed">
+                            <h4>My Role & Contribution</h4>
+                            <div class="cute-divider-small"></div>
+                            <ul>
+                                <li><strong>Lead Artist:</strong> Creación de la atmósfera visual y post-procesado.</li>
+                                <li><strong>Concept Art:</strong> Diseño de entornos oníricos y simbólicos.</li>
+                                <li><strong>Sprite Animation:</strong> Animación de sprites 2D.</li>
+                            </ul>
+                        </div>
+
+                        <div class="game-actions">
+                            <div class="game-actions">
+                                <a href="https://lauriman.itch.io/white-noise" target="_blank"
+                                    class="btn-itch noise-btn">Play on itch.io</a>
+                            </div>
+                        </div>
+
+                        <div class="project-assets-gallery">
+                            <div class="mechanic-intro">
+                                <h4>Lights Out</h4>
+                                <div class="cute-divider-small"></div>
+                                <p class="game-description">Una de las mecánicas principales del juego consiste en
+                                    encender y apagar las luces para revelar la realidad de la casa. <strong>¡Haz clic
+                                        en las habitaciones para interactuar con las luces!</strong></p>
+                            </div>
+
+                            <div class="magic-rooms-grid">
+                                <div class="room-toggle" onclick="toggleLight(this)">
+                                    <img src="assets/proyects/white_noise/salon.PNG" class="room-day" alt="Salón Día">
+                                    <img src="assets/proyects/white_noise/salon_noche.PNG" class="room-night"
+                                        alt="Salón Noche">
+                                    <span class="light-hint">✦ Click to toggle ✦</span>
+                                </div>
+
+                                <div class="room-toggle" onclick="toggleLight(this)">
+                                    <img src="assets/proyects/white_noise/habitacion.PNG" class="room-day"
+                                        alt="Dormitorio Día">
+                                    <img src="assets/proyects/white_noise/habitacion_noche.PNG" class="room-night"
+                                        alt="Dormitorio Noche">
+                                    <span class="light-hint">✦ Click to toggle ✦</span>
+                                </div>
+
+                                <div class="room-toggle" onclick="toggleLight(this)">
+                                    <img src="assets/proyects/white_noise/cocina.PNG" class="room-day" alt="Cocina Día">
+                                    <img src="assets/proyects/white_noise/cocina_noche.PNG" class="room-night"
+                                        alt="Cocina Noche">
+                                    <span class="light-hint">✦ Click to toggle ✦</span>
+                                </div>
+                            </div>
+                            <h5>UI & Environments</h5>
+                            <div class="assets-grid">
+                                <img src="assets/proyects/white_noise/humo_gif.gif" alt="White Noise Animations" class="gif-featured" onclick="openLightbox(this)">
+
+                                <div class="asset-item" data-title="Entrada" onclick="openLightbox(this)">
+                                    <img src="assets/proyects/white_noise/entrada.PNG" alt="White Noise Asset 1">
+                                </div>
+                                <div class="asset-item" data-title="Interfaz" onclick="openLightbox(this)">
+                                    <img src="assets/proyects/white_noise/interfaz.png" alt="White Noise Asset 2">
+                                </div>
+                                <div class="asset-item" data-title="Diario" onclick="openLightbox(this)">
+                                    <img src="assets/proyects/white_noise/diario_hoja_rota.png" alt="White Noise Asset 3">
+                                </div>
+                                <div class="asset-item" data-title="Pantalla de Juego" onclick="openLightbox(this)">
+                                    <img src="assets/proyects/white_noise/pantalla_juego.png" alt="White Noise Asset 4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="game-line-separator">✦</div>
+
+            <article id="game-eclipsa" class="game-full-block theme-eclipsa">
+                <div class="game-large-cover-wrapper">
+                    <img src="assets/proyects/eclipsa/portada.png" alt="Eclipsa Cover" class="game-large-cover">
+                </div>
+
+                <div class="game-content-text">
+                    <h3>Eclipsa</h3>
+                    <p class="game-description">Aventura y misterio basada en el contraste de luz y oscuridad. La
+                        dirección de arte se enfoca en sombras profundas, destellos mágicos y personajes carismáticos.
+                    </p>
+
+
+                    <div class="role-box-framed">
+                        <h4>My Role & Contribution</h4>
+                        <div class="cute-divider-small"></div>
+                        <ul>
+                            <li><strong>Illustrator:</strong> Ilustración de escenas clave y cinemáticas.</li>
+                            <li><strong>Animator:</strong> Animación de efectos visuales frame a frame.</li>
+                            <li><strong>Character Design:</strong> Conceptos de criaturas de la sombra.</li>
+                        </ul>
+                    </div>
+
+                    <div class="game-actions">
+                        <div class="game-actions">
+                            <a href="https://ladeynn.itch.io/eclipsa" target="_blank" class="btn-itch eclipsa-btn">Play
+                                on itch.io</a>
+                        </div>
+                    </div>
+
+                    <div class="project-assets-gallery">
+                        <h5>Background & Interfaces</h5>
+                        <p style="font-style: italic; color: #888; margin-top: -15px;">Characters by @monsieurgat</p>
+                        <div class="assets-grid">
+                            <div class="asset-item" data-title="Menú" onclick="openLightbox(this)">
+                                <img src="assets/proyects/eclipsa/menu.png" alt="Eclipsa Asset 1">
+                            </div>
+                            <div class="asset-item" data-title="Tutorial" onclick="openLightbox(this)">
+                                <img src="assets/proyects/eclipsa/tutorial.png" alt="Eclipsa Asset 2">
+                            </div>
+                            <div class="asset-item" data-title="Interfaz" onclick="openLightbox(this)">
+                                <img src="assets/proyects/eclipsa/interfaz.PNG" alt="Eclipsa Asset 3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="category-other" class="other-projects" style="display: none;">
+        <h2 class="other-projects-title">Illustration & Branding</h2>
+
+        <div class="projects-container">
+            <div class="project-card">
+                <a href="#" class="project-img-wrapper">
+                    <img src="assets/art5.png" alt="Book Illustration">
+                </a>
+                <div class="project-info">
+                    <h3>The Magic Forest</h3>
+                    <p class="project-desc">Diseño de personajes e ilustración editorial a página completa para un
+                        cuento infantil sobre la naturaleza.</p>
+                    <div class="role-wrapper">
+                        <span class="role-label">Category</span>
+                        <span class="role-tag tag-book">Children's Book</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="#" class="project-img-wrapper">
+                    <img src="assets/logo2.png"
+                        style="object-fit: contain; padding: 20px; background-color: var(--bg-crema);"
+                        alt="Brand Identity">
+                </a>
+                <div class="project-info">
+                    <h3>Morallama Branding</h3>
+                    <p class="project-desc">Creación de identidad visual corporativa, incluyendo diseño de logotipo,
+                        paleta de colores y tipografías.</p>
+                    <div class="role-wrapper">
+                        <span class="role-label">Category</span>
+                        <span class="role-tag tag-brand">Brand Identity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="#" class="project-img-wrapper">
+                    <img src="assets/cuadro.jpg" alt="Editorial Art">
+                </a>
+                <div class="project-info">
+                    <h3>Floral Portraits</h3>
+                    <p class="project-desc">Serie de ilustraciones y pinturas al óleo creadas como encargos
+                        personalizados y portadas de revistas.</p>
+                    <div class="role-wrapper">
+                        <span class="role-label">Category</span>
+                        <span class="role-tag tag-illustration">Custom Art</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-cta">
+        <h2>Have an idea in mind?</h2>
+        <div class="cute-divider"></div>
+        <p>Whether it's a game, a book, or a brand, I'd love to help you bring it to life.</p>
+        <a href="contact.html" class="btn-delicate">Contact me</a>
+    </section>
+
+    <footer id="contact" class="main-footer">
+        <div class="footer-columns">
+
+            <div class="footer-col brand-col">
+                <a href="index.html" class="footer-logo-wrapper">
+                    <img src="assets/logo1.png" alt="Morallama Icon" class="footer-logo-icon">
+                    <span class="footer-logo">morallama</span>
+                </a>
+                <p class="footer-subtitle">Digital Artist & Illustrator</p>
+
+                <div class="social-circles">
+                    <a href="https://www.instagram.com/morallama_" target="_blank" class="icon-circle"
+                        aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://lalachip.artstation.com" target="_blank" class="icon-circle"
+                        aria-label="ArtStation">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                            style="fill: currentColor; stroke: none;">
+                            <path
+                                d="M 2.2 364.1 L 54.8 455.2 H 157.3 L 104.7 364.1 H 2.2 Z M 256 56.4 L 153.9 233.2 L 201.3 315.4 L 352.2 56.4 H 256 Z M 186.2 342.3 L 140.8 420.9 H 482 L 512 368.8 L 497.4 342.3 H 186.2 Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/laurablazquez" target="_blank" class="icon-circle"
+                        aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col nav-col">
+                <h4 class="footer-heading">Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="artworks.html">Artwork Gallery</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="morallama.html">My Brand</a></li>
+                    <li><a href="contact.html">Contact me</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact-col">
+                <h4 class="footer-heading">Get in touch</h4>
+                <div class="email-wrapper" onclick="copyEmail(this)">
+                    <span class="footer-email">lblazpel@gmail.com</span>
+                    <span class="copy-tooltip">Click to copy</span>
+                </div>
+                <p class="freelance-footer">Available for freelance.</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>©2026 Morallama. All Rights Reserved.</p>
+            <p>Made with cozy vibes ✦</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        const nav = document.querySelector('.transparent-nav');
+        let lastScrollTop = 0;
+        const delta = 5;
+
+        window.addEventListener('scroll', () => {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+
+            if (Math.abs(lastScrollTop - st) <= delta) return;
+            if (st > lastScrollTop && st > 100) nav.classList.add('nav-hidden');
+            else if (st < lastScrollTop) nav.classList.remove('nav-hidden');
+
+            lastScrollTop = st;
+        });
+
+        function copyEmail(container) {
+            const email = "lblazpel@gmail.com";
+            const tooltip = container.querySelector('.copy-tooltip');
+            const tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const originalText = tooltip.innerText;
+            tooltip.innerText = "Copied!";
+            tooltip.style.opacity = "1";
+            setTimeout(() => { tooltip.innerText = originalText; }, 2000);
+        }
+
+        // Script para los filtros de proyectos (Tabs)
+        function showCategory(category) {
+            const gamesSection = document.getElementById('category-games');
+            const otherSection = document.getElementById('category-other');
+            const btns = document.querySelectorAll('.tab-btn');
+
+            // Resetear botones
+            btns.forEach(btn => btn.classList.remove('active'));
+
+            if (category === 'games') {
+                // ¡AQUÍ ESTABA EL ERROR! Tiene que ser 'flex' para que no se rompa el menú lateral
+                gamesSection.style.display = 'flex';
+                gamesSection.style.marginTop = '0px';
+
+                if (otherSection) otherSection.style.display = 'none';
+                btns[0].classList.add('active');
+            } else {
+                if (gamesSection) gamesSection.style.display = 'none';
+                // La sección de Illustration sí puede quedarse en 'block'
+                otherSection.style.display = 'block';
+                otherSection.style.marginTop = '0px';
+                btns[1].classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Efecto mágico de apagar/encender luces en White Noise
+        function toggleLight(element) {
+            element.classList.toggle('is-night');
+        }
+
+        function openLightbox(el) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = el.querySelector('img') ? el.querySelector('img').src : el.src;
+            lightbox.classList.add('active');
+        }
+
+        // Resaltar el menú lateral al hacer scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('article.game-full-block');
+            const navLinks = document.querySelectorAll('.game-side-nav ul li a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Si hemos scrolleado hasta la sección (con un pequeño margen de 150px)
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

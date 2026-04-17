@@ -1,14 +1,30 @@
 /* =========================================
-   1. IMPORTS Y FUENTES
+   1. IMPORTS Y FUENTES (ACTUALIZADO)
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&family=Patrick+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap');
 
+/* Fuentes para The Living Garden */
 @font-face {
-    font-family: 'myfont';
-    src: url('assets/fuentes/font4.TTF') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'GardenTitle';
+    src: url('assets/fuentes/Quote.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'GardenText';
+    src: url('assets/fuentes/27776_OcrA.ttf') format('truetype');
+}
+
+/* Fuentes para White Noise */
+@font-face {
+    font-family: 'NoiseTitle';
+    src: url('assets/fuentes/One%20Constant.ttf') format('truetype');
+}
+
+/* Fuentes para Eclipsa */
+@font-face {
+    font-family: 'EclipsaTitle';
+    src: url('assets/fuentes/font1.ttf') format('truetype');
 }
 
 /* =========================================
@@ -30,7 +46,12 @@ body {
     font-family: 'Quicksand', sans-serif;
     color: var(--color-marron-oscuro);
     margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
     overflow-x: hidden;
+    /* ← ponlo aquí en su lugar */
 }
 
 section {
@@ -50,18 +71,39 @@ h2 {
    3. ANIMACIONES BASE
    ========================================= */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes floating {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
-.animate-up { animation: fadeInUp 1.2s ease-out forwards; }
-.animate-up-delayed { opacity: 0; animation: fadeInUp 1.2s ease-out forwards; }
+.animate-up {
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.animate-up-delayed {
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out forwards;
+}
 
 /* =========================================
    4. BARRA DE NAVEGACIÓN
@@ -80,7 +122,9 @@ h2 {
     transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease, top 0.3s ease;
 }
 
-.nav-hidden { top: -100px; }
+.nav-hidden {
+    top: -250px;
+}
 
 .transparent-nav.scrolled {
     background-color: rgba(250, 246, 240, 0.85);
@@ -104,19 +148,41 @@ h2 {
     margin: 0;
 }
 
+/* --- ENLACES DEL MENÚ --- */
 .transparent-nav ul li a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: var(--color-marron-oscuro);
-    margin-left: 15px; 
-    padding: 8px 18px; 
-    border-radius: 20px; 
-    background-color: transparent; 
+    margin-left: 15px;
+    padding: 8px 18px;
     font-weight: 700;
-    transition: all 0.3s ease; 
+    transition: color 0.3s ease;
+    position: relative;
+    /* Necesario para la línea animada */
 }
 
+/* La línea invisible que crece desde el centro */
+.transparent-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2.5px;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-rojo);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Hover general: cambia color y la línea se expande */
 .transparent-nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.4); 
+    background-color: transparent !important;
+    color: var(--color-rojo) !important;
+}
+
+.transparent-nav ul li a:hover::after {
+    width: 70%;
+    /* La línea crece hasta ocupar el 70% de la palabra */
 }
 
 .transparent-nav.scrolled .logo,
@@ -125,7 +191,37 @@ h2 {
 }
 
 .transparent-nav.scrolled ul li a:hover {
-    background-color: rgba(200, 135, 66, 0.15); 
+    background-color: transparent;
+    /* Quitamos el recuadro de fondo */
+    color: var(--color-oro¡);
+    /* El texto cambia a naranja/oro */
+    text-decoration: underline;
+    /* Subrayado clásico */
+    text-underline-offset: 6px;
+    /* Separación de la línea respecto al texto */
+    text-decoration-thickness: 2px;
+    /* Grosor de la línea */
+}
+
+/* --- BOTÓN CONTACT ME (ESTILO OUTLINE) --- */
+.transparent-nav ul li a.nav-btn-contact {
+    border: 2px solid var(--color-rojo);
+    background-color: transparent;
+    color: var(--color-rojo) !important;
+    padding: 6px 20px;
+    border-radius: 12px;
+}
+
+.transparent-nav ul li a.nav-btn-contact::after {
+    display: none;
+    /* Este botón no lleva la línea animada debajo */
+}
+
+.transparent-nav ul li a.nav-btn-contact:hover {
+    background-color: var(--color-rojo) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(159, 37, 39, 0.2);
 }
 
 /* =========================================
@@ -154,6 +250,8 @@ h2 {
     width: 1000px;
     max-width: 90vw;
     margin: 0 auto;
+    left: 25px;
+    /* Desplazamos ligeramente a la derecha para compensar el giro */
 }
 
 .box-bg {
@@ -189,11 +287,49 @@ h2 {
     margin: 0;
 }
 
-.fruit { position: absolute; z-index: 10; filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.2)); }
-.f-top-left { top: 15%; left: -10%; width: 20%; }
-.f-top-right { top: 5%; right: 5%; width: 15%; }
-.f-bottom-left { bottom: -5%; left: -20%; width: 25%; }
-.f-bottom-right { bottom: -10%; right: -10%; width: 30%; }
+.fruit {
+    position: absolute;
+    z-index: 10;
+    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.2));
+    /* Hemos quitado la animación de aquí para manejarla por separado */
+}
+
+/* Animación combinada para el Hero: Aparecer escalonado + Flotar */
+.hero .fruit {
+    /* Ejecuta fadeInUp (1.2s) y LUEGO empieza floating con un retraso interno de 1.2s */
+    animation: fadeInUp 1.2s ease-out forwards, floating 5s ease-in-out infinite 1.2s;
+    opacity: 0;
+    /* Empiezan invisibles para que funcione el fadeInUp */
+}
+
+/* Para que no todas se muevan al mismo tiempo (efecto más natural) */
+.f-top-left {
+    top: 15%;
+    left: -10%;
+    width: 20%;
+    animation-delay: 0s;
+}
+
+.f-top-right {
+    top: 5%;
+    right: 5%;
+    width: 15%;
+    animation-delay: 1.5s;
+}
+
+.f-bottom-left {
+    bottom: -5%;
+    left: -20%;
+    width: 25%;
+    animation-delay: 0.7s;
+}
+
+.f-bottom-right {
+    bottom: -10%;
+    right: -10%;
+    width: 30%;
+    animation-delay: 2.2s;
+}
 
 /* =========================================
    6. SOBRE MÍ
@@ -204,101 +340,260 @@ h2 {
     margin-top: -5vh;
     position: relative;
     z-index: 5;
+    left: 25px;
 }
 
-.about-container { display: flex; align-items: center; justify-content: center; gap: 40px; max-width: 900px; margin: 0 auto; }
-.about-text { flex: 1; text-align: left; position: relative; }
-.about-text h2 { text-align: left; margin-bottom: 20px; }
-.about-text p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
-.about-image { flex: 1; text-align: right; position: relative; }
-.avatar-wrapper { position: relative; display: inline-block; max-width: 320px; width: 100%; }
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-.avatar-img { width: 100%; display: block; filter: drop-shadow(8px 12px 15px rgba(0, 0, 0, 0.15)); transition: transform 0.5s ease, filter 0.5s ease; }
-.avatar-img:hover { transform: translateY(-8px); filter: drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.2)); }
+.about-text {
+    flex: 1;
+    text-align: left;
+    position: relative;
+}
 
-.levitating-item { position: absolute; top: 15%; left: -15%; width: 40%; z-index: 10; filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.15)); animation: floating 4s ease-in-out infinite; }
-.parallax-star { position: absolute; z-index: -1; opacity: 0.8; }
-.star-1 { top: 5px; left: -15%; width: 40px; }
-.star-2 { top: 15px; left: 0%; width: 25px; }
+.about-text h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-image {
+    flex: 1;
+    text-align: right;
+    position: relative;
+}
+
+.avatar-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 320px;
+    width: 100%;
+}
+
+.avatar-img {
+    width: 100%;
+    display: block;
+    filter: drop-shadow(8px 12px 15px rgba(0, 0, 0, 0.15));
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.avatar-img:hover {
+    transform: translateY(-8px);
+    filter: drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.2));
+}
+
+.levitating-item {
+    position: absolute;
+    top: 15%;
+    left: -15%;
+    width: 40%;
+    z-index: 10;
+    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.15));
+    animation: floating 4s ease-in-out infinite;
+}
+
+.parallax-star {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.star-1 {
+    top: 5px;
+    left: -15%;
+    width: 40px;
+}
+
+.star-2 {
+    top: 15px;
+    left: 0%;
+    width: 25px;
+}
 
 /* =========================================
    7. SECCIÓN TOOLKIT (MENÚ PICNIC)
    ========================================= */
 .toolkit-section {
-    padding: 60px 8% 80px 8%; 
-    background-image: url('assets/divider.png'); 
+    padding: 60px 8% 80px 8%;
+    background-image: url('assets/divider.png');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll; 
+    background-attachment: scroll;
     text-align: center;
     position: relative;
-    z-index: 10; 
+    z-index: 10;
 }
 
-.toolkit-section h2 { color: var(--color-marron-oscuro); text-shadow: 1px 1px 0px var(--white); margin-bottom: 10px; }
-.toolkit-intro { margin-bottom: 50px; font-weight: 500; }
+.toolkit-section h2 {
+    color: var(--color-marron-oscuro);
+    text-shadow: 1px 1px 0px var(--white);
+    margin-bottom: 10px;
+}
 
-.skills-cards-container { display: flex; justify-content: center; align-items: stretch; gap: 30px; max-width: 1000px; margin: 40px auto 0 auto; }
+.toolkit-intro {
+    margin-bottom: 50px;
+    font-weight: 500;
+}
+
+.skills-cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+}
 
 .skill-card {
     flex: 1;
     background-color: var(--white);
-    border-radius: 30px; 
-    padding: 60px 40px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-radius: 30px;
+    padding: 60px 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100% 100%; 
-    overflow: hidden; 
+    background-size: 100% 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 3px solid transparent; 
+    border: 3px solid transparent;
 }
 
-.card-left { transform: rotate(-1.5deg); background-image: url('assets/bg-game.png'); }
-.card-right { transform: rotate(1.5deg); background-image: url('assets/bg-game.png'); }
-.featured-card { transform: scale(1.05); background-image: url('assets/bg-game.png'); z-index: 2; border: 3px solid var(--color-rojo); }
+.card-left {
+    transform: rotate(-1.5deg);
+    background-image: url('assets/bg-game.png');
+}
 
-.card-left:hover, .card-right:hover { transform: translateY(-12px) rotate(0deg); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
-.featured-card:hover { transform: scale(1.05) translateY(-12px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+.card-right {
+    transform: rotate(1.5deg);
+    background-image: url('assets/bg-game.png');
+}
 
-.menu-icon { width: 80px; height: auto; margin: 0 auto 15px auto; display: block; }
-.menu-divider { border: none; border-top: 2px solid var(--color-rojo); width: 60%; margin: 15px auto 25px auto; opacity: 0.8; }
-.skill-card h3 { font-family: 'Darumadrop One', cursive; font-size: 2.2rem; color: var(--color-rojo); margin: 0; }
-.skill-card p { font-size: 1.05rem; line-height: 1.5; color: var(--color-marron-oscuro); margin-bottom: 20px; }
-.menu-ingredients { margin-bottom: 25px; font-family: 'Quicksand', sans-serif; font-weight: 700; color: var(--color-rojo); font-size: 0.95rem; line-height: 1.6; }
-.menu-ingredients span { display: inline-block; padding: 0 4px; }
+.featured-card {
+    transform: scale(1.05);
+    background-image: url('assets/bg-game.png');
+    z-index: 2;
+    border: 3px solid var(--color-rojo);
+}
 
-.card-link { text-decoration: none; color: var(--color-oro); font-weight: 700; font-size: 0.95rem; transition: color 0.3s ease, border-bottom 0.3s ease; border-bottom: 2px solid transparent; }
-.card-link:hover { color: var(--color-rojo); border-bottom: 2px solid var(--color-rojo); }
+.card-left:hover,
+.card-right:hover {
+    transform: translateY(-12px) rotate(0deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
 
-.btn-main { background-color: var(--color-rojo); color: var(--white) !important; padding: 10px 25px; border-radius: 12px; border-bottom: none !important; }
-.btn-main:hover { background-color: var(--color-marron-oscuro); transform: translateY(-3px); }
+.featured-card:hover {
+    transform: scale(1.05) translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon {
+    width: 80px;
+    height: auto;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+.menu-divider {
+    border: none;
+    border-top: 2px solid var(--color-rojo);
+    width: 60%;
+    margin: 15px auto 25px auto;
+    opacity: 0.8;
+}
+
+.skill-card h3 {
+    font-family: 'Darumadrop One', cursive;
+    font-size: 2.2rem;
+    color: var(--color-rojo);
+    margin: 0;
+}
+
+.skill-card p {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--color-marron-oscuro);
+    margin-bottom: 20px;
+}
+
+.menu-ingredients {
+    margin-bottom: 25px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    color: var(--color-rojo);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.menu-ingredients span {
+    display: inline-block;
+    padding: 0 4px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--color-oro);
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.card-link:hover {
+    color: var(--color-rojo);
+    border-bottom: 2px solid var(--color-rojo);
+}
+
+.btn-main {
+    background-color: var(--color-rojo);
+    color: var(--white) !important;
+    padding: 10px 25px;
+    border-radius: 12px;
+    border-bottom: none !important;
+}
+
+.btn-main:hover {
+    background-color: var(--color-marron-oscuro);
+    transform: translateY(-3px);
+}
 
 /* =========================================
    8. OBRAS DESTACADAS (AJUSTE DE FONDO Y CARRUSEL 3D)
    ========================================= */
 .featured-art-wrapper {
-    margin-top: -10px; /* Reducido al mínimo: no deja línea blanca, pero NUNCA esconde el mantel */
+    margin-top: -10px;
+    /* Reducido al mínimo: no deja línea blanca, pero NUNCA esconde el mantel */
     position: relative;
     z-index: 1;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .featured-art {
     width: 100%;
     /* Aumentamos el 80px final a 140px para darle espacio a las ondas de abajo */
-    padding: 140px 0 140px 0; 
+    padding: 140px 0 140px 0;
     position: relative;
     background-image: url('assets/mantel2.png');
-    
+
     /* Mantiene la proporción perfecta siempre sin deformarse */
-    background-size: cover; 
-    
+    background-size: cover;
+
     /* Alineamos priorizando la parte superior (5%) para salvar el borde de arriba */
-    background-position: center 5%; 
+    background-position: center 5%;
     background-repeat: no-repeat;
 }
 
@@ -309,29 +604,41 @@ h2 {
     font-weight: 500;
 }
 
-.title-decor-inline { width: 45px; vertical-align: middle; margin-right: 15px; transform: translateY(-8px); }
-.decor-art-1 { position: absolute; top: 8%; left: 10%; width: 40px; opacity: 0.6; }
+.title-decor-inline {
+    width: 45px;
+    vertical-align: middle;
+    margin-right: 15px;
+    transform: translateY(-8px);
+}
+
+.decor-art-1 {
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    width: 40px;
+    opacity: 0.6;
+}
 
 /* --- CONTENEDOR Y FLECHAS --- */
 .carousel-container {
-    max-width: 1400px; 
+    max-width: 1400px;
     width: 95%;
     margin: 0 auto;
-    position: relative; 
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 450px; 
+    min-height: 450px;
 }
 
 .carousel-arrow {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); 
+    transform: translateY(-50%);
     background: transparent;
     color: var(--color-marron-oscuro);
     font-family: 'Quicksand', sans-serif;
-    font-size: 3.5rem; 
+    font-size: 3.5rem;
     font-weight: 700;
     border: none;
     cursor: pointer;
@@ -340,35 +647,42 @@ h2 {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.prev-arrow { left: 0; }
-.next-arrow { right: 0; }
+.prev-arrow {
+    left: 0;
+}
+
+.next-arrow {
+    right: 0;
+}
 
 .carousel-arrow:hover {
     color: var(--white);
-    transform: translateY(-50%) scale(1.3); 
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); 
+    transform: translateY(-50%) scale(1.3);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
 /* --- GALERÍA 3D --- */
 .polaroid-gallery {
     position: relative;
     width: 100%;
-    height: 450px; /* Aumentamos altura para dar cabida a las imágenes más grandes */
+    height: 450px;
+    /* Aumentamos altura para dar cabida a las imágenes más grandes */
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1200px; /* Efecto 3D un poco más suave */
+    perspective: 1200px;
+    /* Efecto 3D un poco más suave */
 }
 
 /* --- TARJETAS POLAROID --- */
 .polaroid-card {
-    width: auto; 
+    width: auto;
     background-color: var(--white);
-    padding: 15px 15px 45px 15px; 
-    border-radius: 6px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    position: absolute; 
-    
+    padding: 15px 15px 45px 15px;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    position: absolute;
+
     opacity: 0;
     visibility: hidden;
     transform: translateX(0) scale(0.5) rotateY(0deg);
@@ -388,9 +702,9 @@ h2 {
 .polaroid-card.carousel-item-center {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0) scale(1.1) rotateY(0deg) rotate(1deg); 
+    transform: translateX(0) scale(1.1) rotateY(0deg) rotate(1deg);
     z-index: 20;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .polaroid-card.carousel-item-right {
@@ -400,22 +714,23 @@ h2 {
     z-index: 10;
 }
 
-.polaroid-card.carousel-item-center:hover { 
-    transform: translateX(0) scale(1.15) rotate(0deg) translateY(-10px) !important; 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.2); 
-    z-index: 30; 
+.polaroid-card.carousel-item-center:hover {
+    transform: translateX(0) scale(1.15) rotate(0deg) translateY(-10px) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    z-index: 30;
 }
 
 /* CAJA DE LA IMAGEN: MUCHO MÁS GRANDES */
-.polaroid-img-wrapper { 
-    border-radius: 4px; 
+.polaroid-img-wrapper {
+    border-radius: 4px;
     overflow: hidden;
 }
 
-.polaroid-img-wrapper img { 
-    height: 300px; /* Tamaño grandote recuperado */
-    width: auto;   
-    display: block; 
+.polaroid-img-wrapper img {
+    height: 300px;
+    /* Tamaño grandote recuperado */
+    width: auto;
+    display: block;
 }
 
 /* --- NOTITAS ADHESIVAS --- */
@@ -432,43 +747,87 @@ h2 {
     opacity: 0;
     transition: all 0.3s ease;
     pointer-events: none;
-    z-index: 50; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 50;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.polaroid-card.carousel-item-center:hover .art-caption-sticky { opacity: 1; }
+.polaroid-card.carousel-item-center:hover .art-caption-sticky {
+    opacity: 1;
+}
 
-.polaroid-card:nth-child(odd) .art-caption-sticky { top: -20px; right: -40px; transform: rotate(5deg); }
-.polaroid-card:nth-child(even) .art-caption-sticky { bottom: 20px; left: -40px; transform: rotate(-3deg); }
+.polaroid-card:nth-child(odd) .art-caption-sticky {
+    top: -20px;
+    right: -40px;
+    transform: rotate(5deg);
+}
+
+.polaroid-card:nth-child(even) .art-caption-sticky {
+    bottom: 20px;
+    left: -40px;
+    transform: rotate(-3deg);
+}
 
 /* --- BOTÓN --- */
-.btn-container { margin-top: 20px; }
-.btn-more { display: inline-block; background-color: var(--color-rojo); color: var(--white); font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.1rem; padding: 12px 30px; border-radius: 12px; text-decoration: none; transition: background-color 0.3s ease, transform 0.3s ease; box-shadow: 0 5px 15px rgba(159, 37, 39, 0.2); }
-.btn-more:hover { background-color: var(--color-marron-oscuro); transform: translateY(-3px); }
+.btn-container {
+    margin-top: 20px;
+}
+
+.btn-more {
+    display: inline-block;
+    background-color: var(--color-rojo);
+    color: var(--white);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(159, 37, 39, 0.2);
+}
+
+.btn-more:hover {
+    background-color: var(--color-marron-oscuro);
+    transform: translateY(-3px);
+}
 
 /* Adaptación a móviles */
 @media (max-width: 850px) {
-    .carousel-container { max-width: 95%; }
-    .carousel-arrow { font-size: 2.5rem; padding: 5px; }
-    .polaroid-card.carousel-item-left, .polaroid-card.carousel-item-right { opacity: 0; visibility: hidden; }
-    .polaroid-img-wrapper img { height: 240px; }
+    .carousel-container {
+        max-width: 95%;
+    }
+
+    .carousel-arrow {
+        font-size: 2.5rem;
+        padding: 5px;
+    }
+
+    .polaroid-card.carousel-item-left,
+    .polaroid-card.carousel-item-right {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .polaroid-img-wrapper img {
+        height: 240px;
+    }
 }
 
 /* =========================================
    9. PROYECTOS Y JUEGOS (ONDAS ASIMÉTRICAS Y TARJETAS LIMPIAS)
    ========================================= */
-.projects-section { 
+.projects-section {
     /* EL TRUCO: 130px de margen superior separan esta sección físicamente del mantel */
-    margin-top: 130px; 
+    margin-top: 130px;
     /* Reducimos el padding superior para que el título casi toque la onda */
-    padding: 10px 8% 60px 8%; 
+    padding: 10px 8% 60px 8%;
     background-color: var(--color-morado);
-    position: relative; 
+    position: relative;
 }
 
 /* --- NUEVAS ONDAS ANCLADAS --- */
 .wave-divider {
-    position: absolute; 
+    position: absolute;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -479,37 +838,42 @@ h2 {
 .wave-divider svg {
     display: block;
     width: calc(100% + 1.3px);
-    height: 90px; /* Altura perfecta para lucir las curvas asimétricas */
+    height: 90px;
+    /* Altura perfecta para lucir las curvas asimétricas */
 }
 
-.wave-divider .shape-fill { fill: var(--color-morado); }
+.wave-divider .shape-fill {
+    fill: var(--color-morado);
+}
 
-.wave-divider.top-wave { 
-    top: 0; 
+.wave-divider.top-wave {
+    top: 0;
     /* Se proyecta hacia arriba ocupando parte de los 130px de margen, sin llegar a tocar el mantel */
-    transform: translateY(-99%); 
-} 
+    transform: translateY(-99%);
+}
 
-.wave-divider.bottom-wave { 
-    bottom: 0; 
-    transform: translateY(99%) rotate(180deg); 
+.wave-divider.bottom-wave {
+    bottom: 0;
+    transform: translateY(99%) rotate(180deg);
 }
 
 /* --- TEXTOS PRINCIPALES --- */
 .projects-header {
-    margin-top: 0px; /* Nos aseguramos de que no haya margen extra del contenedor */
+    margin-top: 0px;
+    /* Nos aseguramos de que no haya margen extra del contenedor */
     margin-bottom: 50px;
     position: relative;
-    z-index: 10; 
+    z-index: 10;
 }
 
 .projects-section h2 {
-    margin-top: 0; /* EL CULPABLE: Quitamos el margen invisible enorme que ponía el navegador */
+    margin-top: 0;
+    /* EL CULPABLE: Quitamos el margen invisible enorme que ponía el navegador */
     color: var(--white);
 }
 
-.projects-intro { 
-    color: var(--white); 
+.projects-intro {
+    color: var(--white);
 }
 
 /* --- CUADRÍCULA Y TARJETAS --- */
@@ -517,7 +881,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-    max-width: 1300px; 
+    max-width: 1300px;
     margin: 0 auto;
     position: relative;
     z-index: 10;
@@ -528,29 +892,29 @@ h2 {
     flex-direction: column;
     background-color: var(--white);
     border-radius: 24px;
-    padding: 0; 
-    overflow: hidden; 
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
 }
 
 .project-img-wrapper {
     display: block;
     width: 100%;
-    height: 240px; 
+    height: 240px;
     overflow: hidden;
     position: relative;
 }
 
 .project-img-wrapper img {
     width: 100%;
-    height: 100%; 
-    object-fit: cover; 
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
@@ -559,17 +923,18 @@ h2 {
 }
 
 .project-info {
-    padding: 30px 25px; 
+    padding: 30px 25px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .project-info h3 {
     font-family: 'Darumadrop One', cursive;
     font-size: 2.2rem;
-    color: var(--color-oro) !important; /* Forzamos a que sea naranja sí o sí */
+    color: var(--color-oro) !important;
+    /* Forzamos a que sea naranja sí o sí */
     margin: 0 0 15px 0;
     line-height: 1;
 }
@@ -578,14 +943,14 @@ h2 {
     font-size: 1rem;
     line-height: 1.5;
     color: var(--color-marron-oscuro);
-    margin: 0 0 25px 0; 
+    margin: 0 0 25px 0;
 }
 
 /* --- BLOQUE DE ROL --- */
 .role-wrapper {
-    margin-top: auto; 
+    margin-top: auto;
     padding-top: 20px;
-    border-top: 2px dashed var(--bg-crema); 
+    border-top: 2px dashed var(--bg-crema);
 }
 
 .role-label {
@@ -601,7 +966,7 @@ h2 {
 
 .role-tag {
     display: inline-block;
-    background-color: var(--color-oro); 
+    background-color: var(--color-oro);
     color: var(--white);
     padding: 6px 18px;
     border-radius: 20px;
@@ -612,67 +977,382 @@ h2 {
 
 /* Responsivo */
 @media (max-width: 1100px) {
-    .projects-container { grid-template-columns: repeat(2, 1fr); }
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 700px) {
-    .projects-container { grid-template-columns: 1fr; }
-    .project-img-wrapper { height: 200px; }
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+
+    .project-img-wrapper {
+        height: 200px;
+    }
 }
 
 /* =========================================
-   10. FOOTER MINIMALISTA (COMPACTO)
+   10. SECCIÓN MORALLAMA BRAND (TIENDA ETSY)
    ========================================= */
-.main-footer {
-    background-color: var(--color-lila);
-    padding: 40px 10% 25px 10%; /* Comprimido arriba y abajo */
+.brand-section {
+    padding: 100px 5% 80px 5%;
+    /* MÁS ESPACIO ARRIBA (antes era 60px) */
+    background-color: transparent;
     text-align: center;
+    position: relative;
+    overflow: visible;
 }
 
-.footer-minimalist {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px; /* Reducido drásticamente para juntar todo */
+/* --- FRUTAS DECORATIVAS FLOTANTES --- */
+.brand-fruit {
+    position: absolute;
+    z-index: -1;
+    filter: drop-shadow(0px 15px 12px rgba(0, 0, 0, 0.15));
+    pointer-events: none;
+    animation: floating 6s ease-in-out infinite;
+    opacity: 0.35;
 }
 
-.contact-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+.brand-fruit.f-1 {
+    top: 10%;
+    left: 5%;
+    width: 160px;
+    rotate: -15deg;
+    animation-delay: 0s;
+}
+
+.brand-fruit.f-2 {
+    top: 45%;
+    right: -2%;
+    width: 180px;
+    rotate: 30deg;
+    animation-delay: 1.5s;
+}
+
+.brand-fruit.f-3 {
+    top: -20%;
+    right: 12%;
+    width: 130px;
+    rotate: 15deg;
+    animation-delay: 0.7s;
+}
+
+.brand-fruit.f-4 {
+    bottom: 5%;
+    right: 10%;
+    width: 200px;
+    rotate: -15deg;
+    animation-delay: 2.2s;
+}
+
+.brand-fruit.f-5 {
+    bottom: 15%;
+    left: 8%;
+    width: 110px;
+    rotate: 45deg;
+    animation-delay: 1.1s;
+}
+
+.brand-header {
+    margin-bottom: 50px;
+}
+
+.brand-section h2 {
+    color: var(--color-oro);
+    margin: 0 0 15px 0;
+}
+
+.brand-intro {
+    font-size: 1rem;
     color: var(--color-marron-oscuro);
-    font-weight: 700;
-    opacity: 0.6;
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* --- TARJETAS DE PRODUCTO --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1350px;
+    margin: 0 auto 30px auto;
+    /* MENOS ESPACIO ABAJO, acerca el botón (antes era 60px) */
+}
+
+.product-card {
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    width: 100%;
+}
+
+.card-tilt-left {
+    transform: rotate(-1.5deg);
+}
+
+.card-drop-center {
+    transform: translateY(20px) rotate(1deg);
+}
+
+.card-tilt-right {
+    transform: rotate(-1deg);
+}
+
+.product-card:hover {
+    transform: translateY(-10px) rotate(0deg);
+}
+
+.product-img-wrapper {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.product-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.05);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.product-card h3 {
+    font-family: 'Darumadrop One', cursive;
+    font-size: 2.4rem;
+    color: var(--color-oro);
+    margin: 0 0 10px 0;
+}
+
+.cute-divider {
+    width: 35px;
+    height: 3px;
+    background-color: var(--color-morado);
+    margin: 0 auto 15px auto;
+    border-radius: 3px;
+    opacity: 0.5;
+}
+
+.product-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    padding: 0 15px;
     margin: 0;
 }
 
-.footer-sep-line {
-    width: 25px;
-    height: 1.5px;
+/* --- BOTÓN --- */
+.brand-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-etsy {
+    display: inline-block;
+    background-color: var(--color-rojo);
+    color: var(--white);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 16px 50px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(159, 37, 39, 0.25);
+}
+
+.btn-etsy:hover {
     background-color: var(--color-oro);
-    margin-bottom: 2px; /* Mínimo espacio extra */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(200, 135, 66, 0.35);
+}
+
+.link-more-brand {
+    color: var(--color-marron-oscuro);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.05rem;
+    opacity: 0.7;
+}
+
+.link-more-brand:hover {
+    color: var(--color-rojo);
+    opacity: 1;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 1000px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+    }
+}
+
+@media (max-width: 700px) {
+    .brand-fruit {
+        display: none;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .card-drop-center {
+        transform: none;
+    }
+
+    .product-img-wrapper {
+        height: 250px;
+    }
+}
+
+/* =========================================
+   11. FOOTER MULTICOLUMNA
+   ========================================= */
+.main-footer {
+    background-color: var(--color-lila);
+    padding: 70px 10% 25px 10%;
+    color: var(--color-marron-oscuro);
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 50px;
+    /* Espacio antes de la línea inferior */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* --- COLUMNA 1: MARCA --- */
+.footer-logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-marron-oscuro);
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.footer-subtitle {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    opacity: 0.6;
+    margin: 0 0 20px 0;
+}
+
+/* --- REDES --- */
+.social-circles {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-circle {
+    width: 38px;
+    height: 38px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-oro);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
+.icon-circle svg {
+    width: 17px;
+    height: 17px;
+}
+
+.icon-circle:hover {
+    background-color: var(--color-oro);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* --- COLUMNA 2 Y 3: TEXTOS Y ENLACES --- */
+.footer-heading {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    opacity: 0.6;
+    margin: 0 0 20px 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--color-marron-oscuro);
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-oro);
 }
 
 /* --- EMAIL CON HOVER --- */
 .email-wrapper {
     position: relative;
     cursor: pointer;
-    padding: 2px 0; /* Padding mínimo */
+    margin-bottom: 15px;
+    /* Espacio antes del freelance */
 }
 
-.footer-email {
+.main-footer .footer-email,
+.main-footer .footer-email a {
     font-family: 'Quicksand', sans-serif;
-    font-size: 0.95rem; /* Letra un pelín más pequeña */
-    font-weight: 500;
-    color: var(--color-marron-oscuro);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-marron-oscuro) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px;
     transition: color 0.3s ease;
 }
 
 .copy-tooltip {
     position: absolute;
-    bottom: -12px; /* Más cerca del email */
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -15px;
+    left: 0;
+    /* Alineado a la izquierda */
     font-size: 0.7rem;
     font-weight: 700;
     color: var(--color-oro);
@@ -684,84 +1364,1113 @@ h2 {
 
 .email-wrapper:hover .copy-tooltip {
     opacity: 1;
-    bottom: -15px;
+    bottom: -18px;
 }
 
 .email-wrapper:hover .footer-email {
-    color: var(--color-oro);
-}
-
-.footer-sep-dot {
-    font-size: 1rem;
-    color: var(--color-oro);
-    opacity: 0.5;
-    margin: 2px 0; /* Mínimo espacio extra */
-}
-
-/* --- REDES Y FREELANCE --- */
-.social-circles {
-    display: flex;
-    gap: 12px; /* Juntamos los circulitos */
-    margin-bottom: 2px; /* Mínimo espacio extra */
-}
-
-.icon-circle {
-    width: 38px; /* Un pelín más pequeños */
-    height: 38px;
-    background-color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-oro);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.03);
-}
-
-.icon-circle svg { width: 17px; height: 17px; }
-
-.icon-circle:hover {
-    background-color: var(--color-oro);
-    color: var(--white);
-    transform: translateY(-2px);
+    color: var(--color-oro) !important;
 }
 
 .freelance-footer {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--color-marron-oscuro);
     font-weight: 700;
-    opacity: 0.7;
-    margin: 2px 0 0 0; /* Sin espacio arriba */
-    letter-spacing: 0.5px;
+    opacity: 0.6;
+    margin: 0;
 }
 
-.copyright-small {
-    font-size: 0.7rem;
-    color: var(--color-marron-oscuro);
-    opacity: 0.4;
-    margin-top: 5px; /* Comprimido contra freelance */
+/* --- BARRA INFERIOR (COPYRIGHT) --- */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(54, 50, 51, 0.1);
+    padding-top: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0.5;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Adaptación a móviles */
+@media (max-width: 768px) {
+    .footer-columns {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        align-items: center;
+    }
 }
 
 /* =========================================
-   11. MEDIA QUERIES (MÓVILES)
+   12. MEDIA QUERIES (MÓVILES)
    ========================================= */
 @media (max-width: 768px) {
-    .transparent-nav { flex-direction: column; padding: 0.8rem; }
-    .transparent-nav ul { margin-top: 10px; padding: 0; justify-content: center; flex-wrap: wrap; }
-    .transparent-nav ul li a { margin: 5px 10px; font-size: 0.95rem; }
+    .transparent-nav {
+        flex-direction: column;
+        padding: 1.2rem 1rem 1.8rem 1rem;
+    }
 
-    .hero-main-container { top: 2vh; }
-    .hero-text-wrapper { width: 90%; }
-    .hero-title-top { font-size: 3rem; margin: 0 0 10px 0; }
-    .hero-subtitle-bottom { font-size: 1.1rem; }
+    .transparent-nav.scrolled {
+        flex-direction: column;
+        padding: 1.5rem 1rem 2.2rem 1rem !important;
+    }
 
-    .about-container { flex-direction: column; gap: 30px; }
-    .about-text, .about-text h2 { text-align: center; }
+    /* ARREGLO DEL MENÚ MÓVIL: Flex-wrap con gap en lugar de márgenes raros */
+    .transparent-nav ul {
+        margin-top: 15px;
+        padding: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        /* Espacio uniforme entre todos los botones */
+    }
 
-    .skills-cards-container { flex-direction: column; align-items: center; }
-    .skill-card, .featured-card { width: 100%; transform: rotate(0deg) scale(1) !important; }
-    
-    .carousel-arrow { font-size: 2rem; }
-    .polaroid-img-wrapper img { height: 200px; }
+    .transparent-nav ul li a {
+        margin: 0 !important;
+        /* Quitamos los márgenes laterales que lo rompían */
+        font-size: 0.95rem;
+    }
+
+    /* El botón de contacto baja a una línea nueva si no cabe, con elegancia */
+    .transparent-nav ul li a.nav-btn-contact {
+        margin-top: 5px !important;
+    }
+
+    .hero-main-container {
+        top: 2vh;
+    }
+
+    .hero-text-wrapper {
+        width: 90%;
+    }
+
+    .hero-title-top {
+        font-size: 3rem;
+        margin: 0 0 10px 0;
+    }
+
+    .hero-subtitle-bottom {
+        font-size: 1.1rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-text,
+    .about-text h2 {
+        text-align: center;
+    }
+
+    .skills-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skill-card,
+    .featured-card {
+        width: 100%;
+        transform: rotate(0deg) scale(1) !important;
+    }
+
+    .carousel-arrow {
+        font-size: 2rem;
+    }
+
+    .polaroid-img-wrapper img {
+        height: 200px;
+    }
+}
+
+/* =========================================
+   13. AJUSTES LOGO MORALLAMA (IMAGEN + TEXTO)
+   ========================================= */
+/* Ajustes para el Menú */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* Espacio entre el dibujo y el texto */
+    text-decoration: none;
+}
+
+.nav-logo-icon {
+    width: 35px;
+    /* Tamaño del circulito en el menú */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-wrapper:hover .nav-logo-icon {
+    transform: rotate(-10deg) scale(1.1);
+    /* Pequeño efecto al pasar el ratón */
+}
+
+/* Ajustes para el Footer */
+.footer-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.footer-logo-icon {
+    width: 45px;
+    /* Un poco más grande en el footer */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo-wrapper:hover .footer-logo-icon {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+/* =========================================
+   14. GALERÍA MASONRY Y LIGHTBOX (ARTWORKS)
+   ========================================= */
+.artworks-page-header {
+    padding: 80px 5% 30px 5%;
+    text-align: center;
+}
+
+.artworks-page-header p {
+    font-size: 1.15rem;
+    color: var(--color-marron-oscuro);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- CUADRÍCULA MASONRY (Tipo Pinterest) --- */
+.masonry-gallery {
+    column-count: 3;
+    column-gap: 20px;
+    /* REDUCIMOS el 100px a 40px para quitar el hueco enorme debajo de las fotos */
+    padding: 0 5% 40px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    /* Evita que las fotos se corten por la mitad */
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.masonry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Elimina huecos blancos debajo de la imagen */
+}
+
+/* Ajustes Masonry para tablets y móviles */
+@media (max-width: 1000px) {
+    .masonry-gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .masonry-gallery {
+        column-count: 1;
+    }
+}
+
+/* --- LIGHTBOX (Ventana Modal) --- */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(250, 246, 240, 0.95);
+    /* Tu color blanco crema con transparencia */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 3rem;
+    color: var(--color-marron-oscuro);
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--color-rojo);
+}
+
+/* --- LLAMADA A LA ACCIÓN (CTA) SUTIL --- */
+.gallery-cta {
+    padding: 0 10% 60px 10%;
+    /* Muchísimo menos espacio */
+    text-align: center;
+    background-color: transparent;
+}
+
+.gallery-cta h2 {
+    font-family: 'Quicksand', sans-serif;
+    /* Letra limpia y suave */
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-marron-oscuro);
+    margin: 0 0 15px 0;
+    opacity: 0.8;
+    /* Le quita agresividad al color */
+}
+
+.gallery-cta .cute-divider {
+    background-color: var(--color-lila);
+    /* Divisor en color pastel */
+    width: 40px;
+    height: 2px;
+    margin: 0 auto 15px auto;
+}
+
+.gallery-cta p {
+    font-size: 1rem;
+    color: var(--color-marron-oscuro);
+    margin-bottom: 25px;
+    font-weight: 500;
+    opacity: 0.6;
+    /* Texto secundario más disimulado */
+}
+
+/* Nuevo botón delicado (tipo outline) */
+.btn-delicate {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--color-marron-oscuro);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 10px 30px;
+    border-radius: 30px;
+    /* Bordes muy redonditos y amigables */
+    border: 2px solid var(--color-lila);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-delicate:hover {
+    background-color: var(--color-lila);
+    color: var(--color-marron-oscuro);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   15. PÁGINA DE PROYECTOS (CABECERA TIPO HERO)
+   ========================================= */
+.projects-hero {
+    position: relative;
+    padding: 130px 5% 40px 5%;
+    /* Ajustado para subir el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* La imagen del divider estirada a todo el ancho, con el roto visible abajo */
+.projects-full-width-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 80px);
+    object-fit: cover;
+    object-position: bottom center;
+    /* ← cambia top por bottom */
+    z-index: 1;
+}
+
+/* Posicionamiento del texto sobre la imagen */
+.banner-text-group {
+    position: relative;
+    z-index: 10;
+    margin-top: -30px;
+    /* Sube el título y botones */
+    text-align: center;
+}
+
+.projects-hero h2 {
+    font-family: 'Darumadrop One', cursive;
+    font-size: 4rem;
+    color: var(--color-marron-oscuro);
+    margin: 0 0 25px 0;
+}
+
+/* --- BOTONES DE FILTRO --- */
+.project-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background-color: var(--color-lila);
+    color: var(--color-marron-oscuro);
+    border: 2.5px solid var(--white);
+    padding: 12px 32px;
+    border-radius: 30px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.tab-btn:hover {
+    background-color: var(--color-lila);
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background-color: var(--white);
+    color: var(--color-marron-oscuro);
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   16. DETALLE DE VIDEOJUEGOS
+   ========================================= */
+.games-centered-section {
+    position: relative;
+    margin-top: 0 !important;
+    padding-top: 20px;
+    background-color: var(--white);
+    display: flex;
+    align-items: flex-start;
+    overflow: visible;
+}
+
+#category-games,
+#category-other {
+    margin-top: 0 !important;
+}
+
+/* --- MENÚ TIMELINE (JUSTIFICADO IZQUIERDA Y HOVER ORO) --- */
+.game-side-nav {
+    width: 200px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    padding: 60px 0 40px 4%;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.game-side-nav .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--color-marron-oscuro);
+    opacity: 0.5;
+    margin-bottom: 25px;
+    text-align: left;
+    /* Justificado izquierda */
+}
+
+.game-side-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 2px solid var(--color-lila);
+}
+
+.game-side-nav ul li {
+    margin-bottom: 25px;
+    position: relative;
+    text-align: left;
+    /* Justificado izquierda */
+}
+
+/* --- ENLACES DEL MENÚ LATERAL --- */
+.game-side-nav ul li a {
+    position: relative;
+    /* Necesario para que la estrella se posicione bien */
+    display: block;
+    padding: 10px 0 10px 20px;
+    /* Mantenemos el espacio izquierdo */
+    color: var(--color-marron-oscuro);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+/* Puntito interactivo clavado en la línea */
+.game-side-nav ul li a::before {
+    content: '✦';
+    position: absolute;
+    left: -26px;
+    /* Lo tira exactamente encima de la línea morada */
+    top: 50%;
+    /* Lo centra verticalmente... */
+    transform: translateY(-50%);
+    /* ...a la perfección con el texto */
+    color: transparent;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+/* HOVER Y ESTADO ACTIVO (Se ilumina) */
+.game-side-nav ul li a:hover,
+.game-side-nav ul li a.active {
+    opacity: 1;
+    color: var(--color-oro);
+}
+
+.game-side-nav ul li a:hover::before,
+.game-side-nav ul li a.active::before {
+    color: var(--color-oro);
+}
+
+
+/* --- CONTENEDOR CENTRAL DE JUEGOS --- */
+.games-content-area {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1000px;
+    /* Ajusta este valor al ancho que quieras para todos los juegos */
+    margin: 0 auto;
+}
+
+.game-full-block {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0px;
+    /* Antes estaba en 80px, lo dejamos en 0 */
+    padding: 20px 0;
+    /* Antes estaba en 60px, lo reducimos a un tercio */
+    position: relative;
+}
+
+/* EL TRUCO: Fondo morado de ancho completo sin mover el contenido */
+.game-full-block.alt-purple-bg {
+    background-color: transparent;
+    /* Quitamos el fondo del bloque en sí */
+}
+
+.game-full-block.alt-purple-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    /* Este es el truco para que nazca en el centro y se expanda a 100vw */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(228, 207, 230, 0.4);
+    /* Tu lila suave */
+    z-index: -1;
+    /* Se coloca detrás del texto y la imagen */
+}
+
+/* Aseguramos que el contenido interno no se mueva */
+.game-content-text,
+.game-large-cover-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* PORTADA GRANDE */
+.game-large-cover-wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.game-large-cover {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+}
+
+.game-content-text h3 {
+    font-family: 'Darumadrop One', cursive;
+    font-size: 3.5rem;
+    color: var(--color-oro);
+    margin: 0 0 20px 0;
+}
+
+.game-description {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* --- ROL ENCUADRADO (CON ESTRELLITAS) --- */
+.role-box-framed {
+    background: rgba(250, 246, 240, 0.5);
+    padding: 35px 40px;
+    border-radius: 20px;
+    border: 2px dashed var(--color-morado);
+    margin-bottom: 30px;
+}
+
+.role-box-framed h4 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 10px 0;
+    color: var(--color-marron-oscuro);
+}
+
+.role-box-framed ul {
+    list-style: none;
+    padding: 0;
+}
+
+.role-box-framed ul li {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+}
+
+/* Estrellitas en el Rol */
+.role-box-framed ul li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--color-oro);
+    font-size: 1.2rem;
+}
+
+/* --- BOTÓN ITCH.IO --- */
+.game-actions {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.btn-itch {
+    display: inline-block;
+    background-color: var(--color-marron-oscuro);
+    color: var(--white);
+    padding: 14px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-itch:hover {
+    background-color: var(--color-rojo);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(159, 37, 39, 0.2);
+}
+
+/* --- GALERÍA --- */
+.project-assets-gallery h5 {
+    font-family: 'Darumadrop One', cursive;
+    font-size: 2.2rem;
+    color: var(--color-rojo);
+    margin-bottom: 25px;
+}
+
+.assets-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.assets-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.assets-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* --- EL NUEVO SEPARADOR (DIVIDER.PNG) --- */
+.game-image-divider {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 60px 0 80px 0;
+    /* Espacio respirable entre juegos */
+}
+
+.game-image-divider img {
+    width: 100%;
+    max-width: 900px;
+    /* Se estira bonito pero sin romper la web */
+    height: auto;
+    opacity: 0.9;
+}
+
+/* Móviles */
+@media (max-width: 1000px) {
+    .game-side-nav {
+        display: none;
+    }
+
+    .assets-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+
+/* =========================================
+   19. PERSONALIZACIÓN POR JUEGO (FUENTES Y COLORES)
+   ========================================= */
+
+/* --- THE LIVING GARDEN --- */
+#game-living-garden h3,
+#game-living-garden h5 {
+    font-family: 'GardenTitle', cursive;
+    color: #576644;
+}
+
+/* --- WHITE NOISE --- */
+#game-white-noise h3,
+#game-white-noise h5 {
+    font-family: 'NoiseTitle', serif;
+    color: #695956;
+}
+
+/* --- ECLIPSA --- */
+#game-eclipsa h3,
+#game-eclipsa h5 {
+    font-family: 'EclipsaTitle', sans-serif;
+    color: #3c4252;
+}
+
+
+/* =========================================
+   MECÁNICA DE LUCES (WHITE NOISE)
+   ========================================= */
+.mechanic-intro {
+    margin: 50px 0 30px 0;
+    text-align: left;
+}
+
+.mechanic-intro h4 {
+    font-family: 'NoiseTitle', serif;
+    font-size: 2rem;
+    color: #695956;
+    margin: 0 0 10px 0;
+}
+
+.magic-rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.room-toggle {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-toggle:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.room-day,
+.room-night {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+
+/* La imagen de noche se superpone y se oculta por defecto */
+.room-night {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    /* El fundido mágico */
+}
+
+/* Al hacer clic, el JS le pone la clase .is-night y aparece */
+.room-toggle.is-night .room-night {
+    opacity: 1;
+}
+
+/* Cartelito flotante para que el usuario sepa que puede hacer clic */
+.light-hint {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(250, 246, 240, 0.9);
+    color: var(--color-marron-oscuro);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    /* No interfiere con el clic */
+}
+
+.room-toggle:hover .light-hint {
+    opacity: 1;
+    /* Aparece al pasar el ratón */
+}
+
+/* =========================================
+   ESTILOS DE BOTONES (CORREGIDO)
+   ========================================= */
+
+/* --- 1. BOTONES TÉCNICOS (SOLO THE LIVING GARDEN) --- */
+.garden-btn,
+.btn-video {
+    display: inline-block;
+    background-image: none !important;
+    /* Quitamos cualquier imagen */
+    text-indent: 0 !important;
+    width: auto !important;
+    height: auto !important;
+
+    /* Estética solicitada: Marrón clarito 40% opacidad */
+    background-color: rgba(189, 150, 126, 0.4) !important;
+    color: var(--color-marron-oscuro) !important;
+
+    /* Borde transparente inicial para evitar que los elementos salten */
+    border: 3px solid transparent !important;
+
+    font-family: 'GardenText', sans-serif !important;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 12px 28px;
+    border-radius: 15px !important;
+    /* Esquinas técnicas */
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    transform: none !important;
+}
+
+.garden-btn:hover,
+.btn-video:hover {
+    background-color: rgba(165, 139, 123, 1) !important;
+    border: 3px solid rgb(236, 228, 179) !important;
+    /* Reborde amarillo/oro */
+    color: var(--white) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* --- 2. RESTAURAR BOTONES DE IMAGEN (WHITE NOISE Y ECLIPSA) --- */
+.btn-itch.noise-btn,
+.btn-itch.eclipsa-btn {
+    display: inline-block;
+    border: none !important;
+    background-color: transparent !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-indent: -9999px;
+    box-shadow: none !important;
+    padding: 0;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* White Noise */
+.btn-itch.noise-btn {
+    background-image: url('assets/proyects/white_noise/boton.png') !important;
+    width: 230px;
+    height: 65px;
+}
+
+.btn-itch.noise-btn:hover {
+    background-image: url('assets/proyects/white_noise/boton_hover.png') !important;
+}
+
+.btn-itch.noise-btn:active {
+    background-image: url('assets/proyects/white_noise/boton_on.png') !important;
+}
+
+/* Eclipsa */
+.btn-itch.eclipsa-btn {
+    background-image: url('assets/proyects/eclipsa/boton.png') !important;
+    width: 320px;
+    height: 95px;
+}
+
+.btn-itch.eclipsa-btn:hover {
+    background-image: url('assets/proyects/eclipsa/boton_hover.png') !important;
+}
+
+/* =========================================
+   20. TOOLTIPS Y LIGHTBOX EN ASSETS
+   ========================================= */
+
+/* --- TOOLTIP (Descripción al pasar el ratón) --- */
+.asset-item {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.asset-item::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -30px;
+    /* Aparece por debajo de la foto */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(54, 50, 51, 0.95);
+    /* Tu marrón oscuro casi opaco */
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    pointer-events: none;
+    /* Evita que el cartelito estorbe al hacer clic */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.asset-item:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: 10px;
+    /* Sube y se coloca sobre la foto */
+}
+
+/* --- LIGHTBOX (Caja negra para agrandar) --- */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(250, 246, 240, 0.95);
+    /* Crema translúcido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-size: 3rem;
+    color: var(--color-marron-oscuro);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--color-rojo);
+}
+
+/* =========================================
+   GIF DESTACADO Y VIDEOS
+   ========================================= */
+
+/* --- GIF EN GRANDE --- */
+.large-gif-container {
+    width: 100%;
+    margin: 0 0 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.highlight-gif {
+    width: 100%;
+    max-width: 850px;
+    /* Se verá gigante pero sin salirse de la pantalla */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* --- CUADRÍCULA DE VÍDEOS DE YOUTUBE --- */
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Se adaptan a móviles solos */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Truco CSS para que los vídeos mantengan la proporción 16:9 siempre */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hacer que el GIF destaque en la cuadrícula (ocupa 2x2) */
+.gif-featured {
+    grid-column: span 2;
+    grid-row: span 2;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+/* Contenedor y estilo de los botones de vídeo */
+.video-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* --- BOTONES DE VÍDEO CON ESTÉTICA DEL JUEGO --- */
+.btn-video {
+    display: inline-block;
+    background-color: #faf7c8d2;
+    /* Usamos el verde oscuro del título del juego */
+    color: #5c4b47;
+    /* Aplicamos la tipografía OCR A */
+    font-family: 'GardenText', sans-serif;
+    font-weight: 550;
+    font-size: 1.2rem;
+    padding: 12px 28px;
+    /* Esquinas menos redondeadas para un look más técnico */
+    border-radius: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-video:hover {
+    border: 3px solid #a58b7b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(87, 102, 68, 0.2);
+}
+
+/* Ajuste para que la cuadrícula no se rompa en pantallas pequeñas */
+@media (max-width: 600px) {
+    .gif-featured {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+/* =========================================
+   SEPARADORES DE JUEGOS
+   ========================================= */
+.game-line-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 30px auto;
+    /* 30px por arriba y 30px por abajo */
+    color: var(--color-morado);
+    font-size: 1.5rem;
+    opacity: 0.5;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Las líneas ahora se estiran solas */
+.game-line-separator::before,
+.game-line-separator::after {
+    content: '';
+    flex-grow: 1;
+    /* Ocupan todo el espacio sobrante */
+    height: 2px;
+    background-color: var(--color-morado);
+    margin: 0 20px;
+    border-radius: 2px;
 }
