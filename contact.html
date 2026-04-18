@@ -25,10 +25,83 @@
     </nav>
 
 
-    <div style="min-height: 80vh; padding-top: 150px; text-align: center;">
-        <h2>My Artworks Gallery</h2>
-        <p>Próximamente...</p>
-    </div>
+    <main class="contact-page-container">
+        
+        <div class="contact-info-side">
+            <span class="freelance-tag">✦ Available for Freelance</span>
+            <h1 class="contact-title">Let's create something together!</h1>
+            <p class="contact-subtitle">Do you have an idea in mind or just want to say hi? I'd love to hear from you and see how we can bring your next project to life.</p>
+            
+            <div class="contact-details-group">
+                <div class="detail-item">
+                    <div class="contact-icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <span class="detail-text">Based in Madrid, Spain</span>
+                </div>
+                <div class="detail-item">
+                    <div class="contact-icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <span class="detail-text">Available for remote work worldwide</span>
+                </div>
+            </div>
+
+            <div class="contact-action-group">
+                <div class="contact-direct-mail">
+                    <span class="mail-label">Direct email:</span>
+                    <div class="email-wrapper" onclick="copyEmail(this)">
+                        <span class="footer-email">lblazpel@gmail.com</span>
+                        <span class="copy-tooltip">Click to copy</span>
+                    </div>
+                </div>
+                
+                <a href="assets/Resume_Laura_BP.pdf" target="_blank" class="btn-portfolio-featured">
+                    <div class="portfolio-icon-inside">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    </div>
+                    <span>Download Portfolio</span>
+                </a>
+            </div>
+
+            <div class="contact-illustration-wrapper">
+                <img src="assets/logo1.png" alt="Laura Illustration" class="contact-avatar-deco">
+            </div>
+        </div>
+
+        <div class="contact-form-side">
+            <div class="form-card">
+                <form action="https://formspree.io/f/xnjlvper" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Type your name..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Where should I reply?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">What are you looking for?</label>
+                        <select id="subject" name="subject">
+                            <option value="illustration">Book Illustration</option>
+                            <option value="game">Indie Game Art</option>
+                            <option value="brand">Logo & Branding</option>
+                            <option value="other">Just saying hi!</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me a bit about your project..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-send">Send Message ✦</button>
+                </form>
+            </div>
+        </div>
+    </main>
 
     <footer id="contact" class="main-footer">
         <div class="footer-columns">

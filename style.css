@@ -1707,12 +1707,11 @@ h2 {
    ========================================= */
 .projects-hero {
     position: relative;
-    padding: 130px 5% 40px 5%;
-    /* Ajustado para subir el contenido */
+    padding: 100px 5% 40px 5%; /* Reducimos el padding superior (antes 130px) */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px;
+    min-height: 280px; /* ¡LA CLAVE! Reducimos drásticamente la altura (antes 400px) */
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
@@ -1726,7 +1725,6 @@ h2 {
     height: calc(100% + 80px);
     object-fit: cover;
     object-position: bottom center;
-    /* ← cambia top por bottom */
     z-index: 1;
 }
 
@@ -1734,8 +1732,7 @@ h2 {
 .banner-text-group {
     position: relative;
     z-index: 10;
-    margin-top: -30px;
-    /* Sube el título y botones */
+    margin-top: -100px; /* Lo ajustamos para que quede centrado en el nuevo banner más estrecho */
     text-align: center;
 }
 
@@ -2473,4 +2470,448 @@ h2 {
     background-color: var(--color-morado);
     margin: 0 20px;
     border-radius: 2px;
+}
+
+/* =========================================
+   ESTILOS DE ILUSTRACIÓN Y BRANDING (CORREGIDO)
+   ========================================= */
+
+/* --- MENÚ TIMELINE (CORREGIDO PARA QUE NO SE SUBA) --- */
+.game-side-nav {
+    width: 200px;
+    position: sticky;
+    top: 100px;
+    height: fit-content; /* ¡LA CLAVE! Ahora se ajusta al contenido y no a la pantalla */
+    padding: 20px 0 40px 4%; /* He reducido el padding superior para que no quede tan abajo */
+    box-sizing: border-box;
+    z-index: 100;
+    align-self: flex-start;
+}
+/* --- Layout Dividido para Libros --- */
+.editorial-split {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Alineación perfecta quitando el margen superior del primer párrafo */
+.editorial-text p:first-child {
+    margin-top: 0;
+}
+
+.editorial-image {
+    flex: 0 0 45%; /* Hace la imagen un pelín más grande para equilibrar el texto */
+    max-width: 480px;
+    margin-top: 5px; /* Micro-ajuste para que la foto se alinee milimétricamente con el texto */
+}
+
+.editorial-image .editorial-cover-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Bordes un poco menos redondeados, más estilo libro físico */
+    
+    /* Sombra suave, elegante y centrada (fuera la sombra rara lateral) */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
+    border: 1px solid rgba(0,0,0,0.03); /* Un bordecito súper sutil para enmarcarlo */
+    
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.editorial-image .editorial-cover-img:hover {
+    transform: translateY(-5px); /* Salto limpio hacia arriba, sin rotaciones */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.editorial-text {
+    flex: 1; /* El texto ocupa el 60% restante */
+    text-align: left;
+}
+
+/* --- Títulos gigantes para los libros (ahora arriba del todo) --- */
+.editorial-title {
+    font-family: 'Darumadrop One', cursive !important;
+    font-size: 3.5rem !important;
+    color: var(--color-oro) !important;
+    margin: 0 0 30px 0 !important; /* Margen por debajo para separarlo de la foto y el texto */
+    line-height: 1.1;
+    text-align: left;
+}
+
+/* --- Que se note que la portada se puede hacer clic --- */
+.editorial-cover-img {
+    cursor: pointer;
+}
+
+/* --- Nuevo botón para libros (Elegante y acorde a la sección) --- */
+.btn-editorial {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--color-oro);
+    border: 2px solid var(--color-oro); /* Borde dorado */
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(200, 135, 66, 0.1);
+}
+
+.btn-editorial:hover {
+    background-color: var(--color-oro); /* Se rellena de dorado al pasar el ratón */
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(200, 135, 66, 0.3);
+}
+
+/* --- Galería de Logos (Estilo Lienzo / Brand Board) --- */
+.logos-board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(250, 246, 240, 0.7); /* Fondo unificado sutil */
+    padding: 50px;
+    border-radius: 24px;
+    border: 2px dashed rgba(202, 170, 205, 0.5); /* Borde punteado morado muy suave */
+}
+
+.logos-board .asset-item {
+    flex: 1 1 200px;
+    max-width: 280px;
+    background-color: transparent !important; /* Fuera cajas blancas rídigas */
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none !important; /* Fuera sombras de la caja */
+    transition: transform 0.3s ease;
+}
+
+.logos-board .asset-item:hover {
+    transform: scale(1.1) !important;
+}
+
+.logos-board .asset-item img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* MAGIA: Elimina los fondos blancos de las imágenes */
+}
+
+/* Adaptación a móviles para que la foto se ponga arriba y el texto abajo */
+@media (max-width: 850px) {
+    .editorial-split {
+        flex-direction: column-reverse; /* Magia: en móvil pone la foto arriba y el texto abajo */
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .editorial-image {
+        flex: 0 0 100%;
+        max-width: 300px;
+    }
+}
+
+/* =========================================
+   21. PÁGINA DE CONTACTO (ESTILO COZY)
+   ========================================= */
+/* --- Contenedor Principal (Reducido el espacio superior de 140px a 100px) --- */
+.contact-page-container {
+    min-height: 85vh;
+    padding: 100px 10% 80px 10%; 
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* --- Columna Izquierda --- */
+.contact-info-side {
+    flex: 1;
+    text-align: left;
+}
+
+/* --- Etiqueta "Available for Freelance" (Ahora encaja con tu paleta) --- */
+.freelance-tag {
+    display: inline-block;
+    background-color: var(--color-lila); /* Lila suave */
+    color: var(--color-marron-oscuro); /* Marrón oscuro para contrastar */
+    border: 1px dashed var(--color-morado); /* Un borde muy cuqui */
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.contact-title {
+    font-family: 'Darumadrop One', cursive;
+    font-size: 4rem;
+    color: var(--color-oro);
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+}
+
+.contact-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    opacity: 0.8;
+}
+
+.mail-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    opacity: 0.6;
+}
+
+.contact-illustration-wrapper {
+    margin-top: 40px;
+    animation: floating 5s ease-in-out infinite;
+}
+
+.contact-avatar-deco {
+    width: 120px;
+    opacity: 0.8;
+}
+
+/* --- Columna Derecha (Formulario) --- */
+.contact-form-side {
+    flex: 1;
+}
+
+.form-card {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    border: 1px solid rgba(202, 170, 205, 0.2); /* Borde lila muy sutil */
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--color-marron-oscuro);
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 2px solid var(--color-lila);
+    background-color: var(--white);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    color: var(--color-marron-oscuro);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-oro);
+    box-shadow: 0 0 0 4px rgba(200, 135, 66, 0.1);
+}
+
+/* --- Botón del Formulario (Más suave y cálido) --- */
+.btn-send {
+    display: inline-block;
+    background-color: var(--color-oro); /* Tono dorado/cálido, mucho menos agresivo que el rojo */
+    color: var(--white);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 14px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(200, 135, 66, 0.2);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-send:hover {
+    background-color: var(--color-marron-oscuro); /* Se vuelve marrón al pasar el ratón */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(54, 50, 51, 0.2);
+}
+
+/* Adaptación a móviles */
+@media (max-width: 950px) {
+    .contact-page-container {
+        flex-direction: column;
+        padding-top: 120px;
+        text-align: center;
+    }
+    
+    .contact-info-side {
+        text-align: center;
+    }
+    
+    .contact-title {
+        font-size: 3rem;
+    }
+}
+
+/* --- Ajuste específico para el texto del banner de Artworks --- */
+.hero-intro-text {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-marron-oscuro);
+    opacity: 0.8;
+}
+
+/* --- Iconos Circulares (Visibilidad Mejorada) --- */
+.contact-icon-circle {
+    width: 42px; /* Los hacemos un pelín más grandes */
+    height: 42px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-oro); /* Mantenemos tu color dorado */
+    
+    /* Le damos una sombra dorada muy suave y un bordecito para que no se funda con el fondo */
+    box-shadow: 0 4px 12px rgba(200, 135, 66, 0.15); 
+    border: 1px solid rgba(200, 135, 66, 0.15);
+    flex-shrink: 0;
+}
+
+.contact-icon-circle svg {
+    width: 22px; /* El dibujo por dentro también crece */
+    height: 22px;
+    stroke-width: 2.5; /* ¡EL TRUCO! Hacemos que la línea sea más gordita para que se lea perfecto */
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+/* --- Botón Porfolio Destacado --- */
+.btn-portfolio-featured {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--color-lila); /* Color lila sólido para que destaque */
+    padding: 8px 24px 8px 8px; /* Menos espacio a la izquierda para el icono */
+    border-radius: 40px;
+    text-decoration: none;
+    color: var(--color-marron-oscuro);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(202, 170, 205, 0.3);
+}
+
+.portfolio-icon-inside {
+    width: 34px;
+    height: 34px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-oro);
+    transition: all 0.3s ease;
+}
+
+.portfolio-icon-inside svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Efecto hover del botón */
+.btn-portfolio-featured:hover {
+    transform: translateY(-3px);
+    background-color: var(--color-oro);
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(200, 135, 66, 0.3);
+}
+
+.btn-portfolio-featured:hover .portfolio-icon-inside {
+    color: var(--color-oro);
+    transform: rotate(-10deg);
+}
+
+.detail-icon {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.detail-text {
+    opacity: 0.7;
+}
+
+/* --- Agrupación del email y botón de portfolio --- */
+.contact-action-group {
+    display: flex;
+    align-items: center; /* Centra verticalmente el email y el botón */
+    gap: 30px; 
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Si la pantalla es pequeña, el botón bajará a la siguiente línea */
+}
+
+.contact-direct-mail {
+    margin-bottom: 0; /* Le quitamos el margen que tenía antes para que se alinee con el botón */
+}
+
+/* --- Ajuste específico para el botón de descarga --- */
+.btn-download {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    background-color: var(--white); /* Fondo blanco para que resalte sobre la crema */
+}
+
+.btn-download:hover {
+    background-color: var(--color-lila);
+}
+
+/* =========================================
+   22. ARTWORKS BANNER (RESTAURADO A TAMAÑO GRANDE)
+   ========================================= */
+
+/* 1. Recuperamos el tamaño grande del banner solo para Artworks */
+.projects-hero.artworks-hero {
+    min-height: 450px !important; /* Volvemos al tamaño original espacioso */
+    padding-top: 100px !important;
+}
+
+/* 2. Bajamos el título y el texto a su posición original (centrada y relajada) */
+.artworks-hero .banner-text-group {
+    margin-top: -220px !important; /* Bajamos el texto para que no esté "pegado" arriba */
+}
+
+/* 3. Quitamos el "tirón" hacia arriba de la galería */
+.masonry-gallery {
+    margin-top: -70px !important; /* Le damos un poco de aire respecto al banner */
+    position: relative;
+    z-index: 10;
+}
+
+/* 4. Mantenemos la opacidad suave que te gustó */
+.artworks-bg {
+    opacity: 0.75; 
 }
