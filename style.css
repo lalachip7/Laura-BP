@@ -1,10 +1,9 @@
 /* =========================================
-   1. IMPORTS Y FUENTES (ACTUALIZADO)
+   1. IMPORTACIONES, FUENTES Y VARIABLES
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&family=Patrick+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap');
 
-/* Fuentes para The Living Garden */
 @font-face {
     font-family: 'GardenTitle';
     src: url('assets/fuentes/Quote.ttf') format('truetype');
@@ -15,21 +14,16 @@
     src: url('assets/fuentes/27776_OcrA.ttf') format('truetype');
 }
 
-/* Fuentes para White Noise */
 @font-face {
     font-family: 'NoiseTitle';
     src: url('assets/fuentes/One%20Constant.ttf') format('truetype');
 }
 
-/* Fuentes para Eclipsa */
 @font-face {
     font-family: 'EclipsaTitle';
     src: url('assets/fuentes/font1.ttf') format('truetype');
 }
 
-/* =========================================
-   2. VARIABLES Y ESTILOS GENERALES
-   ========================================= */
 :root {
     --bg-crema: #f1dfb6;
     --color-amarillo: #fdf3dd;
@@ -41,17 +35,19 @@
     --white: #FAF6F0;
 }
 
+/* =========================================
+   2. ESTILOS BASE Y ANIMACIONES
+   ========================================= */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--white);
     font-family: 'Quicksand', sans-serif;
     color: var(--color-marron-oscuro);
     margin: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    /* ← ponlo aquí en su lugar */
 }
 
 section {
@@ -67,33 +63,15 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* =========================================
-   3. ANIMACIONES BASE
-   ========================================= */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes floating {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }
 
 .animate-up {
@@ -106,8 +84,9 @@ h2 {
 }
 
 /* =========================================
-   4. BARRA DE NAVEGACIÓN
+   3. COMPONENTES GLOBALES (Nav, Footer, Lightbox)
    ========================================= */
+/* --- Barra de Navegación --- */
 .transparent-nav {
     display: flex;
     justify-content: space-between;
@@ -127,11 +106,28 @@ h2 {
 }
 
 .transparent-nav.scrolled {
-    background-color: rgba(250, 246, 240, 0.85);
+    background-color: rgba(250, 246, 240, 0.98);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     padding: 0.6rem 8%;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.nav-logo-icon {
+    width: 35px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-wrapper:hover .nav-logo-icon {
+    transform: rotate(-10deg) scale(1.1);
 }
 
 .logo {
@@ -148,7 +144,6 @@ h2 {
     margin: 0;
 }
 
-/* --- ENLACES DEL MENÚ --- */
 .transparent-nav ul li a {
     text-decoration: none !important;
     color: var(--color-marron-oscuro);
@@ -157,10 +152,8 @@ h2 {
     font-weight: 700;
     transition: color 0.3s ease;
     position: relative;
-    /* Necesario para la línea animada */
 }
 
-/* La línea invisible que crece desde el centro */
 .transparent-nav ul li a::after {
     content: '';
     position: absolute;
@@ -174,7 +167,6 @@ h2 {
     border-radius: 2px;
 }
 
-/* Hover general: cambia color y la línea se expande */
 .transparent-nav ul li a:hover {
     background-color: transparent !important;
     color: var(--color-rojo) !important;
@@ -182,7 +174,6 @@ h2 {
 
 .transparent-nav ul li a:hover::after {
     width: 70%;
-    /* La línea crece hasta ocupar el 70% de la palabra */
 }
 
 .transparent-nav.scrolled .logo,
@@ -192,18 +183,12 @@ h2 {
 
 .transparent-nav.scrolled ul li a:hover {
     background-color: transparent;
-    /* Quitamos el recuadro de fondo */
-    color: var(--color-oro¡);
-    /* El texto cambia a naranja/oro */
+    color: var(--color-oro);
     text-decoration: underline;
-    /* Subrayado clásico */
     text-underline-offset: 6px;
-    /* Separación de la línea respecto al texto */
     text-decoration-thickness: 2px;
-    /* Grosor de la línea */
 }
 
-/* --- BOTÓN CONTACT ME (ESTILO OUTLINE) --- */
 .transparent-nav ul li a.nav-btn-contact {
     border: 2px solid var(--color-rojo);
     background-color: transparent;
@@ -214,7 +199,6 @@ h2 {
 
 .transparent-nav ul li a.nav-btn-contact::after {
     display: none;
-    /* Este botón no lleva la línea animada debajo */
 }
 
 .transparent-nav ul li a.nav-btn-contact:hover {
@@ -224,9 +208,260 @@ h2 {
     box-shadow: 0 4px 10px rgba(159, 37, 39, 0.2);
 }
 
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--color-lila);
+    padding: 70px 10% 25px 10%;
+    color: var(--color-marron-oscuro);
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.footer-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.footer-logo-icon {
+    width: 45px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo-wrapper:hover .footer-logo-icon {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.footer-logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-marron-oscuro);
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.footer-subtitle {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    opacity: 0.6;
+    margin: 0 0 20px 0;
+}
+
+.social-circles {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-circle {
+    width: 38px;
+    height: 38px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-oro);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
+.icon-circle svg {
+    width: 17px;
+    height: 17px;
+}
+
+.icon-circle:hover {
+    background-color: var(--color-oro);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.footer-heading {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    opacity: 0.6;
+    margin: 0 0 20px 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--color-marron-oscuro);
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-oro);
+}
+
+.email-wrapper {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.main-footer .footer-email,
+.main-footer .footer-email a {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-marron-oscuro) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px;
+    transition: color 0.3s ease;
+}
+
+.copy-tooltip {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-oro);
+    opacity: 0;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.email-wrapper:hover .copy-tooltip {
+    opacity: 1;
+    bottom: -18px;
+}
+
+.email-wrapper:hover .footer-email {
+    color: var(--color-oro) !important;
+}
+
+.freelance-footer {
+    font-size: 0.8rem;
+    color: var(--color-marron-oscuro);
+    font-weight: 700;
+    opacity: 0.6;
+    margin: 0;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(54, 50, 51, 0.1);
+    padding-top: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0.5;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* --- Lightbox Global --- */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(250, 246, 240, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-size: 3rem;
+    color: var(--color-marron-oscuro);
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--color-rojo);
+}
+
+/* --- Botones Genéricos --- */
+.btn-delicate {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--color-marron-oscuro);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: 2px solid var(--color-lila);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-delicate:hover {
+    background-color: var(--color-lila);
+    color: var(--color-marron-oscuro);
+    transform: translateY(-2px);
+}
+
 /* =========================================
-   5. HERO (PORTADA)
+   4. PÁGINA: INICIO (HOME)
    ========================================= */
+/* --- Hero --- */
 .hero {
     height: 100vh;
     background: url('assets/banner.png') center/cover no-repeat;
@@ -251,7 +486,6 @@ h2 {
     max-width: 90vw;
     margin: 0 auto;
     left: 25px;
-    /* Desplazamos ligeramente a la derecha para compensar el giro */
 }
 
 .box-bg {
@@ -287,53 +521,20 @@ h2 {
     margin: 0;
 }
 
-.fruit {
+.hero .fruit {
     position: absolute;
     z-index: 10;
     filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.2));
-    /* Hemos quitado la animación de aquí para manejarla por separado */
-}
-
-/* Animación combinada para el Hero: Aparecer escalonado + Flotar */
-.hero .fruit {
-    /* Ejecuta fadeInUp (1.2s) y LUEGO empieza floating con un retraso interno de 1.2s */
     animation: fadeInUp 1.2s ease-out forwards, floating 5s ease-in-out infinite 1.2s;
     opacity: 0;
-    /* Empiezan invisibles para que funcione el fadeInUp */
 }
 
-/* Para que no todas se muevan al mismo tiempo (efecto más natural) */
-.f-top-left {
-    top: 15%;
-    left: -10%;
-    width: 20%;
-    animation-delay: 0s;
-}
+.f-top-left { top: 15%; left: -10%; width: 20%; animation-delay: 0s; }
+.f-top-right { top: 5%; right: 5%; width: 15%; animation-delay: 1.5s; }
+.f-bottom-left { bottom: -5%; left: -20%; width: 25%; animation-delay: 0.7s; }
+.f-bottom-right { bottom: -10%; right: -10%; width: 30%; animation-delay: 2.2s; }
 
-.f-top-right {
-    top: 5%;
-    right: 5%;
-    width: 15%;
-    animation-delay: 1.5s;
-}
-
-.f-bottom-left {
-    bottom: -5%;
-    left: -20%;
-    width: 25%;
-    animation-delay: 0.7s;
-}
-
-.f-bottom-right {
-    bottom: -10%;
-    right: -10%;
-    width: 30%;
-    animation-delay: 2.2s;
-}
-
-/* =========================================
-   6. SOBRE MÍ
-   ========================================= */
+/* --- Sobre mí --- */
 .about-intro {
     padding: 20px 10% 40px 10%;
     background-color: transparent;
@@ -404,27 +605,11 @@ h2 {
     animation: floating 4s ease-in-out infinite;
 }
 
-.parallax-star {
-    position: absolute;
-    z-index: -1;
-    opacity: 0.8;
-}
+.parallax-star { position: absolute; z-index: -1; opacity: 0.8; }
+.star-1 { top: 5px; left: -15%; width: 40px; }
+.star-2 { top: 15px; left: 0%; width: 25px; }
 
-.star-1 {
-    top: 5px;
-    left: -15%;
-    width: 40px;
-}
-
-.star-2 {
-    top: 15px;
-    left: 0%;
-    width: 25px;
-}
-
-/* =========================================
-   7. SECCIÓN TOOLKIT (MENÚ PICNIC)
-   ========================================= */
+/* --- Toolkit --- */
 .toolkit-section {
     padding: 60px 8% 80px 8%;
     background-image: url('assets/divider.png');
@@ -473,25 +658,11 @@ h2 {
     border: 3px solid transparent;
 }
 
-.card-left {
-    transform: rotate(-1.5deg);
-    background-image: url('assets/bg-game.png');
-}
+.card-left { transform: rotate(-1.5deg); background-image: url('assets/bg-game.png'); }
+.card-right { transform: rotate(1.5deg); background-image: url('assets/bg-game.png'); }
+.featured-card { transform: scale(1.05); background-image: url('assets/bg-game.png'); z-index: 2; border: 3px solid var(--color-rojo); }
 
-.card-right {
-    transform: rotate(1.5deg);
-    background-image: url('assets/bg-game.png');
-}
-
-.featured-card {
-    transform: scale(1.05);
-    background-image: url('assets/bg-game.png');
-    z-index: 2;
-    border: 3px solid var(--color-rojo);
-}
-
-.card-left:hover,
-.card-right:hover {
+.card-left:hover, .card-right:hover {
     transform: translateY(-12px) rotate(0deg);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
@@ -501,12 +672,7 @@ h2 {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-.menu-icon {
-    width: 80px;
-    height: auto;
-    margin: 0 auto 15px auto;
-    display: block;
-}
+.menu-icon { width: 80px; height: auto; margin: 0 auto 15px auto; display: block; }
 
 .menu-divider {
     border: none;
@@ -539,10 +705,7 @@ h2 {
     line-height: 1.6;
 }
 
-.menu-ingredients span {
-    display: inline-block;
-    padding: 0 4px;
-}
+.menu-ingredients span { display: inline-block; padding: 0 4px; }
 
 .card-link {
     text-decoration: none;
@@ -558,25 +721,9 @@ h2 {
     border-bottom: 2px solid var(--color-rojo);
 }
 
-.btn-main {
-    background-color: var(--color-rojo);
-    color: var(--white) !important;
-    padding: 10px 25px;
-    border-radius: 12px;
-    border-bottom: none !important;
-}
-
-.btn-main:hover {
-    background-color: var(--color-marron-oscuro);
-    transform: translateY(-3px);
-}
-
-/* =========================================
-   8. OBRAS DESTACADAS (AJUSTE DE FONDO Y CARRUSEL 3D)
-   ========================================= */
+/* --- Featured Artworks Carousel (Home) --- */
 .featured-art-wrapper {
     margin-top: -10px;
-    /* Reducido al mínimo: no deja línea blanca, pero NUNCA esconde el mantel */
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -584,15 +731,10 @@ h2 {
 
 .featured-art {
     width: 100%;
-    /* Aumentamos el 80px final a 140px para darle espacio a las ondas de abajo */
     padding: 140px 0 140px 0;
     position: relative;
     background-image: url('assets/mantel2.png');
-
-    /* Mantiene la proporción perfecta siempre sin deformarse */
     background-size: cover;
-
-    /* Alineamos priorizando la parte superior (5%) para salvar el borde de arriba */
     background-position: center 5%;
     background-repeat: no-repeat;
 }
@@ -619,7 +761,6 @@ h2 {
     opacity: 0.6;
 }
 
-/* --- CONTENEDOR Y FLECHAS --- */
 .carousel-container {
     max-width: 1400px;
     width: 95%;
@@ -647,13 +788,8 @@ h2 {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.prev-arrow {
-    left: 0;
-}
-
-.next-arrow {
-    right: 0;
-}
+.prev-arrow { left: 0; }
+.next-arrow { right: 0; }
 
 .carousel-arrow:hover {
     color: var(--white);
@@ -661,20 +797,16 @@ h2 {
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
-/* --- GALERÍA 3D --- */
 .polaroid-gallery {
     position: relative;
     width: 100%;
     height: 450px;
-    /* Aumentamos altura para dar cabida a las imágenes más grandes */
     display: flex;
     justify-content: center;
     align-items: center;
     perspective: 1200px;
-    /* Efecto 3D un poco más suave */
 }
 
-/* --- TARJETAS POLAROID --- */
 .polaroid-card {
     width: auto;
     background-color: var(--white);
@@ -682,7 +814,6 @@ h2 {
     border-radius: 6px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     position: absolute;
-
     opacity: 0;
     visibility: hidden;
     transform: translateX(0) scale(0.5) rotateY(0deg);
@@ -690,11 +821,9 @@ h2 {
     z-index: 0;
 }
 
-/* --- ESTADOS DEL CARRUSEL 3D (Espaciado Fijo en Píxeles) --- */
 .polaroid-card.carousel-item-left {
     opacity: 0.8;
     visibility: visible;
-    /* Usamos -380px fijos para que nunca se solapen sin importar el ancho de la foto */
     transform: translateX(-380px) scale(0.85) rotateY(15deg) rotate(-3deg);
     z-index: 10;
 }
@@ -720,7 +849,6 @@ h2 {
     z-index: 30;
 }
 
-/* CAJA DE LA IMAGEN: MUCHO MÁS GRANDES */
 .polaroid-img-wrapper {
     border-radius: 4px;
     overflow: hidden;
@@ -728,12 +856,10 @@ h2 {
 
 .polaroid-img-wrapper img {
     height: 300px;
-    /* Tamaño grandote recuperado */
     width: auto;
     display: block;
 }
 
-/* --- NOTITAS ADHESIVAS --- */
 .art-caption-sticky {
     position: absolute;
     background: rgba(255, 255, 255, 0.95);
@@ -751,26 +877,11 @@ h2 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.polaroid-card.carousel-item-center:hover .art-caption-sticky {
-    opacity: 1;
-}
+.polaroid-card.carousel-item-center:hover .art-caption-sticky { opacity: 1; }
+.polaroid-card:nth-child(odd) .art-caption-sticky { top: -20px; right: -40px; transform: rotate(5deg); }
+.polaroid-card:nth-child(even) .art-caption-sticky { bottom: 20px; left: -40px; transform: rotate(-3deg); }
 
-.polaroid-card:nth-child(odd) .art-caption-sticky {
-    top: -20px;
-    right: -40px;
-    transform: rotate(5deg);
-}
-
-.polaroid-card:nth-child(even) .art-caption-sticky {
-    bottom: 20px;
-    left: -40px;
-    transform: rotate(-3deg);
-}
-
-/* --- BOTÓN --- */
-.btn-container {
-    margin-top: 20px;
-}
+.btn-container { margin-top: 20px; }
 
 .btn-more {
     display: inline-block;
@@ -791,960 +902,21 @@ h2 {
     transform: translateY(-3px);
 }
 
-/* Adaptación a móviles */
-@media (max-width: 850px) {
-    .carousel-container {
-        max-width: 95%;
-    }
-
-    .carousel-arrow {
-        font-size: 2.5rem;
-        padding: 5px;
-    }
-
-    .polaroid-card.carousel-item-left,
-    .polaroid-card.carousel-item-right {
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .polaroid-img-wrapper img {
-        height: 240px;
-    }
-}
-
 /* =========================================
-   9. PROYECTOS Y JUEGOS (ONDAS ASIMÉTRICAS Y TARJETAS LIMPIAS)
+   5. PÁGINA: PROYECTOS
    ========================================= */
-.projects-section {
-    /* EL TRUCO: 130px de margen superior separan esta sección físicamente del mantel */
-    margin-top: 130px;
-    /* Reducimos el padding superior para que el título casi toque la onda */
-    padding: 10px 8% 60px 8%;
-    background-color: var(--color-morado);
-    position: relative;
-}
-
-/* --- NUEVAS ONDAS ANCLADAS --- */
-.wave-divider {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    z-index: 5;
-}
-
-.wave-divider svg {
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 90px;
-    /* Altura perfecta para lucir las curvas asimétricas */
-}
-
-.wave-divider .shape-fill {
-    fill: var(--color-morado);
-}
-
-.wave-divider.top-wave {
-    top: 0;
-    /* Se proyecta hacia arriba ocupando parte de los 130px de margen, sin llegar a tocar el mantel */
-    transform: translateY(-99%);
-}
-
-.wave-divider.bottom-wave {
-    bottom: 0;
-    transform: translateY(99%) rotate(180deg);
-}
-
-/* --- TEXTOS PRINCIPALES --- */
-.projects-header {
-    margin-top: 0px;
-    /* Nos aseguramos de que no haya margen extra del contenedor */
-    margin-bottom: 50px;
-    position: relative;
-    z-index: 10;
-}
-
-.projects-section h2 {
-    margin-top: 0;
-    /* EL CULPABLE: Quitamos el margen invisible enorme que ponía el navegador */
-    color: var(--white);
-}
-
-.projects-intro {
-    color: var(--white);
-}
-
-/* --- CUADRÍCULA Y TARJETAS --- */
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    max-width: 1300px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-}
-
-.project-card {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--white);
-    border-radius: 24px;
-    padding: 0;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-}
-
-.project-img-wrapper {
-    display: block;
-    width: 100%;
-    height: 240px;
-    overflow: hidden;
-    position: relative;
-}
-
-.project-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.project-img-wrapper:hover img {
-    transform: scale(1.08);
-}
-
-.project-info {
-    padding: 30px 25px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.project-info h3 {
-    font-family: 'Darumadrop One', cursive;
-    font-size: 2.2rem;
-    color: var(--color-oro) !important;
-    /* Forzamos a que sea naranja sí o sí */
-    margin: 0 0 15px 0;
-    line-height: 1;
-}
-
-.project-desc {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-marron-oscuro);
-    margin: 0 0 25px 0;
-}
-
-/* --- BLOQUE DE ROL --- */
-.role-wrapper {
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 2px dashed var(--bg-crema);
-}
-
-.role-label {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--color-marron-oscuro);
-    opacity: 0.6;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    letter-spacing: 1.5px;
-}
-
-.role-tag {
-    display: inline-block;
-    background-color: var(--color-oro);
-    color: var(--white);
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-/* Responsivo */
-@media (max-width: 1100px) {
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-    .projects-container {
-        grid-template-columns: 1fr;
-    }
-
-    .project-img-wrapper {
-        height: 200px;
-    }
-}
-
-/* =========================================
-   10. SECCIÓN MORALLAMA BRAND (TIENDA ETSY)
-   ========================================= */
-.brand-section {
-    padding: 100px 5% 80px 5%;
-    /* MÁS ESPACIO ARRIBA (antes era 60px) */
-    background-color: transparent;
-    text-align: center;
-    position: relative;
-    overflow: visible;
-}
-
-/* --- FRUTAS DECORATIVAS FLOTANTES --- */
-.brand-fruit {
-    position: absolute;
-    z-index: -1;
-    filter: drop-shadow(0px 15px 12px rgba(0, 0, 0, 0.15));
-    pointer-events: none;
-    animation: floating 6s ease-in-out infinite;
-    opacity: 0.35;
-}
-
-.brand-fruit.f-1 {
-    top: 10%;
-    left: 5%;
-    width: 160px;
-    rotate: -15deg;
-    animation-delay: 0s;
-}
-
-.brand-fruit.f-2 {
-    top: 45%;
-    right: -2%;
-    width: 180px;
-    rotate: 30deg;
-    animation-delay: 1.5s;
-}
-
-.brand-fruit.f-3 {
-    top: -20%;
-    right: 12%;
-    width: 130px;
-    rotate: 15deg;
-    animation-delay: 0.7s;
-}
-
-.brand-fruit.f-4 {
-    bottom: 5%;
-    right: 10%;
-    width: 200px;
-    rotate: -15deg;
-    animation-delay: 2.2s;
-}
-
-.brand-fruit.f-5 {
-    bottom: 15%;
-    left: 8%;
-    width: 110px;
-    rotate: 45deg;
-    animation-delay: 1.1s;
-}
-
-.brand-header {
-    margin-bottom: 50px;
-}
-
-.brand-section h2 {
-    color: var(--color-oro);
-    margin: 0 0 15px 0;
-}
-
-.brand-intro {
-    font-size: 1rem;
-    color: var(--color-marron-oscuro);
-    max-width: 750px;
-    margin: 0 auto;
-    line-height: 1.5;
-}
-
-/* --- TARJETAS DE PRODUCTO --- */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    max-width: 1350px;
-    margin: 0 auto 30px auto;
-    /* MENOS ESPACIO ABAJO, acerca el botón (antes era 60px) */
-}
-
-.product-card {
-    text-align: center;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    width: 100%;
-}
-
-.card-tilt-left {
-    transform: rotate(-1.5deg);
-}
-
-.card-drop-center {
-    transform: translateY(20px) rotate(1deg);
-}
-
-.card-tilt-right {
-    transform: rotate(-1deg);
-}
-
-.product-card:hover {
-    transform: translateY(-10px) rotate(0deg);
-}
-
-.product-img-wrapper {
-    width: 100%;
-    height: 300px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.product-img-wrapper img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.product-card:hover .product-img-wrapper img {
-    transform: scale(1.05);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
-}
-
-.product-card h3 {
-    font-family: 'Darumadrop One', cursive;
-    font-size: 2.4rem;
-    color: var(--color-oro);
-    margin: 0 0 10px 0;
-}
-
-.cute-divider {
-    width: 35px;
-    height: 3px;
-    background-color: var(--color-morado);
-    margin: 0 auto 15px auto;
-    border-radius: 3px;
-    opacity: 0.5;
-}
-
-.product-card p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    padding: 0 15px;
-    margin: 0;
-}
-
-/* --- BOTÓN --- */
-.brand-cta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.btn-etsy {
-    display: inline-block;
-    background-color: var(--color-rojo);
-    color: var(--white);
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    padding: 16px 50px;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 18px rgba(159, 37, 39, 0.25);
-}
-
-.btn-etsy:hover {
-    background-color: var(--color-oro);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(200, 135, 66, 0.35);
-}
-
-.link-more-brand {
-    color: var(--color-marron-oscuro);
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.05rem;
-    opacity: 0.7;
-}
-
-.link-more-brand:hover {
-    color: var(--color-rojo);
-    opacity: 1;
-}
-
-/* Ajustes para móviles */
-@media (max-width: 1000px) {
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 50px;
-    }
-}
-
-@media (max-width: 700px) {
-    .brand-fruit {
-        display: none;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .card-drop-center {
-        transform: none;
-    }
-
-    .product-img-wrapper {
-        height: 250px;
-    }
-}
-
-/* =========================================
-   11. FOOTER MULTICOLUMNA
-   ========================================= */
-.main-footer {
-    background-color: var(--color-lila);
-    padding: 70px 10% 25px 10%;
-    color: var(--color-marron-oscuro);
-}
-
-.footer-columns {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 50px;
-    /* Espacio antes de la línea inferior */
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.footer-col {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-}
-
-/* --- COLUMNA 1: MARCA --- */
-.footer-logo {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--color-marron-oscuro);
-    text-decoration: none;
-    margin-bottom: 5px;
-}
-
-.footer-subtitle {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    opacity: 0.6;
-    margin: 0 0 20px 0;
-}
-
-/* --- REDES --- */
-.social-circles {
-    display: flex;
-    gap: 12px;
-}
-
-.icon-circle {
-    width: 38px;
-    height: 38px;
-    background-color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-oro);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
-}
-
-.icon-circle svg {
-    width: 17px;
-    height: 17px;
-}
-
-.icon-circle:hover {
-    background-color: var(--color-oro);
-    color: var(--white);
-    transform: translateY(-2px);
-}
-
-/* --- COLUMNA 2 Y 3: TEXTOS Y ENLACES --- */
-.footer-heading {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    opacity: 0.6;
-    margin: 0 0 20px 0;
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: var(--color-marron-oscuro);
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: var(--color-oro);
-}
-
-/* --- EMAIL CON HOVER --- */
-.email-wrapper {
-    position: relative;
-    cursor: pointer;
-    margin-bottom: 15px;
-    /* Espacio antes del freelance */
-}
-
-.main-footer .footer-email,
-.main-footer .footer-email a {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-marron-oscuro) !important;
-    text-decoration: underline !important;
-    text-underline-offset: 4px;
-    transition: color 0.3s ease;
-}
-
-.copy-tooltip {
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    /* Alineado a la izquierda */
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--color-oro);
-    opacity: 0;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.email-wrapper:hover .copy-tooltip {
-    opacity: 1;
-    bottom: -18px;
-}
-
-.email-wrapper:hover .footer-email {
-    color: var(--color-oro) !important;
-}
-
-.freelance-footer {
-    font-size: 0.8rem;
-    color: var(--color-marron-oscuro);
-    font-weight: 700;
-    opacity: 0.6;
-    margin: 0;
-}
-
-/* --- BARRA INFERIOR (COPYRIGHT) --- */
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid rgba(54, 50, 51, 0.1);
-    padding-top: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    opacity: 0.5;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-bottom p {
-    margin: 0;
-}
-
-/* Adaptación a móviles */
-@media (max-width: 768px) {
-    .footer-columns {
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-        align-items: center;
-    }
-}
-
-/* =========================================
-   12. MEDIA QUERIES (MÓVILES)
-   ========================================= */
-@media (max-width: 768px) {
-    .transparent-nav {
-        flex-direction: column;
-        padding: 1.2rem 1rem 1.8rem 1rem;
-    }
-
-    .transparent-nav.scrolled {
-        flex-direction: column;
-        padding: 1.5rem 1rem 2.2rem 1rem !important;
-    }
-
-    /* ARREGLO DEL MENÚ MÓVIL: Flex-wrap con gap en lugar de márgenes raros */
-    .transparent-nav ul {
-        margin-top: 15px;
-        padding: 0;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        /* Espacio uniforme entre todos los botones */
-    }
-
-    .transparent-nav ul li a {
-        margin: 0 !important;
-        /* Quitamos los márgenes laterales que lo rompían */
-        font-size: 0.95rem;
-    }
-
-    /* El botón de contacto baja a una línea nueva si no cabe, con elegancia */
-    .transparent-nav ul li a.nav-btn-contact {
-        margin-top: 5px !important;
-    }
-
-    .projects-hero {
-        padding-top: 180px !important; /* Más espacio para que el título baje */
-        min-height: 250px !important;
-    }
-
-    /* 2. Ajustamos el cartel de "Welcome" en la Home */
-    .hero-main-container {
-        top: 8vh !important; 
-        margin-top: 50px;
-    }
-
-    .hero-text-wrapper {
-        width: 90%;
-    }
-
-    .hero-title-top {
-        font-size: 3rem;
-        margin: 0 0 10px 0;
-    }
-
-    .hero-subtitle-bottom {
-        font-size: 1.1rem;
-    }
-
-    .about-container {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .about-text,
-    .about-text h2 {
-        text-align: center;
-    }
-
-    .artworks-page-header {
-        padding-top: 150px;
-    }
-
-    .contact-page-container {
-        padding-top: 150px; 
-    }
-
-    .skills-cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .skill-card,
-    .featured-card {
-        width: 100%;
-        transform: rotate(0deg) scale(1) !important;
-    }
-
-    .carousel-arrow {
-        font-size: 2rem;
-    }
-
-    .polaroid-img-wrapper img {
-        height: 200px;
-    }
-
-    /* Usamos 'contain' para que la imagen se vea entera y no se corte el texto lateral */
-    .projects-full-width-bg {
-        object-fit: contain !important; 
-        top: -20px !important; /* Lo ajustamos un poco hacia arriba */
-        height: auto !important;
-    }
-
-    /* 4. El título de la página de proyectos en móvil */
-    .banner-text-group h2 {
-        font-size: 2.8rem !important;
-        margin-bottom: 15px !important;
-    }
-}
-
-/* =========================================
-   13. AJUSTES LOGO MORALLAMA (IMAGEN + TEXTO)
-   ========================================= */
-/* Ajustes para el Menú */
-.logo-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    /* Espacio entre el dibujo y el texto */
-    text-decoration: none;
-}
-
-.nav-logo-icon {
-    width: 35px;
-    /* Tamaño del circulito en el menú */
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.logo-wrapper:hover .nav-logo-icon {
-    transform: rotate(-10deg) scale(1.1);
-    /* Pequeño efecto al pasar el ratón */
-}
-
-/* Ajustes para el Footer */
-.footer-logo-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-    margin-bottom: 5px;
-}
-
-.footer-logo-icon {
-    width: 45px;
-    /* Un poco más grande en el footer */
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.footer-logo-wrapper:hover .footer-logo-icon {
-    transform: rotate(-10deg) scale(1.1);
-}
-
-/* =========================================
-   14. GALERÍA MASONRY Y LIGHTBOX (ARTWORKS)
-   ========================================= */
-.artworks-page-header {
-    padding: 80px 5% 30px 5%;
-    text-align: center;
-}
-
-.artworks-page-header p {
-    font-size: 1.15rem;
-    color: var(--color-marron-oscuro);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* --- CUADRÍCULA MASONRY (Tipo Pinterest) --- */
-.masonry-gallery {
-    column-count: 3;
-    column-gap: 20px;
-    /* REDUCIMOS el 100px a 40px para quitar el hueco enorme debajo de las fotos */
-    padding: 0 5% 40px 5%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.masonry-item {
-    break-inside: avoid;
-    /* Evita que las fotos se corten por la mitad */
-    margin-bottom: 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.masonry-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-}
-
-.masonry-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* Elimina huecos blancos debajo de la imagen */
-}
-
-/* Ajustes Masonry para tablets y móviles */
-@media (max-width: 1000px) {
-    .masonry-gallery {
-        column-count: 2;
-    }
-}
-
-@media (max-width: 600px) {
-    .masonry-gallery {
-        column-count: 1;
-    }
-}
-
-/* --- LIGHTBOX (Ventana Modal) --- */
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(250, 246, 240, 0.95);
-    /* Tu color blanco crema con transparencia */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.lightbox.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.lightbox img {
-    max-width: 90%;
-    max-height: 90vh;
-    border-radius: 8px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    font-size: 3rem;
-    color: var(--color-marron-oscuro);
-    cursor: pointer;
-    font-family: 'Quicksand', sans-serif;
-    line-height: 1;
-    transition: color 0.3s ease;
-}
-
-.lightbox-close:hover {
-    color: var(--color-rojo);
-}
-
-/* --- LLAMADA A LA ACCIÓN (CTA) SUTIL --- */
-.gallery-cta {
-    padding: 0 10% 60px 10%;
-    /* Muchísimo menos espacio */
-    text-align: center;
-    background-color: transparent;
-}
-
-.gallery-cta h2 {
-    font-family: 'Quicksand', sans-serif;
-    /* Letra limpia y suave */
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-marron-oscuro);
-    margin: 0 0 15px 0;
-    opacity: 0.8;
-    /* Le quita agresividad al color */
-}
-
-.gallery-cta .cute-divider {
-    background-color: var(--color-lila);
-    /* Divisor en color pastel */
-    width: 40px;
-    height: 2px;
-    margin: 0 auto 15px auto;
-}
-
-.gallery-cta p {
-    font-size: 1rem;
-    color: var(--color-marron-oscuro);
-    margin-bottom: 25px;
-    font-weight: 500;
-    opacity: 0.6;
-    /* Texto secundario más disimulado */
-}
-
-/* Nuevo botón delicado (tipo outline) */
-.btn-delicate {
-    display: inline-block;
-    background-color: transparent;
-    color: var(--color-marron-oscuro);
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-    padding: 10px 30px;
-    border-radius: 30px;
-    /* Bordes muy redonditos y amigables */
-    border: 2px solid var(--color-lila);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.btn-delicate:hover {
-    background-color: var(--color-lila);
-    color: var(--color-marron-oscuro);
-    transform: translateY(-2px);
-}
-
-/* =========================================
-   15. PÁGINA DE PROYECTOS (CABECERA TIPO HERO)
-   ========================================= */
+/* --- Cabecera Hero y Grid Principal --- */
 .projects-hero {
     position: relative;
-    padding: 100px 5% 40px 5%; /* Reducimos el padding superior (antes 130px) */
+    padding: 100px 5% 40px 5%; 
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 280px; /* ¡LA CLAVE! Reducimos drásticamente la altura (antes 400px) */
+    min-height: 280px; 
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
 
-/* La imagen del divider estirada a todo el ancho, con el roto visible abajo */
 .projects-full-width-bg {
     position: absolute;
     top: 0;
@@ -1756,11 +928,10 @@ h2 {
     z-index: 1;
 }
 
-/* Posicionamiento del texto sobre la imagen */
 .banner-text-group {
     position: relative;
     z-index: 10;
-    margin-top: -100px; /* Lo ajustamos para que quede centrado en el nuevo banner más estrecho */
+    margin-top: -100px; 
     text-align: center;
 }
 
@@ -1771,7 +942,6 @@ h2 {
     margin: 0 0 25px 0;
 }
 
-/* --- BOTONES DE FILTRO --- */
 .project-tabs {
     display: flex;
     justify-content: center;
@@ -1793,20 +963,108 @@ h2 {
     letter-spacing: 0.3px;
 }
 
-.tab-btn:hover {
-    background-color: var(--color-lila);
-    transform: translateY(-2px);
+.tab-btn:hover { background-color: var(--color-lila); transform: translateY(-2px); }
+.tab-btn.active { background-color: var(--white); color: var(--color-marron-oscuro); transform: translateY(-1px); }
+
+.projects-section {
+    margin-top: 130px;
+    padding: 10px 8% 60px 8%;
+    background-color: var(--color-morado);
+    position: relative;
 }
 
-.tab-btn.active {
+.wave-divider {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+}
+
+.wave-divider svg {
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+}
+
+.wave-divider .shape-fill { fill: var(--color-morado); }
+.wave-divider.top-wave { top: 0; transform: translateY(-99%); }
+.wave-divider.bottom-wave { bottom: 0; transform: translateY(99%) rotate(180deg); }
+
+.projects-header {
+    margin-top: 0px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 10;
+}
+
+.projects-section h2 { margin-top: 0; color: var(--white); }
+.projects-intro { color: var(--white); }
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
     background-color: var(--white);
-    color: var(--color-marron-oscuro);
-    transform: translateY(-1px);
+    border-radius: 24px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* =========================================
-   16. DETALLE DE VIDEOJUEGOS
-   ========================================= */
+.project-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2); }
+
+.project-img-wrapper {
+    display: block;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-img-wrapper:hover img { transform: scale(1.08); }
+
+.project-info {
+    padding: 30px 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-info h3 {
+    font-family: 'Darumadrop One', cursive;
+    font-size: 2.2rem;
+    color: var(--color-oro) !important;
+    margin: 0 0 15px 0;
+    line-height: 1;
+}
+
+.project-desc { font-size: 1rem; line-height: 1.5; color: var(--color-marron-oscuro); margin: 0 0 25px 0; }
+
+.role-wrapper { margin-top: auto; padding-top: 20px; border-top: 2px dashed var(--bg-crema); }
+.role-label { display: block; font-size: 0.8rem; color: var(--color-marron-oscuro); opacity: 0.6; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1.5px; }
+.role-tag { display: inline-block; background-color: var(--color-oro); color: var(--white); padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; font-weight: 700; margin: 0; }
+
+/* --- Vista de Detalle (Juegos Individuales) --- */
 .games-centered-section {
     position: relative;
     margin-top: 0 !important;
@@ -1817,1129 +1075,385 @@ h2 {
     overflow: visible;
 }
 
-#category-games,
-#category-other {
-    margin-top: 0 !important;
-}
+#category-games, #category-other { margin-top: 0 !important; }
 
-/* --- MENÚ TIMELINE (JUSTIFICADO IZQUIERDA Y HOVER ORO) --- */
 .game-side-nav {
     width: 200px;
     position: sticky;
     top: 100px;
-    height: calc(100vh - 100px);
-    padding: 60px 0 40px 4%;
-    box-sizing: border-box;
-    z-index: 100;
-}
-
-.game-side-nav .nav-label {
-    display: block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    color: var(--color-marron-oscuro);
-    opacity: 0.5;
-    margin-bottom: 25px;
-    text-align: left;
-    /* Justificado izquierda */
-}
-
-.game-side-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-left: 2px solid var(--color-lila);
-}
-
-.game-side-nav ul li {
-    margin-bottom: 25px;
-    position: relative;
-    text-align: left;
-    /* Justificado izquierda */
-}
-
-/* --- ENLACES DEL MENÚ LATERAL --- */
-.game-side-nav ul li a {
-    position: relative;
-    /* Necesario para que la estrella se posicione bien */
-    display: block;
-    padding: 10px 0 10px 20px;
-    /* Mantenemos el espacio izquierdo */
-    color: var(--color-marron-oscuro);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    opacity: 0.4;
-    transition: all 0.3s ease;
-}
-
-/* Puntito interactivo clavado en la línea */
-.game-side-nav ul li a::before {
-    content: '✦';
-    position: absolute;
-    left: -26px;
-    /* Lo tira exactamente encima de la línea morada */
-    top: 50%;
-    /* Lo centra verticalmente... */
-    transform: translateY(-50%);
-    /* ...a la perfección con el texto */
-    color: transparent;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-}
-
-/* HOVER Y ESTADO ACTIVO (Se ilumina) */
-.game-side-nav ul li a:hover,
-.game-side-nav ul li a.active {
-    opacity: 1;
-    color: var(--color-oro);
-}
-
-.game-side-nav ul li a:hover::before,
-.game-side-nav ul li a.active::before {
-    color: var(--color-oro);
-}
-
-
-/* --- CONTENEDOR CENTRAL DE JUEGOS --- */
-.games-content-area {
-    flex-grow: 1;
-    width: 100%;
-    max-width: 1000px;
-    /* Ajusta este valor al ancho que quieras para todos los juegos */
-    margin: 0 auto;
-}
-
-.game-full-block {
-    width: 100%;
-    text-align: left;
-    margin-bottom: 0px;
-    /* Antes estaba en 80px, lo dejamos en 0 */
-    padding: 20px 0;
-    /* Antes estaba en 60px, lo reducimos a un tercio */
-    position: relative;
-}
-
-/* EL TRUCO: Fondo morado de ancho completo sin mover el contenido */
-.game-full-block.alt-purple-bg {
-    background-color: transparent;
-    /* Quitamos el fondo del bloque en sí */
-}
-
-.game-full-block.alt-purple-bg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    /* Este es el truco para que nazca en el centro y se expanda a 100vw */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 100%;
-    background-color: rgba(228, 207, 230, 0.4);
-    /* Tu lila suave */
-    z-index: -1;
-    /* Se coloca detrás del texto y la imagen */
-}
-
-/* Aseguramos que el contenido interno no se mueva */
-.game-content-text,
-.game-large-cover-wrapper {
-    position: relative;
-    z-index: 2;
-}
-
-/* PORTADA GRANDE */
-.game-large-cover-wrapper {
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.game-large-cover {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    object-fit: cover;
-}
-
-.game-content-text h3 {
-    font-family: 'Darumadrop One', cursive;
-    font-size: 3.5rem;
-    color: var(--color-oro);
-    margin: 0 0 20px 0;
-}
-
-.game-description {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
-
-/* --- ROL ENCUADRADO (CON ESTRELLITAS) --- */
-.role-box-framed {
-    background: rgba(250, 246, 240, 0.5);
-    padding: 35px 40px;
-    border-radius: 20px;
-    border: 2px dashed var(--color-morado);
-    margin-bottom: 30px;
-}
-
-.role-box-framed h4 {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin: 0 0 10px 0;
-    color: var(--color-marron-oscuro);
-}
-
-.role-box-framed ul {
-    list-style: none;
-    padding: 0;
-}
-
-.role-box-framed ul li {
-    margin-bottom: 12px;
-    padding-left: 25px;
-    position: relative;
-}
-
-/* Estrellitas en el Rol */
-.role-box-framed ul li::before {
-    content: '✦';
-    position: absolute;
-    left: 0;
-    color: var(--color-oro);
-    font-size: 1.2rem;
-}
-
-/* --- BOTÓN ITCH.IO --- */
-.game-actions {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.btn-itch {
-    display: inline-block;
-    background-color: var(--color-marron-oscuro);
-    color: var(--white);
-    padding: 14px 40px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.btn-itch:hover {
-    background-color: var(--color-rojo);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(159, 37, 39, 0.2);
-}
-
-/* --- GALERÍA --- */
-.project-assets-gallery h5 {
-    font-family: 'Darumadrop One', cursive;
-    font-size: 2.2rem;
-    color: var(--color-rojo);
-    margin-bottom: 25px;
-}
-
-.assets-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-
-.assets-grid img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.assets-grid img:hover {
-    transform: scale(1.05);
-}
-
-/* --- EL NUEVO SEPARADOR (DIVIDER.PNG) --- */
-.game-image-divider {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 60px 0 80px 0;
-    /* Espacio respirable entre juegos */
-}
-
-.game-image-divider img {
-    width: 100%;
-    max-width: 900px;
-    /* Se estira bonito pero sin romper la web */
-    height: auto;
-    opacity: 0.9;
-}
-
-/* Móviles */
-@media (max-width: 1000px) {
-    .game-side-nav {
-        display: none;
-    }
-
-    .assets-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-
-
-/* =========================================
-   19. PERSONALIZACIÓN POR JUEGO (FUENTES Y COLORES)
-   ========================================= */
-
-/* --- THE LIVING GARDEN --- */
-#game-living-garden h3,
-#game-living-garden h5 {
-    font-family: 'GardenTitle', cursive;
-    color: #576644;
-}
-
-/* --- WHITE NOISE --- */
-#game-white-noise h3,
-#game-white-noise h5 {
-    font-family: 'NoiseTitle', serif;
-    color: #695956;
-}
-
-/* --- ECLIPSA --- */
-#game-eclipsa h3,
-#game-eclipsa h5 {
-    font-family: 'EclipsaTitle', sans-serif;
-    color: #3c4252;
-}
-
-
-/* =========================================
-   MECÁNICA DE LUCES (WHITE NOISE)
-   ========================================= */
-.mechanic-intro {
-    margin: 50px 0 30px 0;
-    text-align: left;
-}
-
-.mechanic-intro h4 {
-    font-family: 'NoiseTitle', serif;
-    font-size: 2rem;
-    color: #695956;
-    margin: 0 0 10px 0;
-}
-
-.magic-rooms-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-bottom: 50px;
-}
-
-.room-toggle {
-    position: relative;
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.room-toggle:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.room-day,
-.room-night {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
-}
-
-/* La imagen de noche se superpone y se oculta por defecto */
-.room-night {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-    /* El fundido mágico */
-}
-
-/* Al hacer clic, el JS le pone la clase .is-night y aparece */
-.room-toggle.is-night .room-night {
-    opacity: 1;
-}
-
-/* Cartelito flotante para que el usuario sepa que puede hacer clic */
-.light-hint {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(250, 246, 240, 0.9);
-    color: var(--color-marron-oscuro);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    /* No interfiere con el clic */
-}
-
-.room-toggle:hover .light-hint {
-    opacity: 1;
-    /* Aparece al pasar el ratón */
-}
-
-/* =========================================
-   ESTILOS DE BOTONES (CORREGIDO)
-   ========================================= */
-
-/* --- 1. BOTONES TÉCNICOS (SOLO THE LIVING GARDEN) --- */
-.garden-btn,
-.btn-video {
-    display: inline-block;
-    background-image: none !important;
-    /* Quitamos cualquier imagen */
-    text-indent: 0 !important;
-    width: auto !important;
-    height: auto !important;
-
-    /* Estética solicitada: Marrón clarito 40% opacidad */
-    background-color: rgba(189, 150, 126, 0.4) !important;
-    color: var(--color-marron-oscuro) !important;
-
-    /* Borde transparente inicial para evitar que los elementos salten */
-    border: 3px solid transparent !important;
-
-    font-family: 'GardenText', sans-serif !important;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 12px 28px;
-    border-radius: 15px !important;
-    /* Esquinas técnicas */
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-    transform: none !important;
-}
-
-.garden-btn:hover,
-.btn-video:hover {
-    background-color: rgba(165, 139, 123, 1) !important;
-    border: 3px solid rgb(236, 228, 179) !important;
-    /* Reborde amarillo/oro */
-    color: var(--white) !important;
-    transform: none !important;
-    box-shadow: none !important;
-}
-
-/* --- 2. RESTAURAR BOTONES DE IMAGEN (WHITE NOISE Y ECLIPSA) --- */
-.btn-itch.noise-btn,
-.btn-itch.eclipsa-btn {
-    display: inline-block;
-    border: none !important;
-    background-color: transparent !important;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    text-indent: -9999px;
-    box-shadow: none !important;
-    padding: 0;
-    transform: none !important;
-    transition: none !important;
-}
-
-/* White Noise */
-.btn-itch.noise-btn {
-    background-image: url('assets/proyects/white_noise/boton.png') !important;
-    width: 230px;
-    height: 65px;
-}
-
-.btn-itch.noise-btn:hover {
-    background-image: url('assets/proyects/white_noise/boton_hover.png') !important;
-}
-
-.btn-itch.noise-btn:active {
-    background-image: url('assets/proyects/white_noise/boton_on.png') !important;
-}
-
-/* Eclipsa */
-.btn-itch.eclipsa-btn {
-    background-image: url('assets/proyects/eclipsa/boton.png') !important;
-    width: 320px;
-    height: 95px;
-}
-
-.btn-itch.eclipsa-btn:hover {
-    background-image: url('assets/proyects/eclipsa/boton_hover.png') !important;
-}
-
-/* =========================================
-   20. TOOLTIPS Y LIGHTBOX EN ASSETS
-   ========================================= */
-
-/* --- TOOLTIP (Descripción al pasar el ratón) --- */
-.asset-item {
-    position: relative;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.asset-item::after {
-    content: attr(data-title);
-    position: absolute;
-    bottom: -30px;
-    /* Aparece por debajo de la foto */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(54, 50, 51, 0.95);
-    /* Tu marrón oscuro casi opaco */
-    color: var(--white);
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 100;
-    pointer-events: none;
-    /* Evita que el cartelito estorbe al hacer clic */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.asset-item:hover::after {
-    opacity: 1;
-    visibility: visible;
-    bottom: 10px;
-    /* Sube y se coloca sobre la foto */
-}
-
-/* --- LIGHTBOX (Caja negra para agrandar) --- */
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(250, 246, 240, 0.95);
-    /* Crema translúcido */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.lightbox.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.lightbox img {
-    max-width: 90%;
-    max-height: 90vh;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    font-size: 3rem;
-    color: var(--color-marron-oscuro);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.lightbox-close:hover {
-    color: var(--color-rojo);
-}
-
-/* =========================================
-   GIF DESTACADO Y VIDEOS
-   ========================================= */
-
-/* --- GIF EN GRANDE --- */
-.large-gif-container {
-    width: 100%;
-    margin: 0 0 40px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.highlight-gif {
-    width: 100%;
-    max-width: 850px;
-    /* Se verá gigante pero sin salirse de la pantalla */
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* --- CUADRÍCULA DE VÍDEOS DE YOUTUBE --- */
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* Se adaptan a móviles solos */
-    gap: 20px;
-    margin-top: 20px;
-}
-
-/* Truco CSS para que los vídeos mantengan la proporción 16:9 siempre */
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* Hacer que el GIF destaque en la cuadrícula (ocupa 2x2) */
-.gif-featured {
-    grid-column: span 2;
-    grid-row: span 2;
-    height: 100% !important;
-    object-fit: cover;
-}
-
-/* Contenedor y estilo de los botones de vídeo */
-.video-buttons-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-/* --- BOTONES DE VÍDEO CON ESTÉTICA DEL JUEGO --- */
-.btn-video {
-    display: inline-block;
-    background-color: #faf7c8d2;
-    /* Usamos el verde oscuro del título del juego */
-    color: #5c4b47;
-    /* Aplicamos la tipografía OCR A */
-    font-family: 'GardenText', sans-serif;
-    font-weight: 550;
-    font-size: 1.2rem;
-    padding: 12px 28px;
-    /* Esquinas menos redondeadas para un look más técnico */
-    border-radius: 15px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-video:hover {
-    border: 3px solid #a58b7b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(87, 102, 68, 0.2);
-}
-
-/* Ajuste para que la cuadrícula no se rompa en pantallas pequeñas */
-@media (max-width: 600px) {
-    .gif-featured {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
-}
-
-/* =========================================
-   SEPARADORES DE JUEGOS
-   ========================================= */
-.game-line-separator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px auto 30px auto;
-    /* 30px por arriba y 30px por abajo */
-    color: var(--color-morado);
-    font-size: 1.5rem;
-    opacity: 0.5;
-    width: 100%;
-    max-width: 1000px;
-}
-
-/* Las líneas ahora se estiran solas */
-.game-line-separator::before,
-.game-line-separator::after {
-    content: '';
-    flex-grow: 1;
-    /* Ocupan todo el espacio sobrante */
-    height: 2px;
-    background-color: var(--color-morado);
-    margin: 0 20px;
-    border-radius: 2px;
-}
-
-/* =========================================
-   ESTILOS DE ILUSTRACIÓN Y BRANDING (CORREGIDO)
-   ========================================= */
-
-/* --- MENÚ TIMELINE (CORREGIDO PARA QUE NO SE SUBA) --- */
-.game-side-nav {
-    width: 200px;
-    position: sticky;
-    top: 100px;
-    height: fit-content; /* ¡LA CLAVE! Ahora se ajusta al contenido y no a la pantalla */
-    padding: 20px 0 40px 4%; /* He reducido el padding superior para que no quede tan abajo */
+    height: fit-content; 
+    padding: 20px 0 40px 4%; 
     box-sizing: border-box;
     z-index: 100;
     align-self: flex-start;
 }
-/* --- Layout Dividido para Libros --- */
-.editorial-split {
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
+
+.game-side-nav .nav-label {
+    display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 700; color: var(--color-marron-oscuro); opacity: 0.5; margin-bottom: 25px; text-align: left;
 }
 
-/* Alineación perfecta quitando el margen superior del primer párrafo */
-.editorial-text p:first-child {
-    margin-top: 0;
+.game-side-nav ul { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--color-lila); }
+.game-side-nav ul li { margin-bottom: 25px; position: relative; text-align: left; }
+
+.game-side-nav ul li a {
+    position: relative; display: block; padding: 10px 0 10px 20px; color: var(--color-marron-oscuro);
+    text-decoration: none; font-weight: 700; font-size: 0.95rem; opacity: 0.4; transition: all 0.3s ease;
 }
 
-.editorial-image {
-    flex: 0 0 45%; /* Hace la imagen un pelín más grande para equilibrar el texto */
-    max-width: 480px;
-    margin-top: 5px; /* Micro-ajuste para que la foto se alinee milimétricamente con el texto */
+.game-side-nav ul li a::before {
+    content: '✦'; position: absolute; left: -26px; top: 50%; transform: translateY(-50%);
+    color: transparent; transition: all 0.3s ease; font-size: 1.2rem;
 }
 
-.editorial-image .editorial-cover-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px; /* Bordes un poco menos redondeados, más estilo libro físico */
-    
-    /* Sombra suave, elegante y centrada (fuera la sombra rara lateral) */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
-    border: 1px solid rgba(0,0,0,0.03); /* Un bordecito súper sutil para enmarcarlo */
-    
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+.game-side-nav ul li a:hover, .game-side-nav ul li a.active { opacity: 1; color: var(--color-oro); }
+.game-side-nav ul li a:hover::before, .game-side-nav ul li a.active::before { color: var(--color-oro); }
+
+.games-content-area { flex-grow: 1; width: 100%; max-width: 1000px; margin: 0 auto; }
+
+.game-full-block { width: 100%; text-align: left; margin-bottom: 0px; padding: 20px 0; position: relative; }
+.game-full-block.alt-purple-bg { background-color: transparent; }
+.game-full-block.alt-purple-bg::before {
+    content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100vw; height: 100%; background-color: rgba(228, 207, 230, 0.4); z-index: -1;
 }
 
-.editorial-image .editorial-cover-img:hover {
-    transform: translateY(-5px); /* Salto limpio hacia arriba, sin rotaciones */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+.game-content-text, .game-large-cover-wrapper { position: relative; z-index: 2; }
+.game-large-cover-wrapper { width: 100%; margin-bottom: 30px; }
+.game-large-cover { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); object-fit: cover; }
+
+.game-content-text h3 { font-family: 'Darumadrop One', cursive; font-size: 3.5rem; color: var(--color-oro); margin: 0 0 20px 0; }
+.game-description { font-size: 1.15rem; line-height: 1.6; margin-bottom: 40px; }
+
+.role-box-framed {
+    background: rgba(250, 246, 240, 0.5); padding: 35px 40px; border-radius: 20px;
+    border: 2px dashed var(--color-morado); margin-bottom: 30px;
 }
 
-.editorial-text {
-    flex: 1; /* El texto ocupa el 60% restante */
-    text-align: left;
+.role-box-framed h4 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 10px 0; color: var(--color-marron-oscuro); }
+.role-box-framed ul { list-style: none; padding: 0; }
+.role-box-framed ul li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+.role-box-framed ul li::before { content: '✦'; position: absolute; left: 0; color: var(--color-oro); font-size: 1.2rem; }
+
+.game-line-separator {
+    display: flex; align-items: center; justify-content: center; margin: 30px auto 30px auto;
+    color: var(--color-morado); font-size: 1.5rem; opacity: 0.5; width: 100%; max-width: 1000px;
 }
 
-/* --- Títulos gigantes para los libros (ahora arriba del todo) --- */
-.editorial-title {
-    font-family: 'Darumadrop One', cursive !important;
-    font-size: 3.5rem !important;
-    color: var(--color-oro) !important;
-    margin: 0 0 30px 0 !important; /* Margen por debajo para separarlo de la foto y el texto */
-    line-height: 1.1;
-    text-align: left;
+.game-line-separator::before, .game-line-separator::after {
+    content: ''; flex-grow: 1; height: 2px; background-color: var(--color-morado); margin: 0 20px; border-radius: 2px;
 }
 
-/* --- Que se note que la portada se puede hacer clic --- */
-.editorial-cover-img {
-    cursor: pointer;
+/* --- Botones Específicos de Juegos --- */
+.game-actions { text-align: center; margin-bottom: 60px; }
+
+.btn-itch {
+    display: inline-block; background-color: var(--color-marron-oscuro); color: var(--white);
+    padding: 14px 40px; border-radius: 12px; text-decoration: none; font-weight: 700;
+    transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.btn-itch:hover { background-color: var(--color-rojo); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(159, 37, 39, 0.2); }
+
+.garden-btn, .btn-video {
+    display: inline-block; background-image: none !important; text-indent: 0 !important;
+    width: auto !important; height: auto !important; background-color: rgba(189, 150, 126, 0.4) !important;
+    color: var(--color-marron-oscuro) !important; border: 3px solid transparent !important;
+    font-family: 'GardenText', sans-serif !important; font-weight: 700; font-size: 1rem;
+    padding: 12px 28px; border-radius: 15px !important; text-decoration: none; cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; transform: none !important;
+}
+.garden-btn:hover, .btn-video:hover {
+    background-color: rgba(165, 139, 123, 1) !important; border: 3px solid rgb(236, 228, 179) !important;
+    color: var(--white) !important; transform: none !important; box-shadow: none !important;
 }
 
-/* --- Nuevo botón para libros (Elegante y acorde a la sección) --- */
+.btn-itch.noise-btn, .btn-itch.eclipsa-btn {
+    display: inline-block; border: none !important; background-color: transparent !important;
+    background-size: contain; background-repeat: no-repeat; background-position: center;
+    text-indent: -9999px; box-shadow: none !important; padding: 0; transform: none !important; transition: none !important;
+}
+
+.btn-itch.noise-btn { background-image: url('assets/proyects/white_noise/boton.png') !important; width: 230px; height: 65px; }
+.btn-itch.noise-btn:hover { background-image: url('assets/proyects/white_noise/boton_hover.png') !important; }
+.btn-itch.noise-btn:active { background-image: url('assets/proyects/white_noise/boton_on.png') !important; }
+
+.btn-itch.eclipsa-btn { background-image: url('assets/proyects/eclipsa/boton.png') !important; width: 320px; height: 95px; }
+.btn-itch.eclipsa-btn:hover { background-image: url('assets/proyects/eclipsa/boton_hover.png') !important; }
+
+/* --- Galerías y Assets de Juegos --- */
+.project-assets-gallery h5 { font-family: 'Darumadrop One', cursive; font-size: 2.2rem; color: var(--color-rojo); margin-bottom: 25px; }
+
+.assets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.assets-grid img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; transition: transform 0.3s ease; cursor: pointer; }
+.assets-grid img:hover { transform: scale(1.05); }
+
+.asset-item { position: relative; cursor: pointer; border-radius: 10px; }
+.asset-item::after {
+    content: attr(data-title); position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
+    background-color: rgba(54, 50, 51, 0.95); color: var(--white); padding: 6px 12px; border-radius: 6px;
+    font-size: 0.85rem; font-family: 'Quicksand', sans-serif; font-weight: 700; white-space: nowrap;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100; pointer-events: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.asset-item:hover::after { opacity: 1; visibility: visible; bottom: 10px; }
+
+.game-image-divider { width: 100%; display: flex; justify-content: center; margin: 60px 0 80px 0; }
+.game-image-divider img { width: 100%; max-width: 900px; height: auto; opacity: 0.9; }
+
+.large-gif-container { width: 100%; margin: 0 0 40px 0; display: flex; justify-content: center; }
+.highlight-gif { width: 100%; max-width: 850px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+
+.videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+.video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.gif-featured { grid-column: span 2; grid-row: span 2; height: 100% !important; object-fit: cover; }
+.video-buttons-container { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
+
+/* Fuentes Específicas de Juegos */
+#game-living-garden h3, #game-living-garden h5 { font-family: 'GardenTitle', cursive; color: #576644; }
+#game-white-noise h3, #game-white-noise h5 { font-family: 'NoiseTitle', serif; color: #695956; }
+#game-eclipsa h3, #game-eclipsa h5 { font-family: 'EclipsaTitle', sans-serif; color: #3c4252; }
+
+/* Mecánica White Noise */
+.mechanic-intro { margin: 50px 0 30px 0; text-align: left; }
+.mechanic-intro h4 { font-family: 'NoiseTitle', serif; font-size: 2rem; color: #695956; margin: 0 0 10px 0; }
+.magic-rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 50px; }
+.room-toggle { position: relative; width: 100%; border-radius: 12px; overflow: hidden; cursor: pointer; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.room-toggle:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); }
+.room-day, .room-night { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; }
+.room-night { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s ease-in-out; }
+.room-toggle.is-night .room-night { opacity: 1; }
+.light-hint { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(250, 246, 240, 0.9); color: var(--color-marron-oscuro); padding: 6px 16px; border-radius: 20px; font-family: 'Quicksand', sans-serif; font-size: 0.85rem; font-weight: 700; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+.room-toggle:hover .light-hint { opacity: 1; }
+
+/* --- Editorial y Branding (Otros Proyectos) --- */
+.editorial-split { display: flex; align-items: flex-start; gap: 40px; }
+.editorial-text p:first-child { margin-top: 0; }
+.editorial-image { flex: 0 0 45%; max-width: 480px; margin-top: 5px; }
+.editorial-image .editorial-cover-img { width: 100%; height: auto; display: block; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.03); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.editorial-image .editorial-cover-img:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.12); }
+.editorial-text { flex: 1; text-align: left; }
+.editorial-title { font-family: 'Darumadrop One', cursive !important; font-size: 3.5rem !important; color: var(--color-oro) !important; margin: 0 0 30px 0 !important; line-height: 1.1; text-align: left; }
+.editorial-cover-img { cursor: pointer; }
+
 .btn-editorial {
-    display: inline-block;
-    background-color: var(--white);
-    color: var(--color-oro);
-    border: 2px solid var(--color-oro); /* Borde dorado */
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 12px 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(200, 135, 66, 0.1);
+    display: inline-block; background-color: var(--white); color: var(--color-oro); border: 2px solid var(--color-oro);
+    font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.1rem; padding: 12px 30px; border-radius: 30px;
+    text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(200, 135, 66, 0.1);
 }
+.btn-editorial:hover { background-color: var(--color-oro); color: var(--white); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(200, 135, 66, 0.3); }
 
-.btn-editorial:hover {
-    background-color: var(--color-oro); /* Se rellena de dorado al pasar el ratón */
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(200, 135, 66, 0.3);
-}
-
-/* --- Galería de Logos (Estilo Lienzo / Brand Board) --- */
-.logos-board {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(250, 246, 240, 0.7); /* Fondo unificado sutil */
-    padding: 50px;
-    border-radius: 24px;
-    border: 2px dashed rgba(202, 170, 205, 0.5); /* Borde punteado morado muy suave */
-}
-
-.logos-board .asset-item {
-    flex: 1 1 200px;
-    max-width: 280px;
-    background-color: transparent !important; /* Fuera cajas blancas rídigas */
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none !important; /* Fuera sombras de la caja */
-    transition: transform 0.3s ease;
-}
-
-.logos-board .asset-item:hover {
-    transform: scale(1.1) !important;
-}
-
-.logos-board .asset-item img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: contain;
-    mix-blend-mode: multiply; /* MAGIA: Elimina los fondos blancos de las imágenes */
-}
-
-/* Adaptación a móviles para que la foto se ponga arriba y el texto abajo */
-@media (max-width: 850px) {
-    .editorial-split {
-        flex-direction: column-reverse; /* Magia: en móvil pone la foto arriba y el texto abajo */
-        align-items: center;
-        gap: 30px;
-    }
-    
-    .editorial-image {
-        flex: 0 0 100%;
-        max-width: 300px;
-    }
-}
+.logos-board { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: center; background-color: rgba(250, 246, 240, 0.7); padding: 50px; border-radius: 24px; border: 2px dashed rgba(202, 170, 205, 0.5); }
+.logos-board .asset-item { flex: 1 1 200px; max-width: 280px; background-color: transparent !important; padding: 0; border-radius: 0; box-shadow: none !important; transition: transform 0.3s ease; }
+.logos-board .asset-item:hover { transform: scale(1.1) !important; }
+.logos-board .asset-item img { width: 100%; height: auto; max-height: 200px; object-fit: contain; mix-blend-mode: multiply; }
 
 /* =========================================
-   21. PÁGINA DE CONTACTO (ESTILO COZY)
+   6. PÁGINA: ARTWORKS
    ========================================= */
-/* --- Contenedor Principal (Reducido el espacio superior de 140px a 100px) --- */
-.contact-page-container {
-    min-height: 85vh;
-    padding: 100px 10% 80px 10%; 
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    max-width: 1300px;
-    margin: 0 auto;
+.projects-hero.artworks-hero { min-height: 450px !important; padding-top: 100px !important; }
+.artworks-hero .banner-text-group { margin-top: -220px !important; }
+.artworks-bg { opacity: 0.75; }
+
+.artworks-page-header { padding: 80px 5% 30px 5%; text-align: center; }
+.artworks-page-header p { font-size: 1.15rem; color: var(--color-marron-oscuro); max-width: 600px; margin: 0 auto; }
+
+.masonry-gallery { column-count: 3; column-gap: 20px; padding: 0 5% 40px 5%; max-width: 1400px; margin: 0 auto; margin-top: -70px !important; position: relative; z-index: 10; }
+.masonry-item { break-inside: avoid; margin-bottom: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.masonry-item:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); }
+.masonry-item img { width: 100%; height: auto; display: block; }
+
+.gallery-cta { padding: 0 10% 60px 10%; text-align: center; background-color: transparent; }
+.gallery-cta h2 { font-family: 'Quicksand', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--color-marron-oscuro); margin: 0 0 15px 0; opacity: 0.8; }
+.gallery-cta .cute-divider { background-color: var(--color-lila); width: 40px; height: 2px; margin: 0 auto 15px auto; }
+.gallery-cta p { font-size: 1rem; color: var(--color-marron-oscuro); margin-bottom: 25px; font-weight: 500; opacity: 0.6; }
+
+/* =========================================
+   7. PÁGINA: MI MARCA (MORALLAMA)
+   ========================================= */
+.brand-section { padding: 100px 5% 80px 5%; background-color: transparent; text-align: center; position: relative; overflow: visible; }
+.brand-fruit { position: absolute; z-index: -1; filter: drop-shadow(0px 15px 12px rgba(0, 0, 0, 0.15)); pointer-events: none; animation: floating 6s ease-in-out infinite; opacity: 0.35; }
+.brand-fruit.f-1 { top: 10%; left: 5%; width: 160px; rotate: -15deg; animation-delay: 0s; }
+.brand-fruit.f-2 { top: 45%; right: -2%; width: 180px; rotate: 30deg; animation-delay: 1.5s; }
+.brand-fruit.f-3 { top: -20%; right: 12%; width: 130px; rotate: 15deg; animation-delay: 0.7s; }
+.brand-fruit.f-4 { bottom: 5%; right: 10%; width: 200px; rotate: -15deg; animation-delay: 2.2s; }
+.brand-fruit.f-5 { bottom: 15%; left: 8%; width: 110px; rotate: 45deg; animation-delay: 1.1s; }
+
+.brand-header { margin-bottom: 50px; }
+.brand-section h2 { color: var(--color-oro); margin: 0 0 15px 0; }
+.brand-intro { font-size: 1rem; color: var(--color-marron-oscuro); max-width: 750px; margin: 0 auto; line-height: 1.5; }
+
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1350px; margin: 0 auto 30px auto; }
+.product-card { text-align: center; transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); width: 100%; }
+.card-tilt-left { transform: rotate(-1.5deg); }
+.card-drop-center { transform: translateY(20px) rotate(1deg); }
+.card-tilt-right { transform: rotate(-1deg); }
+.product-card:hover { transform: translateY(-10px) rotate(0deg); }
+
+.product-img-wrapper { width: 100%; height: 300px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; position: relative; }
+.product-img-wrapper img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 16px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); transition: transform 0.5s ease, box-shadow 0.5s ease; }
+.product-card:hover .product-img-wrapper img { transform: scale(1.05); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2); }
+
+.product-card h3 { font-family: 'Darumadrop One', cursive; font-size: 2.4rem; color: var(--color-oro); margin: 0 0 10px 0; }
+.cute-divider { width: 35px; height: 3px; background-color: var(--color-morado); margin: 0 auto 15px auto; border-radius: 3px; opacity: 0.5; }
+.product-card p { font-size: 1.1rem; line-height: 1.5; padding: 0 15px; margin: 0; }
+
+.brand-cta { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.btn-etsy { display: inline-block; background-color: var(--color-rojo); color: var(--white); font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.25rem; padding: 16px 50px; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 6px 18px rgba(159, 37, 39, 0.25); }
+.btn-etsy:hover { background-color: var(--color-oro); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(200, 135, 66, 0.35); }
+.link-more-brand { color: var(--color-marron-oscuro); font-weight: 700; text-decoration: none; font-size: 1.05rem; opacity: 0.7; }
+.link-more-brand:hover { color: var(--color-rojo); opacity: 1; }
+
+/* =========================================
+   8. PÁGINA: CONTACTO
+   ========================================= */
+.contact-page-container { min-height: 85vh; padding: 100px 10% 80px 10%; display: flex; align-items: center; gap: 60px; max-width: 1300px; margin: 0 auto; }
+.contact-info-side { flex: 1; text-align: left; }
+
+.freelance-tag { display: inline-block; background-color: var(--color-lila); color: var(--color-marron-oscuro); border: 1px dashed var(--color-morado); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 20px; }
+.contact-title { font-family: 'Darumadrop One', cursive; font-size: 4rem; color: var(--color-oro); margin: 0 0 20px 0; line-height: 1.1; }
+.contact-subtitle { font-size: 1.1rem; line-height: 1.6; margin-bottom: 35px; opacity: 0.8; }
+.mail-label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; opacity: 0.6; }
+
+.contact-illustration-wrapper { margin-top: 40px; animation: floating 5s ease-in-out infinite; }
+.contact-avatar-deco { width: 120px; opacity: 0.8; }
+
+.contact-form-side { flex: 1; }
+.form-card { background-color: var(--white); padding: 40px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid rgba(202, 170, 205, 0.2); }
+.form-group { margin-bottom: 25px; text-align: left; }
+.form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; color: var(--color-marron-oscuro); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 18px; border-radius: 12px; border: 2px solid var(--color-lila); background-color: var(--white); font-family: 'Quicksand', sans-serif; font-size: 1rem; color: var(--color-marron-oscuro); transition: all 0.3s ease; box-sizing: border-box; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--color-oro); box-shadow: 0 0 0 4px rgba(200, 135, 66, 0.1); }
+
+.btn-send { display: inline-block; background-color: var(--color-oro); color: var(--white); font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.1rem; padding: 14px 30px; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(200, 135, 66, 0.2); border: none; cursor: pointer; width: 100%; }
+.btn-send:hover { background-color: var(--color-marron-oscuro); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(54, 50, 51, 0.2); }
+
+.hero-intro-text { max-width: 600px; margin: 0 auto; font-size: 1.15rem; font-weight: 500; color: var(--color-marron-oscuro); opacity: 0.8; }
+
+.contact-icon-circle { width: 42px; height: 42px; background-color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-oro); box-shadow: 0 4px 12px rgba(200, 135, 66, 0.15); border: 1px solid rgba(200, 135, 66, 0.15); flex-shrink: 0; }
+.contact-icon-circle svg { width: 22px; height: 22px; stroke-width: 2.5; }
+.detail-item { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; }
+
+.btn-portfolio-featured { display: flex; align-items: center; gap: 12px; background-color: var(--color-lila); padding: 8px 24px 8px 8px; border-radius: 40px; text-decoration: none; color: var(--color-marron-oscuro); font-weight: 700; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(202, 170, 205, 0.3); }
+.portfolio-icon-inside { width: 34px; height: 34px; background-color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-oro); transition: all 0.3s ease; }
+.portfolio-icon-inside svg { width: 16px; height: 16px; }
+.btn-portfolio-featured:hover { transform: translateY(-3px); background-color: var(--color-oro); color: var(--white); box-shadow: 0 8px 25px rgba(200, 135, 66, 0.3); }
+.btn-portfolio-featured:hover .portfolio-icon-inside { color: var(--color-oro); transform: rotate(-10deg); }
+
+.detail-icon { font-size: 1.2rem; opacity: 0.8; }
+.detail-text { opacity: 0.7; }
+.contact-action-group { display: flex; align-items: center; gap: 30px; margin-bottom: 30px; flex-wrap: wrap; }
+.contact-direct-mail { margin-bottom: 0; }
+
+.btn-download { padding: 10px 24px; font-size: 0.9rem; background-color: var(--white); }
+.btn-download:hover { background-color: var(--color-lila); }
+
+/* =========================================
+   9. RESPONSIVE (MEDIA QUERIES)
+   ========================================= */
+
+/* Tablets Horizontales y Portátiles Pequeños */
+@media (max-width: 1100px) {
+    .projects-container { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* --- Columna Izquierda --- */
-.contact-info-side {
-    flex: 1;
-    text-align: left;
+/* Tablets Verticales */
+@media (max-width: 1000px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 50px; }
+    .masonry-gallery { column-count: 2; }
+    .game-side-nav { display: none; }
+    .assets-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* --- Etiqueta "Available for Freelance" (Ahora encaja con tu paleta) --- */
-.freelance-tag {
-    display: inline-block;
-    background-color: var(--color-lila); /* Lila suave */
-    color: var(--color-marron-oscuro); /* Marrón oscuro para contrastar */
-    border: 1px dashed var(--color-morado); /* Un borde muy cuqui */
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-.contact-title {
-    font-family: 'Darumadrop One', cursive;
-    font-size: 4rem;
-    color: var(--color-oro);
-    margin: 0 0 20px 0;
-    line-height: 1.1;
-}
-
-.contact-subtitle {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 35px;
-    opacity: 0.8;
-}
-
-.mail-label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    opacity: 0.6;
-}
-
-.contact-illustration-wrapper {
-    margin-top: 40px;
-    animation: floating 5s ease-in-out infinite;
-}
-
-.contact-avatar-deco {
-    width: 120px;
-    opacity: 0.8;
-}
-
-/* --- Columna Derecha (Formulario) --- */
-.contact-form-side {
-    flex: 1;
-}
-
-.form-card {
-    background-color: var(--white);
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-    border: 1px solid rgba(202, 170, 205, 0.2); /* Borde lila muy sutil */
-}
-
-.form-group {
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 700;
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-    color: var(--color-marron-oscuro);
-}
-
-.form-group input, 
-.form-group select, 
-.form-group textarea {
-    width: 100%;
-    padding: 12px 18px;
-    border-radius: 12px;
-    border: 2px solid var(--color-lila);
-    background-color: var(--white);
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1rem;
-    color: var(--color-marron-oscuro);
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-.form-group input:focus, 
-.form-group select:focus, 
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-oro);
-    box-shadow: 0 0 0 4px rgba(200, 135, 66, 0.1);
-}
-
-/* --- Botón del Formulario (Más suave y cálido) --- */
-.btn-send {
-    display: inline-block;
-    background-color: var(--color-oro); /* Tono dorado/cálido, mucho menos agresivo que el rojo */
-    color: var(--white);
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 14px 30px;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(200, 135, 66, 0.2);
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-.btn-send:hover {
-    background-color: var(--color-marron-oscuro); /* Se vuelve marrón al pasar el ratón */
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(54, 50, 51, 0.2);
-}
-
-/* Adaptación a móviles */
 @media (max-width: 950px) {
-    .contact-page-container {
-        flex-direction: column;
-        padding-top: 120px;
-        text-align: center;
-    }
+    .contact-page-container { flex-direction: column; padding-top: 120px; text-align: center; }
+    .contact-info-side { text-align: center; }
+    .contact-title { font-size: 3rem; }
+}
+
+@media (max-width: 850px) {
+    .carousel-container { max-width: 95%; }
+    .carousel-arrow { font-size: 2.5rem; padding: 5px; }
+    .polaroid-card.carousel-item-left, .polaroid-card.carousel-item-right { opacity: 0; visibility: hidden; }
+    .polaroid-img-wrapper img { height: 240px; }
     
-    .contact-info-side {
-        text-align: center;
+    .editorial-split { flex-direction: column-reverse; align-items: center; gap: 30px; }
+    .editorial-image { flex: 0 0 100%; max-width: 300px; }
+}
+
+/* Móviles y Tablets Pequeñas */
+@media (max-width: 768px) {
+    .transparent-nav { flex-direction: column; padding: 1.2rem 1rem 1.8rem 1rem; }
+    .transparent-nav.scrolled { flex-direction: column; padding: 1.5rem 1rem 2.2rem 1rem !important; }
+    .transparent-nav ul { margin-top: 15px; padding: 0; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .transparent-nav ul li a { margin: 0 !important; font-size: 0.95rem; }
+    .transparent-nav ul li a.nav-btn-contact { margin-top: 5px !important; }
+
+    .projects-hero,
+    .projects-hero.artworks-hero { 
+        margin-top: 170px !important;
+        padding-top: 30px !important; 
+        min-height: 150px !important;
     }
-    
-    .contact-title {
-        font-size: 3rem;
+    .projects-full-width-bg { 
+        top: 0 !important; 
+        height: 100% !important; 
+        object-fit: cover !important; 
     }
+    .banner-text-group { 
+        margin-top: 0 !important; 
+    }
+    .banner-text-group h2 { 
+        font-size: 2.8rem !important; 
+        margin-bottom: 0 !important; 
+    }
+
+    .hero-main-container { 
+        top: 8vh !important; 
+        margin-top: 80px; 
+    }
+    .hero-text-wrapper { 
+        width: 90%; 
+    }
+    .hero-title-top { 
+        font-size: 2.2rem !important; 
+        margin: 0 0 10px 0; 
+    }
+    .hero-subtitle-bottom { 
+        font-size: 0.95rem !important; 
+        padding: 0 10px; 
+    }
+    .about-container { flex-direction: column; gap: 30px; }
+    .about-text, .about-text h2 { text-align: center; }
+
+    .artworks-page-header { padding-top: 150px; }
+    .contact-page-container { padding-top: 240px !important; }
+
+    .skills-cards-container { flex-direction: column; align-items: center; }
+    .skill-card, .featured-card { width: 100%; transform: rotate(0deg) scale(1) !important; }
+
+    .carousel-arrow { font-size: 2rem; }
+    .polaroid-img-wrapper img { height: 200px; }
+
+    .projects-full-width-bg { object-fit: contain !important; top: -20px !important; height: auto !important; }
+    .banner-text-group h2 { font-size: 2.8rem !important; margin-bottom: 15px !important; }
+
+    .footer-columns { flex-direction: column; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; align-items: center; }
 }
 
-/* --- Ajuste específico para el texto del banner de Artworks --- */
-.hero-intro-text {
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--color-marron-oscuro);
-    opacity: 0.8;
+/* Móviles Pequeños */
+@media (max-width: 700px) {
+    .projects-container { grid-template-columns: 1fr; }
+    .project-img-wrapper { height: 200px; }
+    .brand-fruit { display: none; }
+    .product-grid { grid-template-columns: 1fr; gap: 50px; }
+    .card-drop-center { transform: none; }
+    .product-img-wrapper { height: 250px; }
 }
 
-/* --- Iconos Circulares (Visibilidad Mejorada) --- */
-.contact-icon-circle {
-    width: 42px; /* Los hacemos un pelín más grandes */
-    height: 42px;
-    background-color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-oro); /* Mantenemos tu color dorado */
-    
-    /* Le damos una sombra dorada muy suave y un bordecito para que no se funda con el fondo */
-    box-shadow: 0 4px 12px rgba(200, 135, 66, 0.15); 
-    border: 1px solid rgba(200, 135, 66, 0.15);
-    flex-shrink: 0;
-}
-
-.contact-icon-circle svg {
-    width: 22px; /* El dibujo por dentro también crece */
-    height: 22px;
-    stroke-width: 2.5; /* ¡EL TRUCO! Hacemos que la línea sea más gordita para que se lea perfecto */
-}
-
-.detail-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 12px;
-}
-
-/* --- Botón Porfolio Destacado --- */
-.btn-portfolio-featured {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background-color: var(--color-lila); /* Color lila sólido para que destaque */
-    padding: 8px 24px 8px 8px; /* Menos espacio a la izquierda para el icono */
-    border-radius: 40px;
-    text-decoration: none;
-    color: var(--color-marron-oscuro);
-    font-weight: 700;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(202, 170, 205, 0.3);
-}
-
-.portfolio-icon-inside {
-    width: 34px;
-    height: 34px;
-    background-color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-oro);
-    transition: all 0.3s ease;
-}
-
-.portfolio-icon-inside svg {
-    width: 16px;
-    height: 16px;
-}
-
-/* Efecto hover del botón */
-.btn-portfolio-featured:hover {
-    transform: translateY(-3px);
-    background-color: var(--color-oro);
-    color: var(--white);
-    box-shadow: 0 8px 25px rgba(200, 135, 66, 0.3);
-}
-
-.btn-portfolio-featured:hover .portfolio-icon-inside {
-    color: var(--color-oro);
-    transform: rotate(-10deg);
-}
-
-.detail-icon {
-    font-size: 1.2rem;
-    opacity: 0.8;
-}
-
-.detail-text {
-    opacity: 0.7;
-}
-
-/* --- Agrupación del email y botón de portfolio --- */
-.contact-action-group {
-    display: flex;
-    align-items: center; /* Centra verticalmente el email y el botón */
-    gap: 30px; 
-    margin-bottom: 30px;
-    flex-wrap: wrap; /* Si la pantalla es pequeña, el botón bajará a la siguiente línea */
-}
-
-.contact-direct-mail {
-    margin-bottom: 0; /* Le quitamos el margen que tenía antes para que se alinee con el botón */
-}
-
-/* --- Ajuste específico para el botón de descarga --- */
-.btn-download {
-    padding: 10px 24px;
-    font-size: 0.9rem;
-    background-color: var(--white); /* Fondo blanco para que resalte sobre la crema */
-}
-
-.btn-download:hover {
-    background-color: var(--color-lila);
-}
-
-/* =========================================
-   22. ARTWORKS BANNER (RESTAURADO A TAMAÑO GRANDE)
-   ========================================= */
-
-/* 1. Recuperamos el tamaño grande del banner solo para Artworks */
-.projects-hero.artworks-hero {
-    min-height: 450px !important; /* Volvemos al tamaño original espacioso */
-    padding-top: 100px !important;
-}
-
-/* 2. Bajamos el título y el texto a su posición original (centrada y relajada) */
-.artworks-hero .banner-text-group {
-    margin-top: -220px !important; /* Bajamos el texto para que no esté "pegado" arriba */
-}
-
-/* 3. Quitamos el "tirón" hacia arriba de la galería */
-.masonry-gallery {
-    margin-top: -70px !important; /* Le damos un poco de aire respecto al banner */
-    position: relative;
-    z-index: 10;
-}
-
-/* 4. Mantenemos la opacidad suave que te gustó */
-.artworks-bg {
-    opacity: 0.75; 
+@media (max-width: 600px) {
+    .masonry-gallery { column-count: 1; }
+    .gif-featured { grid-column: span 1; grid-row: span 1; }
 }
