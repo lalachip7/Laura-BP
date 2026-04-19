@@ -1447,12 +1447,14 @@ h2 {
     }
 
     .projects-hero {
-        padding-top: 170px !important; /* Le damos mucho más espacio arriba para esquivar el menú */
+        padding-top: 180px !important; /* Más espacio para que el título baje */
+        min-height: 250px !important;
     }
 
+    /* 2. Ajustamos el cartel de "Welcome" en la Home */
     .hero-main-container {
-        top: 6vh; /* Antes estaba en 2vh, lo bajamos */
-        margin-top: 60px; /* Extra de empuje hacia abajo */
+        top: 8vh !important; 
+        margin-top: 50px;
     }
 
     .hero-text-wrapper {
@@ -1503,6 +1505,19 @@ h2 {
 
     .polaroid-img-wrapper img {
         height: 200px;
+    }
+
+    /* Usamos 'contain' para que la imagen se vea entera y no se corte el texto lateral */
+    .projects-full-width-bg {
+        object-fit: contain !important; 
+        top: -20px !important; /* Lo ajustamos un poco hacia arriba */
+        height: auto !important;
+    }
+
+    /* 4. El título de la página de proyectos en móvil */
+    .banner-text-group h2 {
+        font-size: 2.8rem !important;
+        margin-bottom: 15px !important;
     }
 }
 
