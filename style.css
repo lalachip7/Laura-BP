@@ -1446,8 +1446,13 @@ h2 {
         margin-top: 5px !important;
     }
 
+    .projects-hero {
+        padding-top: 170px !important; /* Le damos mucho más espacio arriba para esquivar el menú */
+    }
+
     .hero-main-container {
-        top: 2vh;
+        top: 6vh; /* Antes estaba en 2vh, lo bajamos */
+        margin-top: 60px; /* Extra de empuje hacia abajo */
     }
 
     .hero-text-wrapper {
@@ -1471,6 +1476,14 @@ h2 {
     .about-text,
     .about-text h2 {
         text-align: center;
+    }
+
+    .artworks-page-header {
+        padding-top: 150px;
+    }
+
+    .contact-page-container {
+        padding-top: 150px; 
     }
 
     .skills-cards-container {
