@@ -1390,23 +1390,37 @@ h2 {
     .transparent-nav ul li a { margin: 0 !important; font-size: 0.95rem; }
     .transparent-nav ul li a.nav-btn-contact { margin-top: 5px !important; }
 
-    .projects-hero,
-    .projects-hero.artworks-hero { 
-        margin-top: 170px !important;
-        padding-top: 30px !important; 
-        min-height: 150px !important;
+    .projects-hero { 
+        margin-top: 160px !important; /* Lo empuja debajo del menú doble */
+        min-height: 280px !important; /* ¡AQUÍ HACEMOS EL BANNER MÁS ALTO! Ajusta este número si lo quieres aún más grande */
+        padding-top: 0px !important;
+        display: flex !important;
+        align-items: center !important;
     }
+    .projects-hero .banner-text-group { 
+        margin-top: 0 !important; /* Reseteamos para que quede en el centro de la imagen */
+    }
+
     .projects-full-width-bg { 
         top: 0 !important; 
         height: 100% !important; 
         object-fit: cover !important; 
     }
-    .banner-text-group { 
-        margin-top: 0 !important; 
+    
+    .projects-hero.artworks-hero { 
+        margin-top: 160px !important; 
+        min-height: 320px !important; 
+        padding-top: 0 !important;
+        display: flex !important;
+        align-items: center !important;
     }
+    .artworks-hero .banner-text-group { 
+        margin-top: -80px !important; /* ¡AQUÍ ESTÁ! Esto sube el título para que no quede tan centrado/bajo */
+    }
+
     .banner-text-group h2 { 
         font-size: 2.8rem !important; 
-        margin-bottom: 0 !important; 
+        margin-bottom: 15px !important; 
     }
 
     .hero-main-container { 
@@ -1427,7 +1441,15 @@ h2 {
     .about-container { flex-direction: column; gap: 30px; }
     .about-text, .about-text h2 { text-align: center; }
 
-    .artworks-page-header { padding-top: 150px; }
+    .artworks-page-header { 
+        padding-top: 30px !important; /* Le damos su propio espacio debajo del banner */
+        padding-bottom: 10px !important;
+        position: relative;
+        z-index: 20; /* Aseguramos que esté por encima de todo */
+    }
+    .masonry-gallery {
+        margin-top: -20px !important; /* Anulamos el valor negativo del PC para que las imágenes bajen y dejen leer el texto */
+    }
     .contact-page-container { padding-top: 240px !important; }
 
     .skills-cards-container { flex-direction: column; align-items: center; }
@@ -1435,9 +1457,6 @@ h2 {
 
     .carousel-arrow { font-size: 2rem; }
     .polaroid-img-wrapper img { height: 200px; }
-
-    .projects-full-width-bg { object-fit: contain !important; top: -20px !important; height: auto !important; }
-    .banner-text-group h2 { font-size: 2.8rem !important; margin-bottom: 15px !important; }
 
     .footer-columns { flex-direction: column; gap: 40px; }
     .footer-bottom { flex-direction: column; gap: 10px; text-align: center; align-items: center; }
